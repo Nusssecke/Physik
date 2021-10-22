@@ -11,4 +11,34 @@ Symmetrische Differenz auflösen
 \backslash ( M \backslash P \cup P \backslash M)
 = \emptyset \)
 Falsch?
-\section{2.1}
+
+\subsubsection*{Hilfslemma 2}
+Zu zeigen: \((M \cap N) \backslash P = (M \cap (N \backslash P))\) \\
+\(\Rightarrow (M \cap N) \backslash P = (M \backslash P) \cap (N \backslash P)\) \\
+Unter Verwendung des Distributivgesetzes \((A \cap B) \backslash C = (A \backslash C) \cap (B \backslash C) \) \\
+\((M \backslash P) \cap (N \backslash P)\) lässt sich logisch schreiben als
+\(x \in M \land x \notin P \land x \in N \land x \notin P\) was sich vereinfachen lässt zu \(x \in M \land x \in N \land x \notin P\)
+was genau \(M \cap (N \backslash P)\) ist.
+
+\subsubsection*{Hilfslemma 3}
+Zu zeigen: \((M \cap N) \backslash P = (M \cap N ) \backslash (M \cap P)\) \\
+\((M \cap N ) \backslash (M \cap P)\) lässt sich logisch schreiben als \((x \in M \land x \in N) \land \lnot (x \in M \land x \in P)\)
+Mit den De Morgan'schen Regeln aus 1.2 lässt sich dies umformen zu: \((x \in M \land x \in N) \land (x \notin M \lor x \notin P)\)
+Zu zeigen ist nun das dies equivalent zu \(x \in M \land x \in N \land x \notin P\) ist. \\
+Wenn gilt das \(x \in (M \cap N) \backslash P \Rightarrow x \in M \land x \in N \land x \notin P \)  
+\(\Rightarrow x \in M \land x \in N \land x \in M \land x \notin P\)
+Was sich umformen lässt zu \(\Rightarrow x \in (M \cap N) \lnot\land x \in M \land x \notin P\) Böse
+
+\subsubsection*{Eigentliche Aufgabe Ralph}
+Zu zeigen: \(M \cap (N \Delta P) = (M \cap N) \Delta (M \cap P) \) \\
+\((M \cap (N \Delta P)\) \\
+Einsetzen der Definition der symmetrischen Differenz \\
+\(M \cap (N \backslash P \cup P \backslash N)\) \\
+Anwenden des Distributivgesetzes \(A \cap (B \cup C) = (A \cap B ) \cup (A \cap C)\) \\
+\((M \cap (N \backslash P)) \cup (M \cap (P \backslash N)) \) \\
+Zweimal Hilfslemma 2 angewandt \\
+\((M \cap N) \backslash P \cup (M \cap P) \backslash N \) \\
+Zweimal Hilfslemma 3 angewandt \\
+\((M \cap N) \backslash (M \cap P) \cup (M \cap P) \backslash (M \cap N) \) \\
+Daraus erhält man durch zweifaches einsetzen der Definition der symmetrischen Differenz \\
+\((M \cap N) \Delta (M \cap P)\)

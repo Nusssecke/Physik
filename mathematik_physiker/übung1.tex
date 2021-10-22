@@ -1,130 +1,162 @@
 \documentclass{article}
 
-\usepackage[a4paper, total={16cm, 25cm}]{geometry}
+%\usepackage[a4paper, total={16cm, 25cm}]{geometry}
 \usepackage{babel}[german]
 \usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{enumitem}
 
 \date{21.10.2021}
 \title{Aufgabenblatt 1, Mathematik für Physiker 1}
-% \coursetitle{Aufgabenblatt 1, Mathematik für Physiker 1}
-% \courselabel{MfP 1}
-% \exercisesheet{Aufgabenblatt 1}
 \author{Finn Jannik Wagner}
-% \student{Finn Jannik Wagner}
-% \semester{Winter 2021}
-% \university{Justus Liebig Universität}
 
 \begin{document}
     \maketitle
-    \section{A1.1}
-    Es ist zu zeigen das
-    \((M \Delta N) \Delta (N\Delta P) = M \Delta P\) gilt.
-
-    \(A := (M \Delta N) \Delta (N\Delta P)\), 
-    \(B := M \Delta P\)
-
-    \subsection{Hierzu eine Fallunterscheidung:}
     
-    \begin{enumerate}
-        \item Fall \( x \notin M, N, P \)
-        Ist x in keiner der drei Menge, so ist es weder in A noch B 
+    \section*{Aufgabe 1}
 
-        \item Fall \(x \in M \land x \notin N, P\) \\
-        \(\Rightarrow x \in M \Delta N \), weil es nicht in beiden Mengen ist. \\
-        \(\Rightarrow x \in N \Delta P \), weil es weder in N noch in P ist. \\
-        \(\Rightarrow x \in ( M \Delta N )\Delta(N \Delta P ) \), weil es nicht in beiden Mengen ist. \\
-        \(\Rightarrow x \in M \Delta P \), weil es nicht in beiden Mengen ist.
+        \subsection*{Aufgabe 1.1 i)}
 
-        Damit gilt \(x \in A, B \)
+        Es ist zu zeigen das \((M \Delta N) \Delta (N\Delta P) = M \Delta P\) gilt.
+        \(A := (M \Delta N) \Delta (N\Delta P)\), \(B := M \Delta P\)
 
-        \item Fall \(x \in P \land x \notin M, N\) \\
-        Dieser Fall ist equivalent zu Fall 2
-        
-        \item Fall \(x \in N \land x \notin M, N \) \\
-        \(\Rightarrow x \in M \Delta N \), weil es nicht in beiden Mengen ist. \\
-        \(\Rightarrow x \in N \Delta P \), weil es nicht in beiden Mengen ist. \\
-        \(\Rightarrow x \notin ( M \Delta N )\Delta(N \Delta P ) \), weil es in beiden Mengen ist. \\
-        \(\Rightarrow x \in M \Delta P \), weil es weder in M noch P ist.
+        Hierzu eine Fallunterscheidung:
 
-        Damit gilt \(x \notin A, B \) 
+        \begin{enumerate}
+            \item Fall \( x \notin M, N, P \)
+            Ist x in keiner der drei Menge, so ist es weder in A noch B 
 
-        \item Fall \(x \in M, N \land x \notin P \) \\
-        \(\Rightarrow x \notin M \Delta N \), weil es in beiden Mengen ist. \\
-        \(\Rightarrow x \in N \Delta P \), weil es nicht in beiden Mengen ist. \\
-        \(\Rightarrow x \in ( M \Delta N )\Delta(N \Delta P ) \), weil es nur in \(N \Delta P\) ist. \\
-        \(\Rightarrow x \in M \Delta P \), weil es nur in M ist.
+            \item Fall \(x \in M \land x \notin N, P\) \\
+            \(\Rightarrow x \in M \Delta N \), weil es nicht in beiden Mengen ist. \\
+            \(\Rightarrow x \in N \Delta P \), weil es weder in N noch in P ist. \\
+            \(\Rightarrow x \in ( M \Delta N )\Delta(N \Delta P ) \), weil es nicht in beiden Mengen ist. \\
+            \(\Rightarrow x \in M \Delta P \), weil es nicht in beiden Mengen ist.
 
-        Damit gilt \(x \in A, B \) 
+            Damit gilt \(x \in A, B \)
 
-        \item Fall \(x \in M, P \land x \notin N \) \\
-        \(\Rightarrow x \in M \Delta N \), weil es nur in M ist. \\
-        \(\Rightarrow x \in N \Delta P \), weil es nur in P ist. \\
-        \(\Rightarrow x \notin ( M \Delta N )\Delta(N \Delta P ) \), weil es in \(M \Delta N\) und \(N \Delta P\) ist. \\
-        \(\Rightarrow x \notin M \Delta P \), weil es in M und P ist.
+            \item Fall \(x \in P \land x \notin M, N\) \\
+            Dieser Fall ist equivalent zu Fall 2
+            
+            \item Fall \(x \in N \land x \notin M, N \) \\
+            \(\Rightarrow x \in M \Delta N \), weil es nicht in beiden Mengen ist. \\
+            \(\Rightarrow x \in N \Delta P \), weil es nicht in beiden Mengen ist. \\
+            \(\Rightarrow x \notin ( M \Delta N )\Delta(N \Delta P ) \), weil es in beiden Mengen ist. \\
+            \(\Rightarrow x \in M \Delta P \), weil es weder in M noch P ist.
 
-        Damit gilt \(x \notin A, B \) 
-        
-        \item Fall \(x \in N, P \land x \notin M \) \\
-        \(\Rightarrow x \in M \Delta N \), weil es nur in N ist. \\
-        \(\Rightarrow x \notin N \Delta P \), weil es in N und P ist. \\
-        \(\Rightarrow x \in ( M \Delta N )\Delta(N \Delta P ) \), weil es nur in \(N \Delta P\) ist. \\
-        \(\Rightarrow x \in M \Delta P \), weil es nur in P ist.
+            Damit gilt \(x \notin A, B \) 
 
-        Damit gilt \(x \in A, B \)
+            \item Fall \(x \in M, N \land x \notin P \) \\
+            \(\Rightarrow x \notin M \Delta N \), weil es in beiden Mengen ist. \\
+            \(\Rightarrow x \in N \Delta P \), weil es nicht in beiden Mengen ist. \\
+            \(\Rightarrow x \in ( M \Delta N )\Delta(N \Delta P ) \), weil es nur in \(N \Delta P\) ist. \\
+            \(\Rightarrow x \in M \Delta P \), weil es nur in M ist.
 
-        \item Fall \(x \in M, P, N \) \\
-        \(\Rightarrow x \notin M \Delta N \), weil es in M und N ist. \\
-        \(\Rightarrow x \notin N \Delta P \), weil es in N und P ist. \\
-        \(\Rightarrow x \notin ( M \Delta N )\Delta(N \Delta P ) \), weil es weder in \(M \Delta N\) noch in \(N \Delta P\) ist. \\
-        \(\Rightarrow x \notin M \Delta P \), weil es in M und P ist.
+            Damit gilt \(x \in A, B \) 
 
-        Damit gilt \(x \notin A, B \) 
-    \end{enumerate}
-    \( \Rightarrow \) Da in allen acht möglichen Fällen wie ein Element x
-    in den Mengen verteilt ist die Operationen A und B zum gleichen Ergebnis kommen sind sie gleich.
+            \item Fall \(x \in M, P \land x \notin N \) \\
+            \(\Rightarrow x \in M \Delta N \), weil es nur in M ist. \\
+            \(\Rightarrow x \in N \Delta P \), weil es nur in P ist. \\
+            \(\Rightarrow x \notin ( M \Delta N )\Delta(N \Delta P ) \), weil es in \(M \Delta N\) und \(N \Delta P\) ist. \\
+            \(\Rightarrow x \notin M \Delta P \), weil es in M und P ist.
 
+            Damit gilt \(x \notin A, B \) 
+            
+            \item Fall \(x \in N, P \land x \notin M \) \\
+            \(\Rightarrow x \in M \Delta N \), weil es nur in N ist. \\
+            \(\Rightarrow x \notin N \Delta P \), weil es in N und P ist. \\
+            \(\Rightarrow x \in ( M \Delta N )\Delta(N \Delta P ) \), weil es nur in \(N \Delta P\) ist. \\
+            \(\Rightarrow x \in M \Delta P \), weil es nur in P ist.
 
-    \section{1.1}
-    \subsection{\(M \cap ( N \Delta P) = (M \cap N) \Delta (M \cap N) \)}
-    Zu zeigen: \( A \Delta B = (A \backslash B ) \cup ( B \backslash A ) = (A \cup B) \backslash ( A \cap B) \) \\
-    Füge beiden Seiten \( A \cap B \) hinzu. \\
-    \(\Rightarrow (A \backslash B ) \cup ( B \backslash A ) \cup ( A \cap B ) = ( A \cup B ) \backslash ( A \cap B ) \cup ( A \cap B ) \) \\
-    \(\Rightarrow (A \backslash B ) \cup ( B \backslash A ) \cup ( A \cap B ) = (A \cup B) \) \\
-    Mit Assoziativgesetz \(A \backslash (B \backslash C) = (A \backslash B) \cup (A \cap C) \) \\
-    \(\Rightarrow (A \backslash B ) \cup ( B \backslash (A \backslash A) ) = (A \cup B) \) \\
-    \(\Rightarrow (A \backslash B ) \cup B = (A \cup B) \) \\
-    \(\Rightarrow ( A \cup B ) = (A \cup B) \) \\
+            Damit gilt \(x \in A, B \)
 
-    \section{1.2 Aufgabe}
-    Zu zeigen: \(M \cap (N \Delta P) = (M \cap N) \Delta (M \cap P) \) \\
-    \(\Rightarrow M \cap (N \Delta P) = ((M \cap N) \backslash (N \cap P)) \cup ((M \cap P) \backslash (M \cap P))\)
+            \item Fall \(x \in M, P, N \) \\
+            \(\Rightarrow x \notin M \Delta N \), weil es in M und N ist. \\
+            \(\Rightarrow x \notin N \Delta P \), weil es in N und P ist. \\
+            \(\Rightarrow x \notin ( M \Delta N )\Delta(N \Delta P ) \), weil es weder in \(M \Delta N\) noch in \(N \Delta P\) ist. \\
+            \(\Rightarrow x \notin M \Delta P \), weil es in M und P ist.
+
+            Damit gilt \(x \notin A, B \) 
+        \end{enumerate}
+
+        \( \Rightarrow \) Da in allen acht möglichen Fällen, wie ein Element x
+        in den Mengen verteilt sein kann, die Operationen A und B zum gleichen Ergebnis kommen, sind sie gleich.
 
 
-    \section{2.1}
-    \subsection{(i)}
-    \begin{tabular}{c c c c c c c}
-        A & B & \( A \lor B \) & \( \lnot ( A \lor B) \) & \( \lnot A \) & \( \lnot B \) & \( \lnot A \land \lnot B \) \\
-        \midrule
-        w & w & w & f & f & f & f\\
-        w & f & w & f & f & w & f\\
-        f & w & w & f & w & f & f\\
-        f & f & f & w & w & w & w\\
-    \end{tabular} \\
-    Die Spalten vier und sieben sind für alle Wertekombinationen von A und B gleich.
-    \( \Rightarrow \) \( \lnot ( A \lor B) \) und \( \lnot A \land \lnot B \) sind equivalent.
+        \subsection*{Aufgabe 1.1 ii)}
+            \newtheorem{thm}{Theorem}
+            \newtheorem{lemma}[thm]{Lemma}
+            \subsubsection*{Hilfslemma 1: Weitere Definition der symmetrischen Differenz \( \Delta \)}
+                Zu zeigen: \(A \Delta B = (A \backslash B) \cup (B \backslash A) = (A \cup B) \backslash (A \cap B) \) \\
+                Füge beiden Seiten \( A \cap B \) hinzu. \\
+                \(\Rightarrow (A \backslash B ) \cup ( B \backslash A ) \cup ( A \cap B ) = ( A \cup B ) \backslash ( A \cap B ) \cup ( A \cap B ) \) \\
+                \(\Rightarrow (A \backslash B ) \cup ( B \backslash A ) \cup ( A \cap B ) = (A \cup B) \) \\
+                Mit Assoziativgesetz \(A \backslash (B \backslash C) = (A \backslash B) \cup (A \cap C) \) \\
+                \(\Rightarrow (A \backslash B ) \cup ( B \backslash (A \backslash A) ) = (A \cup B) \) \\
+                \(\Rightarrow (A \backslash B ) \cup B = (A \cup B) \) \\
+                \(\Rightarrow ( A \cup B ) = (A \cup B) \) \\
 
-    \subsection{(ii)}
-    \begin{tabular}{c c c c c c c}
-        A & B & \( A \land B \) & \( \lnot ( A \land B ) \) & \( \lnot A \) & \( \lnot B \) & \( \lnot A \lor \lnot B \) \\
-        \midrule
-        w & w & w & f & f & f & f\\
-        w & f & f & w & f & w & w\\
-        f & w & f & w & w & f & w\\
-        f & f & f & w & w & w & w\\
-    \end{tabular} \\
-    Die Spalten vier und sieben sind für alle Wertekombinationen von A und B gleich.
-    \( \Rightarrow \) \( \lnot ( A \land B) \) und \( \lnot A \lor \lnot B \) sind equivalent.
+            \subsubsection*{Eigentliche Aufgabe Finn}
+                Zu zeigen: \(M \cap (N \Delta P) = (M \cap N) \Delta (M \cap P) \) \\
+                \(M \cap (N \Delta P)\) \\
+                \indent \(\Downarrow \) Hilfslemma 1 \\
+                \[= M \cap ((N \cup P) \backslash (N \cap P))\] \\
+                \indent \(\Downarrow \) Anwenden des Distributivgesetzes \(A \cap (B \backslash C) = (A \cap B ) \backslash (A \cap C)\) \\
+                \(= (M \cap (N \cup P)) \backslash (M \cap N \cap \ P)\) \\
+                \indent \(\Downarrow \) Anwenden des Distributivgesetzes \(A \cap (B \cup C) = (A \cap B ) \cup (A \cap C)\) \\
+                \(=(M \cap N) \cup (M \cap P) \backslash (M \cap N) \cap (M \cap P)\) \\
+                \indent \(\Downarrow \) Hilfslemma 1 rückwärts\\
+                \(=(M \cap N) \Delta (M \cap P)\) \\
+                
 
+    
+    \subsection*{Aufgabe 1.2 i)}
+        \begin{tabular}{c c c c c c c}
+            A & B & \( A \lor B \) & \( \lnot ( A \lor B) \) & \( \lnot A \) & \( \lnot B \) & \( \lnot A \land \lnot B \) \\
+            \midrule
+            w & w & w & f & f & f & f\\
+            w & f & w & f & f & w & f\\
+            f & w & w & f & w & f & f\\
+            f & f & f & w & w & w & w\\
+        \end{tabular} \\
+        Die Spalten vier und sieben sind für alle Wertekombinationen von A und B gleich. \\
+        \( \Rightarrow \) \( \lnot ( A \lor B) \) und \( \lnot A \land \lnot B \) sind equivalent.
 
+    \subsection*{Aufgabe 1.2 ii)}
+
+        \begin{tabular}{c c c c c c c}
+            A & B & \( A \land B \) & \( \lnot ( A \land B ) \) & \( \lnot A \) & \( \lnot B \) & \( \lnot A \lor \lnot B \) \\
+            \midrule
+            w & w & w & f & f & f & f\\
+            w & f & f & w & f & w & w\\
+            f & w & f & w & w & f & w\\
+            f & f & f & w & w & w & w\\
+        \end{tabular} \\
+        Die Spalten vier und sieben sind für alle Wertekombinationen von A und B gleich. \\
+        \( \Rightarrow \) \( \lnot ( A \land B) \) und \( \lnot A \lor \lnot B \) sind equivalent.
+
+    \subsection*{Aufgabe 1.4}
+        Gegeben \(M \not= \emptyset \), \(S:=\{x \in M | \text{x hat Sorgen}\} \), \(L:=\{x \in M | \text{x trinkt Likör}\} \) und \(\text{Likörproduzent} \in M\)
+        \subsubsection*{(a) \(\text{Wer Sorgen hat, trinkt Likör} = S \subset L \)}
+            \begin{enumerate}[label=(\roman*)]
+                \item \(\text{Wer Likör trinkt, hat Sorgen} = L \subset S\) Falsch
+                \item \(\text{Wer keiene Likör trinkt, hat keine Sorgen} = M \backslash L \subset M \backslash S\) Wahr
+                \item \(\text{Niemand hat Sorgen und trinkt keinen Likör} = S \cap (M \backslash L) = \emptyset\) Wahr
+                \item \(\text{Jemand hat Sorgen und trinkt keinen Likör} = S \cap (M \backslash L) \not= \emptyset\) Falsch
+                \item \(\text{Jemand trinkt Likör} = L \not= \emptyset\) Unbestimmt
+            \end{enumerate}
+
+        \subsubsection*{(b) \(\text{Wer Likör trinkt, hat keine Sorgen} = L \subset (M \backslash S)\)}
+            \begin{enumerate}[label=(\roman*)]
+                \item \(\text{Jeder hat Sorgen} = S = M\) Falsch
+                \item \(\text{Jemand hat Sorgen} = S \neq \emptyset\) Falsch
+                \item \(\text{Niemand hat Sorgen} = S = \emptyset\) Wahr
+            \end{enumerate}
+
+        \subsubsection*{(c) \(\text{Trinkt niemand Likör, so haben Likörproduzenten Sorgen} = L = \emptyset \Rightarrow \text{Likörproduzent} \in S\)}
+            \begin{enumerate}[label=(\roman*)]
+                \item \(\text{Jeder trinkt Likör} = L = M\) Unbestimmt
+                \item \(\text{Jemand trinkt Likör} = L \neq \emptyset\) Wahr
+                \item \(\text{Niemand trinkt Likör} = L = \emptyset\) Falsch
+            \end{enumerate}
 
 \end{document}
