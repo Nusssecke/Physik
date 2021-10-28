@@ -30,7 +30,7 @@
 
             \item Fall \(x \in M \land x \notin N, P\) \\
             \(\Rightarrow x \in M \Delta N \), weil es nicht in beiden Mengen ist. \\
-            \(\Rightarrow x \in N \Delta P \), weil es weder in N noch in P ist. \\
+            \(\Rightarrow x \notin N \Delta P \), weil es weder in N noch in P ist. \\
             \(\Rightarrow x \in ( M \Delta N )\Delta(N \Delta P ) \), weil es nicht in beiden Mengen ist. \\
             \(\Rightarrow x \in M \Delta P \), weil es nicht in beiden Mengen ist.
 
@@ -43,7 +43,7 @@
             \(\Rightarrow x \in M \Delta N \), weil es nicht in beiden Mengen ist. \\
             \(\Rightarrow x \in N \Delta P \), weil es nicht in beiden Mengen ist. \\
             \(\Rightarrow x \notin ( M \Delta N )\Delta(N \Delta P ) \), weil es in beiden Mengen ist. \\
-            \(\Rightarrow x \in M \Delta P \), weil es weder in M noch P ist.
+            \(\Rightarrow x \notin M \Delta P \), weil es weder in M noch P ist.
 
             Damit gilt \(x \notin A, B \) 
 
@@ -109,7 +109,7 @@
                     &= M \cap ((N \cup P) \backslash (N \cap P)) \\
                     &\indent \Downarrow \text{Anwenden des Distributivgesetzes} A \cap (B \backslash C) = (A \cap B ) \backslash (A \cap C) \\
                     &= (M \cap (N \cup P)) \backslash (M \cap N \cap \ P) \\
-                    &\indent \Downarrow text{Anwenden des Distributivgesetzes} A \cap (B \cup C) = (A \cap B ) \cup (A \cap C) \\
+                    &\indent \Downarrow \text{Anwenden des Distributivgesetzes} A \cap (B \cup C) = (A \cap B ) \cup (A \cap C) \\
                     &=(M \cap N) \cup (M \cap P) \backslash (M \cap N) \cap (M \cap P)\\
                     &\indent \Downarrow \text{Hilfslemma 1 rückwärts}\\
                     &=(M \cap N) \Delta (M \cap P)
@@ -143,22 +143,18 @@
         \subsection*{Aufgaben 1.3}
             Seien \(A, B, C\) Mengen und \(f: A \rightarrow B, g: B \rightarrow C\) Abbildungen
             \subsubsection*{Aufgabe 1.3 (i)}
-                Zu zeigen: \(g \circ f \: \text{surjektiv} \Rightarrow g \: \text{surjektiv}\)\\
-                Definition der Surjektivität: \\
-                Sei \(f: A \rightarrow B \land \text{f ist surjektiv} \Leftrightarrow \forall b \in B \: \exists a \in A \: f(a) = b\) \\
-                \(g\) ist surjektiv: \\
-                \(\forall c \in C \: \exists b \in B: g(b) = c\) \\
-                \(g \circ f\) ist surjektiv: \\
-                \(\forall c \in C \: \exists a \in A \: g : g \circ f(a) = c\) \\
-                Man setze für \(b = f(a) \: \text{mit} \: a \in A \) ein.
-                Es gilt nach Vorraussetzung \(f(a) \in B\).
-            
+                Zu zeigen: \(g \circ f \: \text{surjektiv} \Rightarrow g \: \text{surjektiv}\) \\
+                Es gilt \(g \circ f\) ist surjektiv: \(\forall c \in C \: \exists a \in A : g \circ f(a) = c\) \\
+                Sei \(c \in C \) dann existiert mit \(b := f(a)\) ein Element aus \(B\) so dass \(g(b) = c\) \\
+                Es folgt \(g\) ist surjektiv: \\
+                \(\forall c \in C \: \exists b \in B: g(b) = c\)
+
             \subsubsection*{Aufgabe 1.3 (ii)}
                 Zu zeigen: \(g \circ f\) injektiv \(\Rightarrow f\) injektiv \\
                 \(\forall a_1, a_2 \in A: g \circ f(a_1) = g \circ f(a_2) \Leftrightarrow a_1 = a_2\) \\
-                \(\Rightarrow \forall a_1, a_2 \in A: f(a_1) = b_1 \: f(a_2) = b_2 \: g(b_1) = c_1 \: g(b_2) = c_2: a_1 = a_2 \Leftrightarrow c_1 = c_2\) \\
-                Angenommen für \(a_1 = a_2 \land b_1 \neq b_2\) \\
-                \(\Rightarrow c_1 \neq c_2\) \\
+
+                Angenommen f wäre nicht injektiv: \(\exists a_1,a_2 \in A \; a_1 \neq a_2 \; , f(a_1) = f(a_2) \) \\
+                \(\Rightarrow g \circ f(a_1) = g \circ f(a_2) \) \\
                 Das ist ein Wiederspruch da \(g \circ f\) injektiv ist \\
                 Es folgt \(f\) ist injektiv: \\
                 \(\forall a_1, a_2 \in A: f(a_1) = f(a_2) = b_1 = b_2 \Leftrightarrow a_1 = a_2 \) \\
