@@ -37,17 +37,19 @@
         \begin{lemma}
             \textbf{Jede Vereinigung von abzählbaren Mengen ist wieder abzählbar}
             Seien \(M_1, M_2\) sind abzählbare Mengen. Zu zeigen ist das \(M_1 \cup M_2\) abzählbar ist. \\
-            Dafür muss eine bijektive Abbildung \(\phi(n): \mathbb{N} \to M_1 \times M_2 \) existieren.
+            Ist eine oder beide Mengen endlich ist die Abzählbarkeit der Vereinigung trivial.
+            Sind sie beide unendlich: \\
+            Es muss eine bijektive Abbildung \(\phi(n): \mathbb{N} \to M_1 \times M_2 \) existieren.
             Sei 
             \begin{equation*}
                 \phi(n) =
                 \begin{cases}
                     m_1 \in M_1 & \text{für} \: n = 1 \\
-                    m_{(n-1)/(2)} \in M_1 & \text{für n ungerade} \\
+                    m_{(n-1)/2} \in M_1 & \text{für n ungerade} \\
                     m_{n/2} \in M_2 & \text{für n gerade}
                 \end{cases}
             \end{equation*}
-            Diese Abbildung ist surjektiv da alle Elemente \(m_1, m_2, m_3, m_4, ... \in M_1\) und alle Elemente \(m_1, m_2, m_3, m_4, ... \in M_2\) angenommen werden.
+            Diese Abbildung ist surjektiv da alle Elemente \(m_1, m_2, m_3, m_4, \ldots \in M_1\) und alle Elemente \(m_1, m_2, m_3, m_4, \ldots \in M_2\) angenommen werden.
             Diese Abbildung ist außerdem injektiv, da jeder natürlichen Zahl nach Definition nur ein Mengenelement zugewiesen wird.
 
         \end{lemma}
@@ -102,7 +104,7 @@
 
         \section*{A 2.4}
             \begin{enumerate}[label= (\roman*)]
-                \item Es sei K ein Körper. Zeigen sie, dass \(a \cdot 0 = 0\) für alle \(a \in K\)\\
+                \item Es sei K ein Körper. Zeigen sie, dass \(a \cdot 0 = 0\) für alle \(a \in K\) \\
                 Zu zeigen ist das das neutrale Element der Addition bei der Multiplikation mit einem anderen Element des Körpers sich selbst ergibt.
                 \begin{equation*}
                     0 =^{\text{Erweitert mit} \: 0 \cdot a} 0 \cdot a - 0 \cdot a = (0+0) \cdot a - 0 \cdot a =^{\text{mit Distributivgesetz}} 0 \cdot a + 0 \cdot a - 0 \cdot a
