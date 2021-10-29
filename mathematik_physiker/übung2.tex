@@ -30,34 +30,14 @@
         Es folgt das f, auf Grund der Existenz der Umkehrfunktion, bijektiv ist.
         
         \subsection*{(ii)}
-        Zeigen Sie für \(M_1, M_2\) injektiv das auch \(M_1 \times M_2\) injektiv ist.
-        Aus der Vorlesung ist bekannt das eine Teilmenge einer abzählbaren Menge wieder abzählbar ist.
-
-        \newtheorem{lemma}{Lemma}
-        \begin{lemma}
-            \textbf{Jede Vereinigung von abzählbaren Mengen ist wieder abzählbar}
-            Seien \(M_1, M_2\) sind abzählbare Mengen. Zu zeigen ist das \(M_1 \cup M_2\) abzählbar ist. \\
-            Ist eine oder beide Mengen endlich ist die Abzählbarkeit der Vereinigung trivial.
-            Sind sie beide unendlich: \\
-            Es muss eine bijektive Abbildung \(\phi(n): \mathbb{N} \to M_1 \times M_2 \) existieren.
-            Sei 
-            \begin{equation*}
-                \phi(n) =
-                \begin{cases}
-                    m_1 \in M_1 & \text{für} \: n = 1 \\
-                    m_{(n-1)/2} \in M_1 & \text{für n ungerade} \\
-                    m_{n/2} \in M_2 & \text{für n gerade}
-                \end{cases}
-            \end{equation*}
-            Diese Abbildung ist surjektiv da alle Elemente \(m_1, m_2, m_3, m_4, \ldots \in M_1\) und alle Elemente \(m_1, m_2, m_3, m_4, \ldots \in M_2\) angenommen werden.
-            Diese Abbildung ist außerdem injektiv, da jeder natürlichen Zahl nach Definition nur ein Mengenelement zugewiesen wird.
-
-        \end{lemma}
-        \(M_1 \times M_2\) lässt sich auch schreiben als \(\bigcup_{m \in M_1} m \times M_2 \) \\
-        \(m \times M_2\) ergibt \(|M_2|\) 2er-Tupel bei denen das erste Element m ist. Die Menge dieser Tupel ist gleich groß
-        zu \(M_2\) und ist damit auch abzählbar.
-        Vereinigt man nun alle abzählbaren Tupelmengen so erhält man, da eine Vereinigung von abzählbaren Mengen wieder abzählbar ist,
-        das \(M_1 \times M_2 \) abzählbar ist. 
+            Zeigen Sie für \(M_1, M_2\) abzählbar, dass auch \(M_1 \times M_2\) abzählbar ist. \\
+            In (i) ist \(f\) eine bijektive Abbildung \(\mathbb{N} \times \mathbb{N} \to \mathbb{N}\). \\
+            Für \(M_1, M_2\) existieren, da beide Menge abzählbar sind, die injektiven Abbildungen \(\phi_1(n): M_1 \to \mathbb{N}\) und \(\phi_2(n): M_2 \to \mathbb{N}\) \\
+            Sei \(g: (M_1, M_2) \to (\mathbb{N}, \mathbb{N}) \: (a, b) \mapsto (\phi_1(a), \phi_2(b))\).
+            \(g\) ist, da \(\phi_1, \phi_2\) beide injektiv waren, auch injektiv.
+            Nun verknüpft man f mit g. Die resultierende Funktion \(f \circ g\) ist, da f bijektiv ist, injektiv.
+            Somit existiert mit \(f \circ g\) eine Funktion die injektiv von \(M_1 \times M_2 \to \mathbb{N}\) abbildet.
+            Daraus folgt das \(M_1 \times M_2\) eine abzählbare Menge ist.
 
         \section*{A 2.2}
             \begin{enumerate}[label = (\roman*)]

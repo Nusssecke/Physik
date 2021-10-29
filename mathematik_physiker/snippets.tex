@@ -42,3 +42,24 @@ Zweimal Hilfslemma 3 angewandt \\
 \((M \cap N) \backslash (M \cap P) \cup (M \cap P) \backslash (M \cap N) \) \\
 Daraus erhält man durch zweifaches einsetzen der Definition der symmetrischen Differenz \\
 \((M \cap N) \Delta (M \cap P)\)
+
+\begin{lemma}
+    \textbf{Jede Vereinigung von abzählbaren Mengen ist wieder abzählbar}
+    Seien \(M_1, M_2\) sind abzählbare Mengen. Zu zeigen ist das \(M_1 \cup M_2\) abzählbar ist. \\
+    Ist eine oder beide Mengen endlich ist die Abzählbarkeit der Vereinigung trivial.
+    Sind sie beide unendlich: \\
+    Zu zeigen: Es existiert eine surjektive Abbildung \(\phi(n): \mathbb{N} \to M_1 \times M_2 \). \\
+    Sei 
+    \begin{equation*}
+        \phi(n) =
+        \begin{cases}
+            m_1 \in M_1 & \text{für} \: n = 1 \\
+            m_{(n-1)/2} \in M_1 & \text{für n ungerade} \\
+            m_{n/2} \in M_2 & \text{für n gerade}
+        \end{cases}
+    \end{equation*}
+    Das Element \(m_i\) ist in der abzählbaren Menge das i-te Element. \\
+    Diese Abbildung ist surjektiv da alle Elemente \(m_1, m_2, m_3, m_4, \ldots \in M_1\) und alle Elemente \(m_1, m_2, m_3, m_4, \ldots \in M_2\) angenommen werden.
+    Diese Abbildung ist außerdem injektiv, da jeder natürlichen Zahl nach Definition nur ein Mengenelement zugewiesen wird.
+
+\end{lemma}
