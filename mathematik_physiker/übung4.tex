@@ -244,7 +244,7 @@
             Wendet man nun Satz 2.27(f) (Sandwichtheorem) an, so ergibt sich:
             \begin{align*}
                 \lim_{k \to \infty} x - \frac{1}{k} \leq \lim_{k \to \infty} &x_{n_k} \leq \lim_{k \to \infty} x - \frac{1}{k} \\
-                \Rightarrow x \leq &\lim_{k \to \infty} &x_{n_k} \leq x
+                \Rightarrow x \leq &\lim_{k \to \infty} x_{n_k} \leq x
             \end{align*}
             Die Folge \((x_{n_k})\) konvergiert gegen \(x\).
             Somit gibt es eine Folge deren Teilfolgen gegen jeden Wert \( x \in \mathbb{R} \) konvergieren.
@@ -253,26 +253,32 @@
             Angenommen es gäbe eine solche Folge \(x_n\).
             Sei \( M := \{ |x_n| : n \in \mathbb{N} \} \) \\
             Analog zur Aufgabe A 4.2 (a) lässt sich die Aussage 
-            \(s = inf M \Leftrightarrow s\) ist unter Schranke und es existiert eine Folge \(x_n\) in \(M\) mit \(\lim_{n \to \infty} x_n = s \) zeigen. \\
-            Zu zeigen 0 ist Infimum von \(M\):
-            Untere Schranke trivial, die Null ist immer kleiner gleich dem Betrag eines Wertes. \\
-            Für jedes \(\epsilon > 0\) existiert ein \( m \in M \), sodass gilt \(|m - 0| < \epsilon\) \\
-            Das gilt, da es immer eine Teilfolge von \((x_n)\) gibt die gegen einen Wert \( \frac{\epsilon}{2} \) konvergiert.
+            \(s = \inf M \Leftrightarrow s\) ist unter Schranke und es existiert eine Folge \(x_n\) in \(M\) mit \(\lim_{n \to \infty} x_n = s \) zeigen. \\
+            Zu zeigen: 0 ist Infimum von \(M\): \\
+            0 ist untere Schranke ist trivial, die Null ist immer kleiner gleich dem Betrag eines Wertes. \\
+            Zu zeigen: Für jedes \(\epsilon > 0\) existiert ein \( m \in M \), sodass gilt \(|m - 0| < \epsilon \) \\
+            Es gibt nach Vorraussetzung immer eine Teilfolge von \((x_n)\) gibt die gegen einen Wert \( \frac{\epsilon}{2} \) konvergiert.
             Daraus folgt:
-            \[\exists \: N_{\frac{\epsilon}{2}} \in \mathbb{N}: \: \forall n \geq N_{\frac{\epsilon}{2}}: |m - \frac{\epsilon}{2}\) | < \frac{\epsilon}{2} \]
+            \[ \exists \: N_{\frac{\epsilon}{2}} \in \mathbb{N}: \: \forall n \geq N_{\frac{\epsilon}{2}}: |m - \frac{\epsilon}{2} | < \frac{\epsilon}{2} \]
             Also ist \( |m - \frac{\epsilon}{2} | < \frac{\epsilon}{2} \Rightarrow |m| < \epsilon \)
-            Fallunterscheidung \\
-            Null ist also das Infimum von \(M\).
-            Nach A 4.2 (a) existiert eine Folge \((y_n)\) in \(M\) deren Grenzwert Null ist.
-            Daraus kann man eine Teilfolge \((z_n)\) konstruieren.
-            \(z_1 = y_1\) und \(z_{n+1} :=\) ist das erste Element von \(y_n\) das hinter \(z_n\) in den Folgengliedern von \((z_n)\) ist.
-            Da es vor \(z_n\) nur endliche viele Elemente in \((x_n)\) gab, muss es eines aus \(y_n\) geben, was den Kriterien entspricht.
+            \begin{enumerate}[ label = \arabic*. Fall ]
+                \item \( m \geq \frac{\epsilon}{2} \) \\
+                In diesem Fall kann man die Betragsstriche weglassen. \\
+                \(m - \frac{\epsilon}{2} < \frac{\epsilon}{2} \Leftrightarrow m < \epsilon \)
+
+                \item \( m < \frac{\epsilon}{2} \) \\
+                \(m \in M\), damit ist m positiv. Deswegen ist m auch insbesondere kleiner als \( \epsilon \)
+            \end{enumerate}
+            Null ist also das Infimum von \(M\). \\
+            Nach A 4.2 (a) existiert eine Folge \((y_n)\) in \(M\) deren Grenzwert Null ist. \\
+            Daraus kann man eine Teilfolge \((z_n)\) konstruieren. \\
+            \(z_1 = y_1\) und \(z_{n+1} :=\) ist das erste Element von \(y_n\) das hinter \(z_n\) in den Folgengliedern von \((x_n)\) ist. \\
+            Da es vor \(z_n\) nur endliche viele Elemente in \((x_n)\) gab, muss es ein Element aus \(y_n\) geben, was den Kriterien entspricht. \\
             Daraus folgt das es eine Teilfolge von \((x_n)\) gibt, die gegen Null geht.
             Das ist eine Wiederspruch.
 
         \end{enumerate}
 
-    \newpage
     \newcounter{lemma_counter}
     \newtheorem{lemma1}[lemma_counter]{Lemma}
     \begin{lemma1}
