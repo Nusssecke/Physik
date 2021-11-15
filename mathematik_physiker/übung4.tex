@@ -253,29 +253,33 @@
             Angenommen es gäbe eine solche Folge \(x_n\).
             Sei \( {(y_n)}_{n \in \mathbb{N}} := \frac{1}{n} \). Die Folge \( (y_n) \) ist immer größer als 0 und konvergiert gegen 0.
             Sei nun \( {(z_n)}_{n \in \mathbb{N}} \) eine Teilfolge von \((x_n)\).
-            Für das erste Element von \(z_n\) wähle man ein beliebiges Element aus dem Intervall \( (\frac{1}{4}, \frac{3}{4}) \), dass ein Folgenglied von \((x_n)\) ist. 
-            Für alle weiteren Elemente wähle man so, dass \(z_n < y_n\) für ein bestimmtes \(n\) und dass \(0 < z_{n+1} < z_{n}\). \\
-            \textbf{Zu zeigen, \(x_n\) ist immer definiert:} \\
-            \((x_n)\) hat Teilfolgen, so dass diese für alle \(x \in (0, 1)\) konvergieren. Es existiert also auch eine Teilfolge die gegen \(\frac{1}{2}\) konvergiert.
+            Für das erste Element von \(z_n\) wähle man ein beliebiges Element aus dem Intervall \( (\frac{1}{8}, \frac{3}{8}) \), dass ein Folgenglied von \((x_n)\) ist. 
+            Alle weiteren Elemente wähle man so, dass \(0 < z_n < y_n\) für ein bestimmtes \(n\) gilt. \\
+            \textbf{Zu zeigen, \(z_n\) ist immer definiert:} \\
+            \((x_n)\) hat Teilfolgen, so dass diese für alle \(x \in (0, 1)\) konvergieren. Es existiert also auch eine Teilfolge die gegen \(\frac{1}{4}\) konvergiert.
             Nach der Definition der Konvergenz eine Folge (Teilfolge) gilt:
-            \[ | x_{n_k} - \frac{1}{2} | < \epsilon \ \forall \epsilon > 0 \]
-            Dies gilt also insbesondere auch für \(\epsilon = \frac{1}{4}\). Damit gilt:
-            \[ | x_{n_k} - \frac{1}{2} | < \frac{1}{4} \]
-            Der Abstand von \(x_{n_k}\) zu \(\frac{1}{2}\) ist also kleiner als \(\frac{1}{4}\). Damit liegt \(x_{n_k}\) im Intervall \( (\frac{1}{4}, \frac{3}{4}) \),
+            \[ | x_{n_k} - \frac{1}{4} | < \epsilon \ \forall \epsilon > 0 \]
+            Dies gilt also insbesondere auch für \(\epsilon = \frac{1}{8}\). Damit gilt:
+            \[ | x_{n_k} - \frac{1}{4} | < \frac{1}{8} \]
+            Der Abstand von \(x_{n_k}\) zu \(\frac{1}{4}\) ist also kleiner als \(\frac{1}{8}\). Damit liegt \(x_{n_k}\) im Intervall \( (\frac{1}{8}, \frac{3}{8}) \),
             also liegt ein Folgenglied von \((x_n)\) im Intervall was man für \(z_1\) wählen kann.
 
-            Jedes \(z_n\) soll kleiner als \(y_n\) sein. Da \((y_n)\) gegen 0 konvergiert, liegen alle Folgenglieder von \((z_n)\) also 
-            im Intervall \(I := (0, \frac{3}{4}) \), weil \(z_n\) immer kleiner als \(z_{n-1}\) ist und größer Null.
-            Es existiert im Intervall \(I\) immer ein Wert \(b \in I\) der echt kleiner ist als \(z_{n}\) und damit auch echt kleiner als \(y_{n}\).
-            Weiterhin existiert auch immer ein Folgenglied in \((x_n)\) das echt kleiner ist als \(z_{n}\),
-            weil es (analog wie für das erste Folgenglied) immer eine Folge gibt, die gegen \(b\) konvergiert und sich ihre Elemente \(b\) immer mehr annähern.
+            Jedes \(z_n\) soll kleiner als \(y_n\) sein.
+            Es existiert immer ein \( 0 < b:= \frac{y_{n}}{2} < y_{n}\).
+            Weiterhin existiert auch immer ein Folgenglied in \((x_n)\) das echt kleiner ist als \(y_{n}\),
+            weil es (analog wie für das erste Folgenglied) immer eine Teilfolge \((a_{m})\) gibt, die gegen \(b\) konvergiert.
+            Wähle \( \epsilon = y_{n} - \frac{y_{n}}{2} \)
+            \[ |a_{n} - \frac{y_{n}}{2} | < \frac{y_{n}}{2} \]
+            Damit gibt es ein Element von \((x_n)\) das in diesem Intervall \((0, \frac{y_{n}}{2})\) liegt.
+            Ab einem genügend großen \(N' \in \mathbb{N}\) sind alle \(a_m\) im oben gegebenen Intervall.
+            Von diesen unendlich vielen Elementen können nur endlich viele vor \(z_n\) liegen, mann wähle eines der anderen Elemente.
             
             Es gilt somit:
             \[ 0 < z_n < y_n \]
             Nach dem Sandwichtheorem Satz 2.27(f) gilt:
             \[ \lim_{n \to \infty} 0 \leq \lim_{n \to \infty} z_n \leq \lim_{n \to \infty} y_n \]
-            \[ \Rightarrow 0 < z < 0\]
-            Die hier konstruierte Folge \((z_n)\) konvergiert gegen 0. Dies ist aber ein Wiederspruch zu der Annahme,
+            \[ \Rightarrow 0 \leq z \leq 0\]
+            Wobei hier \(z\) der Grenzwert von \(z_n\) ist. Die hier konstruierte Folge \((z_n)\) konvergiert gegen 0. Dies ist aber ein Wiederspruch zu der Annahme,
             dass alle Teilfolgen von \((x_n)\) nur im Intervall \(0, 1\) konvergieren.
             Somit gibt es keine Folge \((x_n)\) die diese Eigenschaft hat.
 
