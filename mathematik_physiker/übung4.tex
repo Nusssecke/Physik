@@ -228,9 +228,9 @@
             \item Für alle \( x \in \mathbb{R} \) gibt es eine Teilfolge \( (x_{n_k}) \), sodass \(x_{n_k} \to x\) für \( k \to \infty \)
             Wähle \(x_n\) als Folge von rationalen Zahlen nach dem Cantorsches Diagonalargument.
             Bilde die Teilfolge von von \((x_n)\) die gegen \(x\) konvergiert wie folgt:
-            Wähle für das k.te Folgenglied ein Folgenglied aus \(x_n\) das hinter dem (k-1).ten Folgenglied in \(x\) kommt.
+            Jedes Folgenglied von \( (x_{n_k}) \) die Bedingung \( x - \frac{1}{k} < x_{n_k} < x + \frac{1}{k} \) erfüllen.
+            Zusätzlich wähle für das k.te Folgenglied ein Folgenglied aus \((x_n)\) das hinter dem (k-1).ten Folgenglied in \((x_n)\) kommt.
             Für das erste Folgenglied wähle beliebig.
-            Zusätzlich muss jedes Folgenglied von \( (x_{n_k}) \) die Bedingung \( x - \frac{1}{k} < x_{n_k} < x + \frac{1}{k} \) erfüllen.
 
             \textbf{Zu zeigen \(x_{n_k}\) ist immer definiert} \\
             Da es nach Lemma 4 unendlich viele rationale Zahlen gibt, mit denen man mit beliebig Genauigkeit \( x_{n_k} \) approximieren kann,
@@ -244,7 +244,7 @@
             Wendet man nun Satz 2.27(f) (Sandwichtheorem) an, so ergibt sich:
             \begin{align*}
                 \lim_{k \to \infty} x - \frac{1}{k} \leq \lim_{k \to \infty} &x_{n_k} \leq \lim_{k \to \infty} x - \frac{1}{k} \\
-                \Rightarrow x \leq &\lim_{k \to \infty} &x_{n_k} \leq x
+                \Rightarrow x \leq &\lim_{k \to \infty} x_{n_k} \leq x
             \end{align*}
             Die Folge \((x_{n_k})\) konvergiert gegen \(x\).
             Somit gibt es eine Folge deren Teilfolgen gegen jeden Wert \( x \in \mathbb{R} \) konvergieren.
@@ -281,7 +281,6 @@
 
         \end{enumerate}
 
-    \newpage
     \newcounter{lemma_counter}
     \newtheorem{lemma1}[lemma_counter]{Lemma}
     \begin{lemma1}
