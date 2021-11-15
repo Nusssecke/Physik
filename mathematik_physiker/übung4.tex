@@ -251,24 +251,33 @@
             
             \item Für alle \( x \in (0, 1) \) gibt es eine Teilfolge \( (x_{n_k}) \), sodass \(x_{n_k} \to x\) für \( k \to \infty \), aber für \(y \notin (0, 1)\) existiert keine solche Teilfolge. \\
             Angenommen es gäbe eine solche Folge \(x_n\).
-            Sei \( M := \{ |x_n| : n \in \mathbb{N} \} \) \\
-            Analog zur Aufgabe A 4.2 (a) lässt sich die Aussage 
-            \(s = inf M \Leftrightarrow s\) ist unter Schranke und es existiert eine Folge \(x_n\) in \(M\) mit \(\lim_{n \to \infty} x_n = s \) zeigen. \\
-            Zu zeigen 0 ist Infimum von \(M\):
-            Untere Schranke trivial, die Null ist immer kleiner gleich dem Betrag eines Wertes. \\
-            Für jedes \(\epsilon > 0\) existiert ein \( m \in M \), sodass gilt \(|m - 0| < \epsilon\) \\
-            Das gilt, da es immer eine Teilfolge von \((x_n)\) gibt die gegen einen Wert \( \frac{\epsilon}{2} \) konvergiert.
-            Daraus folgt:
-            \[\exists \: N_{\frac{\epsilon}{2}} \in \mathbb{N}: \: \forall n \geq N_{\frac{\epsilon}{2}}: |m - \frac{\epsilon}{2}\) | < \frac{\epsilon}{2} \]
-            Also ist \( |m - \frac{\epsilon}{2} | < \frac{\epsilon}{2} \Rightarrow |m| < \epsilon \)
-            Fallunterscheidung \\
-            Null ist also das Infimum von \(M\).
-            Nach A 4.2 (a) existiert eine Folge \((y_n)\) in \(M\) deren Grenzwert Null ist.
-            Daraus kann man eine Teilfolge \((z_n)\) konstruieren.
-            \(z_1 = y_1\) und \(z_{n+1} :=\) ist das erste Element von \(y_n\) das hinter \(z_n\) in den Folgengliedern von \((z_n)\) ist.
-            Da es vor \(z_n\) nur endliche viele Elemente in \((x_n)\) gab, muss es eines aus \(y_n\) geben, was den Kriterien entspricht.
-            Daraus folgt das es eine Teilfolge von \((x_n)\) gibt, die gegen Null geht.
-            Das ist eine Wiederspruch.
+            Sei \( {(y_n)}_{n \in \mathbb{N}} := \frac{1}{n} \). Die Folge \( (y_n) \) ist immer größer als 0 und konvergiert gegen 0.
+            Sei nun \( {(z_n)}_{n \in \mathbb{N}} \) eine Teilfolge von \((x_n)\).
+            Für das erste Element von \(z_n\) wähle man ein beliebiges Element aus dem Intervall \( (\frac{1}{4}, \frac{3}{4}) \), dass ein Folgenglied von \((x_n)\) ist. 
+            Für alle weiteren Elemente wähle man so, dass \(z_n < y_n\) für ein bestimmtes \(n\) und dass \(0 < z_{n+1} < z_{n}\). \\
+            \textbf{Zu zeigen, \(x_n\) ist immer definiert:} \\
+            \((x_n)\) hat Teilfolgen, so dass diese für alle \(x \in (0, 1)\) konvergieren. Es existiert also auch eine Teilfolge die gegen \(\frac{1}{2}\) konvergiert.
+            Nach der Definition der Konvergenz eine Folge (Teilfolge) gilt:
+            \[ | x_{n_k} - \frac{1}{2} | < \epsilon \ \forall \epsilon > 0 \]
+            Dies gilt also insbesondere auch für \(\epsilon = \frac{1}{4}\). Damit gilt:
+            \[ | x_{n_k} - \frac{1}{2} | < \frac{1}{4} \]
+            Der Abstand von \(x_{n_k}\) zu \(\frac{1}{2}\) ist also kleiner als \(\frac{1}{4}\). Damit liegt \(x_{n_k}\) im Intervall \( (\frac{1}{4}, \frac{3}{4}) \),
+            also liegt ein Folgenglied von \((x_n)\) im Intervall was man für \(z_1\) wählen kann.
+
+            Jedes \(z_n\) soll kleiner als \(y_n\) sein. Da \((y_n)\) gegen 0 konvergiert, liegen alle Folgenglieder von \((z_n)\) also 
+            im Intervall \(I := (0, \frac{3}{4}) \), weil \(z_n\) immer kleiner als \(z_{n-1}\) ist und größer Null.
+            Es existiert im Intervall \(I\) immer ein Wert \(b \in I\) der echt kleiner ist als \(z_{n}\) und damit auch echt kleiner als \(y_{n}\).
+            Weiterhin existiert auch immer ein Folgenglied in \((x_n)\) das echt kleiner ist als \(z_{n}\),
+            weil es (analog wie für das erste Folgenglied) immer eine Folge gibt, die gegen \(b\) konvergiert und sich ihre Elemente \(b\) immer mehr annähern.
+            
+            Es gilt somit:
+            \[ 0 < z_n < y_n \]
+            Nach dem Sandwichtheorem Satz 2.27(f) gilt:
+            \[ \lim_{n \to \infty} 0 \leq \lim_{n \to \infty} z_n \leq \lim_{n \to \infty} y_n \]
+            \[ \Rightarrow 0 < z < 0\]
+            Die hier konstruierte Folge \((z_n)\) konvergiert gegen 0. Dies ist aber ein Wiederspruch zu der Annahme,
+            dass alle Teilfolgen von \((x_n)\) nur im Intervall \(0, 1\) konvergieren.
+            Somit gibt es keine Folge \((x_n)\) die diese Eigenschaft hat.
 
         \end{enumerate}
 
