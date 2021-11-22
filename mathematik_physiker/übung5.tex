@@ -35,7 +35,7 @@
         Nun ist zu zeigen, dass \(\sqrt[n]{n} \to 1\) für \(n \to \infty \) \\
         Es gilt wie oben bewiesen: 
         \begin{gather*}
-            n \geq 1 + \frac{n (n-1)}{2} {c_n}^2 \ | \ -1 \ | \ : n(n-1) \\
+            n \geq 1 + \frac{n (n-1)}{2} {c_n}^2 \ | \ -1 \ | \ : n(n-1) > 0 \ \forall \ n \in \mathbb{N} \\
             \Leftrightarrow \frac{(n-1)}{n(n-1)} \geq \frac{{c_n}^2}{2} \\
             \Leftrightarrow \frac{1}{n} \geq \frac{{c_n}^2}{2}
         \end{gather*}
@@ -81,15 +81,32 @@
     Es muss gelten:
     \[ \frac{ a_{n+1} }{ a_n } \geq 1 \]
     Definition einsetzen:
-    \[ \frac{ a_{n+1} }{ a_n  }  = \]
-    HIER BITTE DEN TEXT EINFÜGEN
+    \[ \frac{ a_{n+1} }{ a_n  }  = \frac{\left(1+\frac{1}{n+1}\right)^{n+1}}{\left(1+\frac{1}{n}\right)^n}  \quad = \quad \left(\frac{1+\frac{1}{n+1}}{1+\frac{1}{n}}\right)^n \cdot \; \left(1+\frac{1}{n+1}\right) \]//
+    \[ = \quad \left(\frac{\frac{n+1+1}{n+1}}{\frac{n+1}{n}}\right)^n \cdot  \; \left(1+\frac{1}{n+1}\right) \]\\
+    \[ = \quad \left( \frac{n^2 + 2n}{\left(n+1\right)^2}\right)^n \cdot  \; \left(1+\frac{1}{n+1}\right)  \]\\
+    \[ = \quad \left(\frac{(n+1)^2}{(n+1)^2}+\frac{-1}{(n+1)^2}\right)^n \cdot  \; \left(1+\frac{1}{n+1}\right) \]\\
+    
+    \[\left(1+\frac{-1}{(n+1)^2}\right)^n  \cdot  \; \left(1+\frac{1}{n+1}\right) \geq \left(1+\frac{-n}{(n+1)^2}\right)\cdot\left(1+\frac{1}{n+1}\right)      \]\\
+    Mit der Bernoulli-Ungleichung nach unten abschätzen, da gilt \( \frac{-1}{ {(n+1)}^2 } \geq -1 \):
+    \[ \left(\frac{n^2 +n+1}{n^2+2n+}\right)\cdot\left(\frac{n+2}{n+1}\right) \quad = \quad \left(\frac{n^3 + 3n^2 +3n+2}{n^3+3n^2+3n+1}  \right) > 1    \]\\
+    
     \( {(a_n)}_n \) ist damit monoton wachsend \\
 
     Zu zeigen: \( {(b_n)}_n \) ist monoton fallend:
     Es muss gelten:
-    \[ \frac{ b_n }{ b_{n+1} } \geq 1 \]
-    Definition einsetzen:
-    HIER BITTE DEN ZWEITEN BEWEIS EINFÜGEN
+    \[ \frac{ b_{n+1} }{ b_{n} } \leq 1 \]\\
+    Definition einsetzen und umformen:
+    \[   \frac{ b_{n+1} }{ b_{n} } \quad = \quad \frac{\left(1+\frac{1}{n+1}\right)^{n+2}}{\left(1+\frac{1}{n}\right)^{n+1}}   \]\\
+    \[   = \quad \frac{\left(\frac{n+2}{n+1}\right)^{n+2}}{\left(\frac{n+1}{n}\right)^{n+1}}   \]\\
+    \[   = \quad \left(\frac{\frac{n+2}{n+1}}{\frac{n+1}{n}}\right)^{n+1} \cdot \frac{n+2}{n+1}   \]\\
+    \[   = \quad \left(\frac{n^2+2n}{n^2+2n+1}\right)^{n+1} \cdot \frac{n+2}{n+1}   \]\\
+    \[   = \quad \left(\frac{n^2+2n}{n^2+2n+1}\right)^{n+1}  \cdot  \left(1+\frac{1}{n+1}\right) \]\\
+    Nach oben abschätzen mit der Bernoulli-Ungleichung \(\frac{1}{n+1} > 0\)
+    \[   \leq \quad \left(\frac{n^2+2n}{n^2+2n+1}\right)^{n+1}  \cdot  \left(1+\frac{1}{(n+1)^2}\right)^{n+1} \]\\
+    \[  = \quad \left(\frac{n^2+2n}{n^2+2n+1}  \cdot  \frac{n^2+2n+2}{n^2+2n+1}\right)^{n+1} \]\\
+    \[ a = (n+1)^2 \]\\
+    \[\Rightarrow \frac{(a-1)\cdot (a+1)}{a^2} = \frac{a^2+a-a-1}{a^2} = \frac{a^2 -1}{a^2} \leq 1     \]
+    
     \( {(b_n)}_n \) ist damit monoton fallend \\
 
     Zu zeigen \({(b_n)}_n\) ist nach unten beschränkt:
@@ -145,11 +162,20 @@
         Die Reihe \( \sum_{n=1}^{\infty} {\left( \frac{n}{n+1} \right)}^{n^2} \) konvergiert.
 
         \item \( \sum_{n=1}^{\infty} \frac{ n^2 -3n + 1 }{ n^3 + n^2 - n} \) \\
-        Es gelte \( x_n \neq 0 \ \forall \: n \geq n_0 \)
-        Sei \(q \in \mathbb{R}\), \(0 < q < 1\) \\
-
-        \[ \text{Zu zeigen: }  \frac{|x_{n+1}|}{|x_n|} \leq q \ \forall \: n \geq N \]
-        Geht nicht mit dem Quotientenkriterium
+        Sei \(x_k\) die Folge der Reihe.
+        \[ x_k = \frac{ n^2 -3n + 1 }{ n^3 + n^2 - n} \]
+        Mit Partialbruchzerlegung folgt:
+        \[ \frac{2n - 2}{n^2 + n -1} - \frac{1}{n}\]
+        Durch umschreiben erhält man:
+        \[ \frac{2n - 2}{ {(n+\frac{1}{2})}^2 - \frac{5}{4} }  - \frac{1}{n}\]
+        Für alle \(k \geq N \in \mathbb{N}\) kann man den vorderen Term nach unten gegen 0 abschätzen:
+        \[ - \frac{1}{n} \]
+        Wir wenden nun das Minorantenkriterium an. \\
+        Sei die harmonische Reihe \( \sum_{n=1}^{\infty} y_k \) =  \( \sum_{n=1}^{\infty} \frac{1}{n} \) diese divergiert
+        Zu zeigen: für alle \( k \geq N \in \mathbb{N} \) gilt \( |x_k| \geq y_k\): \\
+        Da dies bereits oben in den Umformungen gezeigt ist, ist die harmonische Reihe
+        eine Minorante von \( \sum_{n=1}^{\infty} \frac{ n^2 -3n + 1 }{ n^3 + n^2 - n} \). \\
+        Die Reihe divergiert.
 
         \item \(\sum_{n=1}^{\infty} \frac{2^n}{n^n}\)
         Sei \(q \in \mathbb{R}\), \(0 < q < 1\) \\
@@ -168,7 +194,7 @@
         \item \( \sum_{n=1}^{\infty} \frac{n!}{n^n} \) \\
         Sei \(q \in \mathbb{R}\), \(0 < q < 1\) \\
         \[ \text{Zu zeigen: } \frac{|x_{n+1}|}{|x_{n}|} < q \Leftrightarrow  \frac{  \left| \frac{(n+1)!}{{(n+1)}^{n+1}} \right| }{ \left| \frac{n!}{n^n} \right| } < q \]
-        Betragsstriche wegglassen, da alle Terme immer positiv sind und vereinfachen:
+        Betragsstriche weggelassen, da alle Terme immer positiv sind und vereinfachen:
         \begin{gather*}
             \lim_{n \to \infty} \frac{|\frac{(n+1)!}{{(n+1)}^{n+1}}|}{|\frac{n!}{n^n}|}
             = \lim_{n \to \infty} \frac{\frac{(n+1)!}{{(n+1)}^{n+1}}}{\frac{n!}{n^n}}
