@@ -9,68 +9,70 @@
 \usepackage{enumitem}
 \usepackage{amsmath}
 
-\date{14.11.2021}
-\title{Aufgabenblatt 4, Mathematik für Physiker 1}
+\date{22.11.2021}
+\title{Aufgabenblatt 5, Mathematik für Physiker 1}
 \author{Florian Adamczyk, Finn Wagner}
 
 \begin{document}
     \maketitle
 
     \section*{A 5.1}
-    
-    Sei \(c_n := \sqrt[n]{n} - 1\), zu zeigen:
-    \[ n = {(1+c_n)}^n \geq^! 1 + \frac{n (n-1)}{2} {c_n}^2 \]
-    Einsetzen der allgemeinen binomischen Formel
-    \[ {(1+c_n)}^n = \sum_{k=0}^{n} \binom{n}{k} 1^{n-k} {c_n}^k \]
-    Ausklammern der ersten drei Terme
-    \[ \sum_{k=0}^{n} \binom{n}{k} 1^{n-k} {c_n}^k = \binom{n}{0} 1^n {c_n}^0 + \binom{n}{1} 1^{n-1} {c_n}^1 + \binom{n}{2} 1^{n-2} {c_n}^2 + \sum_{k=3}^{n} \binom{n}{k} 1^{n-k} {c_n}^k \]
-    Es gilt \(n \in \mathbb{N}\) und damit \(n \geq 1\). Die n.te Wurzel von n ist größer gleich 1. Somit \(c_n \geq 0\).
-    Ein Binomialkoeffitient kann ebenfalls nicht negativ werden. Alle Terme auf der rechten Seite der Gleichung sind also positiv, als Produkt von 1 und \(c_n\).
-    Wir schätzen nun nach unten ab, indem wir Terme weglassen.
-    \[ \binom{n}{0} 1^n {c_n}^0 + \binom{n}{1} 1^{n-1} {c_n}^1 + \binom{n}{2} 1^{n-2} {c_n}^2 + \sum_{k=3}^{n} \binom{n}{k} 1^{n-k} {c_n}^k \geq \binom{n}{0} 1^n {c_n}^0 + \binom{n}{2} 1^{n-2} {c_n}^2 \]
-    Vereinfachen:
-    \[ \binom{n}{0} 1^n {c_n}^0 + \binom{n}{2} 1^{n-2} {c_n}^2 = 1 + \frac{n!}{(n-2)! * 2!} {c_n}^2 = 1 + \frac{n (n-1)}{2} {c_n}^2 \]
-    Die Aussage ist bewiesen.
-
-    Nun ist zu zeigen, dass \(\sqrt[n]{n} \to 1\) für \(n \to \infty\)
-    Es gilt: 
-    \begin{gather*}
-        n \geq 1 + \frac{n (n-1)}{2} {c_n}^2 \ | \ -1 \ / n(n-1) \\
-        \Leftrightarrow \frac{n-1}{n(n-1)} \geq \frac{{c_n}^2}{2} \\
-        \Leftrightarrow \frac{1}{n} \geq \frac{{c_n}^2}{2}
-    \end{gather*}
-    Da \(c_n\) immer größer ist als 0, ist auch \(\frac{{c_n}^2}{2}\) immer größer als 0. Es gilt insgesamt:
-    \[ \frac{1}{n} \geq \frac{{c_n}^2}{2} \geq 0 \]
-    Mit dem Sandwichtheorem folgt:
-    \[ \lim_{n \to \infty} \frac{1}{n} \geq \lim_{n \to \infty} \frac{{c_n}^2}{2} \geq \lim_{n \to \infty} 0 \]
-    \[ 0 \geq \lim_{n \to \infty} \frac{{c_n}^2}{2} \geq 0 \]
-    Es folgt, dass der Grenzwert von \(c_n\) 0 ist. \(\sqrt[n]{n}\) konvergiert damit gegen 1.
-
-    Zu zeigen: Für \(a > 0\) gilt \(\sqrt[n]{a} \to 1\) für \(n \to \infty\) \\
-    Ab einem n groß genug, \(N \in \mathbb{N}\) \(n \geq N\) gilt: \\
-    \(a \leq n\) für alle \(n\), daraus folgt \(\sqrt[n]{a} \leq \sqrt[n]{n}\) \\
-    \begin{enumerate}[ label = \arabic*. Fall ]
-        \item a = 1 \\
-        Ist a = 1, so konvergiert \(\sqrt[n]{1}\) trivialler Weise gegen 1.
-        
-        \item \(1 < a\) \\
-        Da die n.te Wurzel einer Zahl a größer als 1 auch immer größer gleich 1 sein muss gilt:
-        \[1 \leq \sqrt[n]{a} < \sqrt[n]{n} \]
+    \begin{enumerate}[ label = (\alph*)]
+        \item Sei \(c_n := \sqrt[n]{n} - 1\), zu zeigen:
+        \[ n = {(1+c_n)}^n \geq^! 1 + \frac{n (n-1)}{2} {c_n}^2 \]
+        Es gilt \( n = {(1 + (\sqrt[n]{n}) -1)}^n \) \\
+        Einsetzen in die allgemeine binomischen Formel:
+        \[ \Leftrightarrow {(1+c_n)}^n = \sum_{k=0}^{n} \binom{n}{k} 1^{n-k} {c_n}^k \]
+        Ausklammern der ersten drei Terme:
+        \[ \sum_{k=0}^{n} \binom{n}{k} 1^{n-k} {c_n}^k = \binom{n}{0} 1^n {c_n}^0 + \binom{n}{1} 1^{n-1} {c_n}^1 + \binom{n}{2} 1^{n-2} {c_n}^2 + \sum_{k=3}^{n} \binom{n}{k} 1^{n-k} {c_n}^k \]
+        Es gilt \(n \in \mathbb{N}\) und damit \(n \geq 1\). Die n.te Wurzel von n ist größer gleich 1. Somit \(c_n \geq 0\).
+        Ein Binomialkoeffitient kann ebenfalls nicht negativ werden. Alle Terme auf der rechten Seite der Gleichung sind also positiv, als Produkt von 1 und \(c_n\).
+        Wir schätzen nun nach unten ab, indem wir Terme weglassen.
+        \[ \binom{n}{0} 1^n {c_n}^0 + \binom{n}{1} 1^{n-1} {c_n}^1 + \binom{n}{2} 1^{n-2} {c_n}^2 + \sum_{k=3}^{n} \binom{n}{k} 1^{n-k} {c_n}^k \geq \binom{n}{0} 1^n {c_n}^0 + \binom{n}{2} 1^{n-2} {c_n}^2 \]
+        Vereinfachen:
+        \[ \binom{n}{0} 1^n {c_n}^0 + \binom{n}{2} 1^{n-2} {c_n}^2 = 1 + \frac{n!}{(n-2)! * 2!} {c_n}^2 = 1 + \frac{n (n-1)}{2} {c_n}^2 \]
+        Die Aussage ist bewiesen. \\ \\
+        Nun ist zu zeigen, dass \(\sqrt[n]{n} \to 1\) für \(n \to \infty \) \\
+        Es gilt wie oben bewiesen: 
+        \begin{gather*}
+            n \geq 1 + \frac{n (n-1)}{2} {c_n}^2 \ | \ -1 \ | \ : n(n-1) > 0 \ \forall \ n \in \mathbb{N} \\
+            \Leftrightarrow \frac{(n-1)}{n(n-1)} \geq \frac{{c_n}^2}{2} \\
+            \Leftrightarrow \frac{1}{n} \geq \frac{{c_n}^2}{2}
+        \end{gather*}
+        Da \(c_n\) immer größer ist als 0, ist auch \(\frac{{c_n}^2}{2}\) immer größer als 0. Es gilt insgesamt:
+        \[ \frac{1}{n} \geq \frac{{c_n}^2}{2} \geq 0 \]
         Mit dem Sandwichtheorem folgt:
-        \[\lim_{n \to \infty} 1 \leq \sqrt[n]{a} < \lim_{n \to \infty} \sqrt[n]{n} \]
-        \[1 \leq \sqrt[n]{a} \leq 1\]
-        Die Folge \(\sqrt[n]{a}\) konvergiert gegen 1.
+        \[ \lim_{n \to \infty} \frac{1}{n} \geq \lim_{n \to \infty} \frac{{c_n}^2}{2} \geq \lim_{n \to \infty} 0 \]
+        \[ 0 \geq \lim_{n \to \infty} \frac{{c_n}^2}{2} \geq 0 \]
+        Es folgt, dass der Grenzwert von \(c_n\) 0 ist. \(\sqrt[n]{n}\) konvergiert damit gegen 1.
 
-        \item \(1 > a > 0 \) \\
-        Wie von Aufgabenblatt 4 bekannt, lässt sich eine reele Zahl a beliebig nah durch eine rationale Zahl q nähern.
-        Für alle unendlich viele, immer besser werdende Näherungen von a gilt:
-        \[q = \frac{x}{y} \Leftrightarrow \sqrt[n]{q} = \sqrt[n]{\frac{x}{y}} = \frac{\sqrt[n]{x}}{\sqrt[n]{y}}\]
-        Der Grenzwert aller Folgen \({(q_n)_n}\) ist gleich 1, als Bruch aus zwei konvergenten Folgen, die beide nicht Null werden.
-        \[\lim_{n \to \infty} \frac{\sqrt[n]{x}}{\sqrt[n]{y}} = \frac{1}{1} \]
-        Da der Grenzwert der Folge \(\sqrt[n]{a}\) für alle Näherungen von a gleich 1 ist, konvergiert die Folge gegen 1.
+        \item Zu zeigen: Für \(a > 0\) gilt \( \sqrt[n]{a} \to 1 \) für \( n \to \infty \) \\
+        Ab einem n groß genug, \(N \in \mathbb{N}\) \(n \geq N\) gilt: \\
+        \(a \leq n\) für alle \(n\), daraus folgt \(\sqrt[n]{a} \leq \sqrt[n]{n}\) \\
+        \begin{enumerate}[ label = \arabic*. Fall ]
+            \item a = 1 \\
+            Ist a = 1, so konvergiert \(\sqrt[n]{1}\) trivialler Weise gegen 1.
+            
+            \item \(1 < a\) \\
+            Da die n.te Wurzel einer Zahl a größer als 1 auch immer größer gleich 1 sein muss gilt:
+            \[1 \leq \sqrt[n]{a} < \sqrt[n]{n} \]
+            Mit dem Sandwichtheorem folgt:
+            \[\lim_{n \to \infty} 1 \leq \sqrt[n]{a} < \lim_{n \to \infty} \sqrt[n]{n} \]
+            \[1 \leq \sqrt[n]{a} \leq 1\]
+            Die Folge \(\sqrt[n]{a}\) konvergiert gegen 1.
+    
+            \item \(1 > a > 0 \) \\
+            Wie von Aufgabenblatt 4 bekannt, lässt sich eine reele Zahl \(a \in \mathbb{R}^+\) beliebig nah
+            durch eine rationale Zahl q mit \(x, y \in \mathbb{N} \) nähern.
+            Für alle unendlich viele, immer besser werdende Näherungen von a gilt:
+            \[q = \frac{x}{y} \Leftrightarrow \sqrt[n]{q} = \sqrt[n]{\frac{x}{y}} = \frac{\sqrt[n]{x}}{\sqrt[n]{y}}\]
+            Der Grenzwert aller Folgen \({(q_n)_n}\) ist gleich 1, als Bruch aus zwei konvergenten Folgen, die beide nicht Null werden.
+            \[\lim_{n \to \infty} \frac{\sqrt[n]{x}}{\sqrt[n]{y}} = \frac{1}{1} \]
+            Da der Grenzwert der Folge \(\sqrt[n]{a}\) für alle Näherungen von a gleich 1 ist, konvergiert die Folge gegen 1.
+        \end{enumerate}
+    
+        Es gilt für \(a > 0\) konvergiert \(\sqrt[n]{a} \to 1\) wenn \(n \to \infty\) \\
     \end{enumerate}
-
-    Es gilt für \(a > 0\) konvergiert \(\sqrt[n]{a} \to 1\) wenn \(n \to \infty\) \\
 
     \section*{A 5.2}
     Wir definieren die Folgen
@@ -79,40 +81,32 @@
     Es muss gelten:
     \[ \frac{ a_{n+1} }{ a_n } \geq 1 \]
     Definition einsetzen:
-    \[ \frac{ a_{n+1} }{ a_n  }  = \frac{ { \left( 1 + \frac{1}{ n+1 } \right) }^{ n+1 } }{ { \left( 1 + \frac{1}{n} \right) }^n } \]
-    FEHLT!
-    Macht man den Nenner kleiner, so 
-    Es gilt also insgesamt:
-    \[
-        \frac{ a_n }{ a_{n+1} }  \geq 1
-    \]
+    \[ \frac{ a_{n+1} }{ a_n  }  = \frac{\left(1+\frac{1}{n+1}\right)^{n+1}}{\left(1+\frac{1}{n}\right)^n}  \quad = \quad \left(\frac{1+\frac{1}{n+1}}{1+\frac{1}{n}}\right)^n \cdot \; \left(1+\frac{1}{n+1}\right) \]//
+    \[ = \quad \left(\frac{\frac{n+1+1}{n+1}}{\frac{n+1}{n}}\right)^n \cdot  \; \left(1+\frac{1}{n+1}\right) \]\\
+    \[ = \quad \left( \frac{n^2 + 2n}{\left(n+1\right)^2}\right)^n \cdot  \; \left(1+\frac{1}{n+1}\right)  \]\\
+    \[ = \quad \left(\frac{(n+1)^2}{(n+1)^2}+\frac{-1}{(n+1)^2}\right)^n \cdot  \; \left(1+\frac{1}{n+1}\right) \]\\
+    
+    \[\left(1+\frac{-1}{(n+1)^2}\right)^n  \cdot  \; \left(1+\frac{1}{n+1}\right) \geq \left(1+\frac{-n}{(n+1)^2}\right)\cdot\left(1+\frac{1}{n+1}\right)      \]\\
+    Mit der Bernoulli-Ungleichung nach unten abschätzen, da gilt \( \frac{-1}{ {(n+1)}^2 } \geq -1 \):
+    \[ \left(\frac{n^2 +n+1}{n^2+2n+}\right)\cdot\left(\frac{n+2}{n+1}\right) \quad = \quad \left(\frac{n^3 + 3n^2 +3n+2}{n^3+3n^2+3n+1}  \right) > 1    \]\\
+    
     \( {(a_n)}_n \) ist damit monoton wachsend \\
 
     Zu zeigen: \( {(b_n)}_n \) ist monoton fallend:
     Es muss gelten:
-    \[ \frac{ b_n }{ b_{n+1} } \geq 1 \]
-    Definition einsetzen:
-    \[ \frac{ {\left( 1 + \frac{1}{n} \right)}^{n+1} }{ {\left( 1 + \frac{1}{n+1} \right)}^{n+2} } \]
-    Es gilt weitere Abschätzung:
-    \[ 
-        \left( \frac{1}{n+1} \right) < \left( \frac{1}{n} \right)
-        \ \Rightarrow \ \left( 1 + \frac{1}{n+1} \right) < \left( 1 + \frac{1}{n} \right)
-        \ \Rightarrow \ \left( \frac{1}{ 1 + \frac{1}{n+1} } \right) > \left( \frac{1}{ 1 + \frac{1}{n} } \right)
-    \]
-    Schätzt man damit ab gilt:
-    \[
-        \frac{ {\left( 1 + \frac{1}{n} \right)}^{n+1} }{ {\left( 1 + \frac{1}{n+1} \right)}^{n+2} } >
-        \frac{ {\left( 1 + \frac{1}{n} \right)}^{n+1} }{ {\left( 1 + \frac{1}{n} \right)}^{n+2} }
-    \]
-    Macht man den Nenner k, indem man die Potenz kleiner macht folgt:
-    \[
-        \frac{ {\left( 1 + \frac{1}{n} \right)}^{n+1} }{ {\left( 1 + \frac{1}{n} \right)}^{n+2} } >
-        \frac{ {\left( 1 + \frac{1}{n} \right)}^{n+1} }{ {\left( 1 + \frac{1}{n} \right)}^{n+1} } = 1
-    \]
-    Es gilt also insgesamt:
-    \[
-        \frac{ b_n }{ b_{n+1} } > 1
-    \]
+    \[ \frac{ b_{n+1} }{ b_{n} } \leq 1 \]\\
+    Definition einsetzen und umformen:
+    \[   \frac{ b_{n+1} }{ b_{n} } \quad = \quad \frac{\left(1+\frac{1}{n+1}\right)^{n+2}}{\left(1+\frac{1}{n}\right)^{n+1}}   \]\\
+    \[   = \quad \frac{\left(\frac{n+2}{n+1}\right)^{n+2}}{\left(\frac{n+1}{n}\right)^{n+1}}   \]\\
+    \[   = \quad \left(\frac{\frac{n+2}{n+1}}{\frac{n+1}{n}}\right)^{n+1} \cdot \frac{n+2}{n+1}   \]\\
+    \[   = \quad \left(\frac{n^2+2n}{n^2+2n+1}\right)^{n+1} \cdot \frac{n+2}{n+1}   \]\\
+    \[   = \quad \left(\frac{n^2+2n}{n^2+2n+1}\right)^{n+1}  \cdot  \left(1+\frac{1}{n+1}\right) \]\\
+    Nach oben abschätzen mit der Bernoulli-Ungleichung \(\frac{1}{n+1} > 0\)
+    \[   \leq \quad \left(\frac{n^2+2n}{n^2+2n+1}\right)^{n+1}  \cdot  \left(1+\frac{1}{(n+1)^2}\right)^{n+1} \]\\
+    \[  = \quad \left(\frac{n^2+2n}{n^2+2n+1}  \cdot  \frac{n^2+2n+2}{n^2+2n+1}\right)^{n+1} \]\\
+    \[ a = (n+1)^2 \]\\
+    \[\Rightarrow \frac{(a-1)\cdot (a+1)}{a^2} = \frac{a^2+a-a-1}{a^2} = \frac{a^2 -1}{a^2} \leq 1     \]
+    
     \( {(b_n)}_n \) ist damit monoton fallend \\
 
     Zu zeigen \({(b_n)}_n\) ist nach unten beschränkt:
@@ -168,11 +162,20 @@
         Die Reihe \( \sum_{n=1}^{\infty} {\left( \frac{n}{n+1} \right)}^{n^2} \) konvergiert.
 
         \item \( \sum_{n=1}^{\infty} \frac{ n^2 -3n + 1 }{ n^3 + n^2 - n} \) \\
-        Es gelte \( x_n \neq 0 \ \forall \: n \geq n_0 \)
-        Sei \(q \in \mathbb{R}\), \(0 < q < 1\) \\
-
-        \[ \text{Zu zeigen: }  \frac{|x_{n+1}|}{|x_n|} \leq q \ \forall \: n \geq N \]
-        Geht nicht mit dem Quotientenkriterium
+        Sei \(x_k\) die Folge der Reihe.
+        \[ x_k = \frac{ n^2 -3n + 1 }{ n^3 + n^2 - n} \]
+        Mit Partialbruchzerlegung folgt:
+        \[ \frac{2n - 2}{n^2 + n -1} - \frac{1}{n}\]
+        Durch umschreiben erhält man:
+        \[ \frac{2n - 2}{ {(n+\frac{1}{2})}^2 - \frac{5}{4} }  - \frac{1}{n}\]
+        Für alle \(k \geq N \in \mathbb{N}\) kann man den vorderen Term nach unten gegen 0 abschätzen:
+        \[ - \frac{1}{n} \]
+        Wir wenden nun das Minorantenkriterium an. \\
+        Sei die harmonische Reihe \( \sum_{n=1}^{\infty} y_k \) =  \( \sum_{n=1}^{\infty} \frac{1}{n} \) diese divergiert
+        Zu zeigen: für alle \( k \geq N \in \mathbb{N} \) gilt \( |x_k| \geq y_k\): \\
+        Da dies bereits oben in den Umformungen gezeigt ist, ist die harmonische Reihe
+        eine Minorante von \( \sum_{n=1}^{\infty} \frac{ n^2 -3n + 1 }{ n^3 + n^2 - n} \). \\
+        Die Reihe divergiert.
 
         \item \(\sum_{n=1}^{\infty} \frac{2^n}{n^n}\)
         Sei \(q \in \mathbb{R}\), \(0 < q < 1\) \\
@@ -191,7 +194,7 @@
         \item \( \sum_{n=1}^{\infty} \frac{n!}{n^n} \) \\
         Sei \(q \in \mathbb{R}\), \(0 < q < 1\) \\
         \[ \text{Zu zeigen: } \frac{|x_{n+1}|}{|x_{n}|} < q \Leftrightarrow  \frac{  \left| \frac{(n+1)!}{{(n+1)}^{n+1}} \right| }{ \left| \frac{n!}{n^n} \right| } < q \]
-        Betragsstriche wegglassen, da alle Terme immer positiv sind und vereinfachen:
+        Betragsstriche weggelassen, da alle Terme immer positiv sind und vereinfachen:
         \begin{gather*}
             \lim_{n \to \infty} \frac{|\frac{(n+1)!}{{(n+1)}^{n+1}}|}{|\frac{n!}{n^n}|}
             = \lim_{n \to \infty} \frac{\frac{(n+1)!}{{(n+1)}^{n+1}}}{\frac{n!}{n^n}}
