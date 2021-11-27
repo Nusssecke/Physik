@@ -380,8 +380,13 @@
                 \text{ mit } \epsilon \in \mathbb{R} \text{ und } n \in \mathbb{N}\]
             Zu zeigen: Die Folge \((z_n)\) konvergiert gegen 0 \\
             Es soll also gelten \(|\frac{i^n}{3^n} -0|\)
+            Die Folge \(i^n\) ist zyklisch und nimmt die folgenden Werte an: \\
+            \(i\) für \(n \% 4 = 1\),  \(-1\) für \(n \% 4 = 2\), \(-i\) für \(n \% 4 = 3\), \(1\) für \(n \% 4 = 0\) \\
+            Damit ist ein Folgenglied entweder komplett reel: \(\frac{-1}{3^n}\) und \(\frac{1}{3^n}\), sein Betrag damit \(\frac{1}{3^n}\) \\
+            Oder es ist komplett imaginär: \(\frac{-i}{3^n}\) und \(\frac{i}{3^n}\), sein Betrag damit ebenfalls \(\frac{1}{3^n}\) \\
+            Der Betrag eines jeden Folgengliedes ist gleich, er ist \(\frac{1}{3^n}\). \\
             Wir setzen die Definition der komlexen Wurzel ein:
-            \[ |\frac{i^n}{3^n} -0| = |\frac{i^n}{3^n}| = \sqrt{ {\left( \frac{1}{3^n} \right)}^2 } = \frac{1}{3^n} < \frac{1}{n}\]
+            \[ |\frac{i^n}{3^n} -0| = |\frac{i^n}{3^n}| = \frac{1}{3^n} < \frac{1}{n}\]
             Die Aussage \(n < 3^n\) ist triviall mit vollständiger Induktion zu zeigen. \\
             Es gilt nun also: \\
             \[\forall \: \epsilon > 0 \; \exists \; N_{\epsilon} \in \mathbb{N} : \forall n \geq N_{\epsilon}: \: \frac{1}{n} < \epsilon
