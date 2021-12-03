@@ -1,0 +1,48 @@
+\documentclass{article}
+
+\usepackage[a4paper, top=2cm, bottom=3cm]{geometry}
+\usepackage{babel}[german]
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\date{26.11.2021}
+\title{Aufgabenblatt 6, Mathematik für Physiker 1}
+\author{Florian Adamczyk, Finn Wagner}
+
+\begin{document}
+    \maketitle
+
+    \section*{A 7.1}
+    Bestimmen Sie alle \(x \in \mathbb{R}\), für die die Reihen:
+    \[
+        \sum_{n=0}^{\infty} \frac{1}{2^{3n-4}} {(x+1)}^{n+2} \text{ und } \sum_{n=0}^{\infty} (3n^2 + 4n^2 -4)x^n
+    \]
+    konvergiert und berechnen Sie für die erste Reihe auch eine geschlossene Formel in
+    Abhängigkeit von \(x\). \\
+
+    Der Konvergenzradius \(R\) der Potenzreihe ist \(R = \frac{1}{ \limsup \sqrt[n]{|a_n|} } \). \\
+    Die Summe lässt sich umformen:
+    \begin{gather*}
+        \sum_{n=0}^{\infty} \frac{1}{2^{3n-4}} {(x+1)}^{n+2} = \sum_{n=0}^{\infty} \frac{1}{2^{3n} \cdot 2^{-4}} {(x+1)}^{n} \cdot {(x+1)}^{2}  = \\
+        \sum_{n=0}^{\infty} 16 \frac{1}{2^{3n}} {(x+1)}^{n} \cdot {(x+1)}^{2} = 16 {(x+1)}^{2} \sum_{n=0}^{\infty} \frac{ {(x+1)}^{n} }{2^{3n}} = \\
+        16 {(x+1)}^{2} \sum_{n=0}^{\infty} {\left( \frac{ {x+1} }{2^3} \right)}^n = 16 {(x+1)}^{2} \sum_{n=0}^{\infty} {\left( \frac{ {x+1} }{8} \right)}^n\\
+    \end{gather*}
+    Wir ersetzen nun \(x + 1 = y\) damit ergibt sich:
+    \[16y^2 \sum_{k=0}^{\infty} { \left( \frac{y}{8} \right) }^n \]
+    Damit ist \( a_n = { \left( \frac{1}{8} \right) }^n \)
+    Berechnen wir nun den Konvergenzradius unserer Reihe:
+    
+    \begin{gather*}
+        R = \frac{1}{ \limsup \sqrt[n]{|a_n|} } = \frac{1}{ \limsup \sqrt[n]{ \left| { \left( \frac{1}{8} \right) }^n \right| } } = \\
+        \frac{1}{ \limsup \sqrt[n]{ \left| { \left( \frac{1}{8} \right) }^n \right| } } = \frac{1}{ \limsup \sqrt[n]{ { \left( \frac{1}{8} \right) }^n } } = \\
+        \frac{1}{ \limsup \left( \frac{1}{8} \right) } = \frac{1}{ \left( \frac{1}{8} \right) } = 8
+    \end{gather*}
+    Der Konvergenzradius der Reihe \(\sum_{k=0}^{\infty} { \left( \frac{y}{8} \right) }^n\) ist also 8. \(y \in {-8, 8}\).
+    Setzt man \(x\) wieder zurück ein erhält man: \(x \in {-9, 7} \) \\
+    Es fällt auf, das die Reihe die geometrische Reihe ist. \\
+    Damit die Reihe konvergiert muss \(\frac{(x+1)}{8} < 1\) sein, die ist innerhalb des Konvergenzradius der Reihe.
+    Die Reihe \(\sum_{n=0}^{\infty} {\left( \frac{ {x+1} }{8} \right)}^n\) konvergiert zu \( \frac{1}{1 - \left(\right) } \)
+\end{document}
