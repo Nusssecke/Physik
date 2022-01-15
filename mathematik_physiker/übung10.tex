@@ -1,0 +1,241 @@
+\documentclass{article}
+
+\usepackage[a4paper, top=2cm, bottom=3cm]{geometry}
+\usepackage{babel}[german]
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\newcommand{\proofeq}{\overset{!}{=}}
+\newcommand{\proofeqv}{\overset{!}{\Leftrightarrow}}
+\newcommand{\equivalent}{\overset{\scriptscriptstyle\wedge}{=}}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\date{15.1.2022}
+\title{Aufgabenblatt 10, Mathematik für Physiker 1}
+\author{Florian Adamczyk, Finn Wagner}
+
+\begin{document}
+    \maketitle
+
+    \section*{A 10.1}
+    Zeigen Sie, dass die Funktion
+    \[G: [-1, 1] \rightarrow \mathbb{R}, \quad G(x) := 
+    \begin{cases}
+        x \sqrt{|x|} \sin(\frac{1}{x}), &x \neq 0 \\
+        0, &x = 0
+    \end{cases}\]
+    differenzierbar ist. Zeigen Sie dann, dass \(g := G'\) nicht stetig ist. \\ \\
+    Die Funktion \(G\) ist nach Satz 5.6 für alle \(x \neq 0\) differenzierbar als Komposition von differenzierbaren Funktionen.
+    Wir überprüfen nun die Differenzierbarkeit bei 0:
+    \begin{gather*}
+        G'(0) = \lim_{x \to 0} \frac{f(x) - f(0)}{x - 0} = \lim_{x \to 0} \frac{ x \sqrt{|x|} \sin(\frac{1}{x}) - 0 }{x - 0} =
+        \lim_{x \to 0} \sqrt{|x|} \sin(\frac{1}{x}) = 0
+    \end{gather*}
+    Analog zum Grenzwert in Aufgabe 9.2 konvergiert der Funktionswert von beiden Seiten gegen 0. \\
+    Wir leiten nun die Funktion G ab, da die Differenzierbarkeit eine lokale Eigenschaft ist, leiten wir in Teilen ab.
+    \begin{gather*}
+        g:= G' \\
+        \text{Ableitung für } x = 0: \\
+        \Rightarrow \frac{d}{dx} 0 = 0 \\
+        \text{Ableitung für } x \neq 0: \\
+        \Rightarrow 1 \cdot \sqrt{|x|} \sin(\frac{1}{x}) + x \frac{d}{dx} (\sqrt{|x|}) \cdot \sin(\frac{1}{x}) + x \sqrt{|x|} \cdot \left(-\frac{1}{x^2}\right) \cos(\frac{1}{x}) \\
+        = \sqrt{|x|} \sin(\frac{1}{x}) + x \frac{d}{dx} \left(|x|\right) \cdot \frac{1}{2} \frac{1}{\sqrt{|x|}} \cdot \sin(\frac{1}{x}) - \frac{ \sqrt{|x|} }{x} \cos(\frac{1}{x})
+    \end{gather*}
+    Die Ableitung von \(|x|\) lässt sich nicht geschlossen darstellen. Sie ist an der Stelle 0 nicht definiert.
+    \begin{gather*}
+        |x| =
+        \begin{cases}
+            x, & x \geq 0 \\
+            -x, & x < 0
+        \end{cases} \quad \Rightarrow \quad \frac{d}{dx} |x| =
+        \begin{cases}
+            1, & x > 0 \\
+            -1, & x < 0
+        \end{cases}
+    \end{gather*}
+    Zur besseren Übersicht teilen wir die Ableitung für \(x \neq 0\) in \(x > 0\) und \(x < 0\) auf. Insgesamt ergibt sich:
+    \begin{gather*}
+        g(x) = 
+        \begin{cases}
+            \sqrt{|x|} \sin(\frac{1}{x}) + \frac{x}{2} \frac{1}{\sqrt{|x|}} \cdot \sin(\frac{1}{x}) - \frac{ \sqrt{|x|} }{x} \cos(\frac{1}{x}), & x > 0 \\
+            \sqrt{|x|} \sin(\frac{1}{x}) - \frac{x}{2} \frac{1}{\sqrt{|x|}} \cdot \sin(\frac{1}{x}) - \frac{ \sqrt{|x|} }{x} \cos(\frac{1}{x}), & x < 0 \\
+            0, & x = 0
+        \end{cases}
+    \end{gather*}
+    Wir können weiter vereinfachen, indem wir die Betragsfunktion auflösen.
+    \begin{gather*}
+        g(x) = 
+        \begin{cases}
+            \sqrt{x} \sin(\frac{1}{x}) + \frac{1}{2} \frac{x}{\sqrt{x}} \cdot \sin(\frac{1}{x}) - \frac{ \sqrt{x} }{x} \cos(\frac{1}{x}), & x > 0 \\
+            \sqrt{-x} \sin(\frac{1}{x}) - \frac{1}{2} \frac{x}{\sqrt{-x}} \cdot \sin(\frac{1}{x}) - \frac{ \sqrt{-x} }{x} \cos(\frac{1}{x}), & x < 0 \\
+            0, & x = 0
+        \end{cases}
+    \end{gather*}
+    Wir wollen nun überprüfen, ob \(g\) stetig ist. \(g\) ist für alle positiven und für alle negativen \(x\) stetig als Komposition von stetigen Funktionen nach Satz 4.13.
+    Wir müssen also noch überprüfen, ob \(g\) an der Stelle 0 stetig ist. Dafür muss gelten
+    \[ \lim_{x \to 0 -} g(x) = g(0) = \lim_{x \to 0 +} g(x) \]
+    Wir bilden nun den rechtsseitigen Grenzwert
+    \begin{gather*}
+        \lim_{x \to 0 +} g(x) = \sqrt{x} \sin(\frac{1}{x}) + \frac{1}{2} \frac{x}{\sqrt{x}} \cdot \sin(\frac{1}{x}) - \frac{ \sqrt{x} }{x} \cos(\frac{1}{x}) \\
+        = \lim_{x \to 0 +} \sqrt{x} \sin(\frac{1}{x}) + \frac{1}{2} \sqrt{x} \cdot \sin(\frac{1}{x}) - \frac{1}{\sqrt{x}} \cos(\frac{1}{x}) \\
+        = \lim_{x \to 0 +} \frac{3}{2} \sqrt{x} \cdot \sin(\frac{1}{x}) - \frac{1}{\sqrt{x}} \cos(\frac{1}{x}) \\
+    \end{gather*}
+    Nach Definition 4.19 muss der Grenzwert für alle Folgen \(f(x_n)\) existieren und zum selben Wert konvergieren, dann konvergiert die Funktion. \\
+    Wir definieren nun zwei Folgen
+    \begin{gather*}
+        {(x_n)}_{n \in \mathbb{N}} = \frac{1}{2 \pi n + \frac{\pi}{4}} \\
+        {(y_n)}_{n \in \mathbb{N}} = \frac{1}{2 \pi n + \frac{5 \pi}{4}}
+    \end{gather*}
+    Beide Folgen konvergieren für \(n \to \infty \) von oben gegen 0
+    Wir können also den Grenzwert mit \(x_n\) umformulieren:
+    \begin{gather*}
+        \lim_{x \to 0 +} g(x) = \lim_{n \to \infty} g(x_n) = \lim_{n \to \infty} \frac{3}{2} \sqrt{x_n} \cdot \sin(\frac{1}{x_n}) - \frac{1}{\sqrt{x_n}} \cos(\frac{1}{x_n}) \\
+        = \lim_{n \to \infty} \frac{3}{2} \sqrt{\frac{1}{2 \pi n + \frac{\pi}{4}}} \cdot \sin(\frac{1}{\frac{1}{2 \pi n + \frac{\pi}{4}}}) - \frac{1}{\sqrt{\frac{1}{2 \pi n + \frac{\pi}{4}}}} \cos(\frac{1}{\frac{1}{2 \pi n + \frac{\pi}{4}}}) \\
+        = \lim_{n \to \infty} \frac{3}{2} \sqrt{\frac{1}{2 \pi n + \frac{\pi}{4}}} \cdot \sin(2 \pi n + \frac{\pi}{4}) - \sqrt{2 \pi n + \frac{\pi}{4}} \cos(2 \pi n + \frac{\pi}{4}) \\
+        = \frac{3}{2} \cdot 0 \cdot \frac{1}{\sqrt{2}} - \infty \cdot \frac{1}{\sqrt{2}} \\
+        = - \infty
+    \end{gather*}
+    Ebenso mit \(y_n\)
+    \begin{gather*}
+        \lim_{x \to 0 +} g(x) = \lim_{n \to \infty} g(y_n) = \lim_{n \to \infty} \frac{3}{2} \sqrt{y_n} \cdot \sin(\frac{1}{y_n}) - \frac{1}{\sqrt{y_n}} \cos(\frac{1}{y_n}) \\
+        = \lim_{n \to \infty} \frac{3}{2} \sqrt{\frac{1}{2 \pi n + \frac{5 \pi}{4}}} \cdot \sin(\frac{1}{\frac{1}{2 \pi n + \frac{5 \pi}{4}}}) - \frac{1}{\sqrt{\frac{1}{2 \pi n + \frac{5 \pi}{4}}}} \cos(\frac{1}{\frac{1}{2 \pi n + \frac{5 \pi}{4}}}) \\
+        = \lim_{n \to \infty} \frac{3}{2} \sqrt{\frac{1}{2 \pi n + \frac{5 \pi}{4}}} \cdot \sin(2 \pi n + \frac{5 \pi}{4}) - \sqrt{2 \pi n + \frac{5 \pi}{4}} \cos(2 \pi n + \frac{5 \pi}{4}) \\
+        = \frac{3}{2} \cdot 0 \cdot \frac{-1}{\sqrt{2}} - \infty \cdot \frac{-1}{\sqrt{2}} \\
+        = \infty
+    \end{gather*}
+    Da der Grenzwert der beiden Folgen nicht der selbe ist existiert der Grenzwert von \(\lim_{x \to 0 +} g(x)\) nicht. Er ist somit insbesondere nicht gleich Null.
+    Die Funktion ist also im Punkt Null nicht stetig, da \(\lim_{x \to 0 -} g(x) \neq g(0)\) ist, damit auch nicht auf ihrem gesamten Definitionsbereich.
+
+    \section*{A 10.2}
+    Beweisen Sie Satz 6.11. Zeigen Sie also, dass für stetige Funktionen \(f, g : I \to \mathbb{C}\) und \(a, b \in I\) die folgenden Eigenschaften gelten:
+    \begin{enumerate}[ label = (\alph*) ]
+        \item \( \int_a^b (f+g)(t) dt = \int_a^b f(t) dt + \int_a^b g(t) dt \) \\
+        Wir betrachten zunächt die uneigentlichen Integrale
+        \[ \int (f+g)(t) dt = \int f(t) dt + \int g(t) dt \]
+        Wir leiten nun auf beiden Seiten nach \(t\) ab
+        \[ \frac{d}{dt} \left( \int (f+g)(t) dt \right) =  \frac{d}{dt} \left( \int f(t) dt + \int g(t) dt \right) \]
+        Nach Satz 5.6 (a) können wir die Ableitung auf der rechten Seite auf die Summanden aufteilen
+        \[ \frac{d}{dt} \left( \int (f+g)(t) dt \right) =  \frac{d}{dt} \left( \int f(t) dt \right) + \frac{d}{dt} \left( \int g(t) dt \right) \]
+        Es ergibt sich
+        \[(f+g)(t) = f(t) + g(t)\]
+        Was eine wahre Aussage ist. \\
+        Nun betrachten wir noch die Grenzen. Da \(f, g\) stetig sind besitzen sie die Stammfunktionen \(F, G\).
+        Die Stammfunktion von \((f+g)(t)\) ist nach dem oben gezeigten also
+        \[ \int_a^b (f+g)(t) dt = F(t) + G(t) |_a^b\]
+        Wir setzen nun die Grenzen ein und formen um
+        \begin{gather*}
+            \int_a^b (f+g)(t) dt = (F(t) + G(t)) |_a^b = (F(b) + G(b)) - (F(a) + G(a)) \\
+            = (F(b) - F(a)) + (G(b) - G(a)) = \int_a^b f(t) dt + \int_a^b g(t) dt
+        \end{gather*}
+
+        \item \( \int_a^b \lambda f(t) dt = \lambda \int_a^b f(t) dt \) für \(\lambda \in \mathbb{C} \) \\
+        Wir leiten hier wieder beide Seiten nach \(t\) ab und lassen zuerst die Grenzen weg
+        \[ \frac{d}{dt} \left( \int \lambda f(t) dt \right) = \frac{d}{dt} \left( \lambda \int f(t) dt \right) \]
+        Auf der rechten Seite leiten wir nach Produktregel ab, \( p(t) = \lambda \) und \(q(t) = \int f(t) dt  \)
+        \begin{gather*}
+            \lambda f(t) = 0 \cdot \int f(t) dt + \lambda f(t) \\
+            \Leftrightarrow \lambda f(t) = \lambda f(t) 
+        \end{gather*}
+        Was eine wahre Aussage ist.
+        Nun betrachten wir noch die Grenzen. Da \(f, g\) stetig sind besitzen sie die Stammfunktionen \(F, G\).
+        \begin{gather*}
+            \int_a^b \lambda f(t) dt = \lambda F(t) |_a^b = \lambda F(b) - \lambda F(a) = \lambda (F(b) - F(a)) = \lambda (F(t) |_a^b) = \lambda \int_a^b f(t) dt
+        \end{gather*}
+
+        \item \( \int_a^b f(t) dt = \int_a^c f(t) dt + \int_c^b f(t) dt \) für alle \(a < b < c\)
+        Da \(f\) stetig ist besitzt sie die Stammfunktion \(F\). Wir setzen die Grenzen ein und formen um
+        \begin{align*}
+            \int_a^b f(t) dt &= \int_a^c f(t) dt + \int_c^b f(t) dt \\
+            \Leftrightarrow F(t) |_a^b &= F(t) |_a^c + F(t) |_c^b \\
+            \Leftrightarrow F(t) |_a^b &= (F(c) - F(a)) + (F(b) - F(c)) \\
+            \Leftrightarrow F(t) |_a^b &= (F(c) - F(c)) + (F(b) - F(a)) \\
+            \Leftrightarrow F(t) |_a^b &= F(b) - F(a) \\
+            \Leftrightarrow F(t) |_a^b &= F(t) |_a^b
+        \end{align*}
+
+        \item \(\int_a^b f(t) dt = - \int_b^a f(t) dt\) \\
+        Da \(f\) stetig ist besitzt sie die Stammfunktion \(F\). Wir setzen die Grenzen ein und formen um
+        \[\int_a^b f(t) dt = (F(b) - F(a)) = -(F(b) - F(a)) = (F(a) - F(b)) = \int_b^a f(t) dt\]
+
+        \item \(\int_a^b f(t) dt = \int_a^b \Re(f)(t) dt + i \int_a^b \Im(f)(t) dt\) \\
+        \begin{align*}
+            &\int_a^b \Re(f)(t) dt + i \int_a^b \Im(f)(t) dt \\
+            =^{\text{mit (b)}} &\int_a^b \Re(f)(t) dt + \int_a^b i \Im(f)(t) dt \\
+            =^{\text{mit (a)}} &\int_a^b \Re(f)(t) + i \Im(f)(t) dt \\
+            = &\int_a^b f(t) dt
+        \end{align*}
+
+        \section*{A 10.3}
+        Auf handgeschriebenem Beiblatt
+
+        \section*{A 10.4}
+        Für \(\mathbb{R} \ni a < b \in \mathbb{R} \cup \{\infty\}\) und eine Funktion \(f: [a,b) \to \mathbb{R}\), sodass für alle \(a < r < b\) die Funktion \(f|_{[a,r]}\) Riemann integrierbar ist,
+        ist das unegentliche Riemann-Integral definiert durch
+        \[ \int_a^b f(x) dx := \lim_{r \to b} \int_a^r f(x) dx \]
+        falls der Grenzwert existiert. Exsistiert der Grenzwert, so heißt f (uneigentlich) Riemann-integrierbar. \\
+        Sei nun \(f: [1, \infty) \to [0, \infty) \) stetig und monoton fallend.
+        \begin{enumerate}[ label = (\alph*)]
+            \item Zeigen Sie, dass \(f\) genau dann unegentlich integrierbar ist, falls die Reihe
+            \( \sum_{n=1}^\infty f(n)\)
+            konvergent ist. \\
+
+            1. Die Reihe konvergiert \( \Rightarrow \) \(f\) ist uneigentlich integrierbar \\
+            Da \(f\) stetig ist, ist \(f\) integrierbar und besitzt eine Stammfunktion \(F\). \\
+            Seien \(c, d \in \mathbb{R} \subset [a, b) \). Dann existiert das Integral
+            \[ \int_c^d f(x) dx\]
+            und ist endlich.
+            Wir wollen nun diesen endlichen Integral nach oben abschätzen. Da \(f\) monoton fallend ist, ist der erste Wert in einem Intervall immer das Maximum des Intervalls
+            und der letzte Wert das Minimum. Auf einem Intervall \([n, n+1], \text{ mit } n \in \mathbb{N} \). Ist also \(f(n)\) das Maximum.
+            Die Summe 
+            \[ \int_c^d f(x) dx \leq \int_{\floor{c}}^{\floor{d+1}} f(x) dx  = \sum_{n = \floor{c}}^{\floor{d}} \int_n^{n+1} f(x) dx \leq \sum_{n = \floor{c}}^{\floor{d}} f(n) \cdot ((n+1)-n) \]
+            ist also immer größer gleich dem Integral. 
+            Da \(f\) nur auf die 0 und positive Zahlen abbildet ist das Integral über \(f\) monoton steigend und größer gleich 0.
+            Wir bilden nun den Grenzwert von \(d \to \infty \)
+            \[ \lim_{d \to \infty} \int_c^d f(x) dx \leq \lim_{d \to \infty} \sum_{n = \floor{c}}^{\floor{d}} f(n) \]
+            Da der Wert des Integrals monoton steigend ist mit größerem \(d\) und nach oben durch die Reihe beschränkt ist, konvergiert er. \\
+
+            2. \(f\) ist uneigentlich integrierbar \(\Rightarrow \) die Reihe konvergiert \\
+            Da der Wertebereich von \(f\), \([0, \infty)\) ist, ist jedes einzelne Element der Reihe größer gleich Null. Deswegen ist die Reihe monoton steigend.
+            \[ 0 \leq \sum_{n=\ceil{2}}^{\ceil{d}} \]
+            Analog zu oben ist diese Reihe eine Abschätzung nach unten für das Integral
+            \[ \int_2^{d} f(x) dx \]
+            Zusammen
+            \[0 \leq \sum_{n=\ceil{2}}^{\ceil{d}} \leq \int_2^{d} f(x) dx \]
+            Wir bilden nun den Grenzwert von \(d \to \infty \)
+            \[ \lim_{d \to \infty} 0 \leq \lim_{d \to \infty} \sum_{n=\ceil{2}}^{\ceil{d}} \leq \lim_{d \to \infty} \int_2^{d} f(x) dx \]
+            \[ 0 \leq \sum_{n=2}^{\infty} \leq \int_2^{\infty} f(x) dx \]
+            Da wir gegeben haben, dass \(f\) uneigentlich integrierbar ist, ist die Reihe nach oben und unten gegen einen reellen Wert begrenzt.
+            Sie muss also konvergieren. \(f(1) \in \mathbb{R}\)
+            \[ f(1) + \sum_{n=2}^{\infty} = \sum_{n=1}^{\infty} \]
+            Die Reihe \( \sum_{n=1}^{\infty} \) konvergiert.
+        \end{enumerate}
+
+        \item Untersuche Sie für welche \(\alpha \in \mathbb{R}\) die Reihe \(\sum_{n=1}^\infty n^{\alpha} \) konvergent ist. \\
+        Nach (a) muss, damit die Reihe konvergiert das uneigentliche Integral exestieren.
+        \begin{align*}
+            &\lim_{x \to \infty} \int_1^{x} f(t) dt \\
+            = &\lim_{x \to \infty} \int_1^{x} t^{\alpha} dt \\
+            = &\lim_{x \to \infty} (F(x) - F(1)) \\
+            = &\lim_{x \to \infty} (\frac{1}{\alpha + 1} x^{\alpha + 1} - \frac{1}{\alpha + 1} 1^{\alpha + 1}) \\
+            = &\lim_{x \to \infty} \frac{1}{\alpha + 1} (x^{\alpha + 1} - 1) \\
+        \end{align*}
+        Wir überprüfen nun die Konvergenz von \(\lim_{x \to \infty} \frac{1}{\alpha + 1} (x^{\alpha + 1} - 1) \) \\
+        1. Fall \(\alpha > -1\) \\
+        \(\alpha + 1\) ist in diesem Fall positiv. \(x\) hoch eine positive Zahl konvergiert also gegen undendlich.
+        Da das uneigentliche Integral aber nicht unendlich werden kann sind diese \(\alpha\) Werte nicht erlaubt. \\
+        2. Fall \(\alpha = -1\) \\
+        In diesem Fall ist die Reihe \(\sum_{n=1}^{\infty} n^{\alpha} = \sum_{n=1}^{\infty} \frac{1}{n}\) gerade die Harmonische Reihe.
+        Diese Reihe konvergiert nicht. \\
+        3. Fall \(\alpha < -1\) \\
+        \(\alpha + 1\) ist in diesem Fall negativ. \(x\) hoch eine negative Zahl konvergiert also gegen 0.
+        \(\lim_{x \to \infty} \frac{1}{\alpha + 1} (x^{\alpha + 1} - 1) \) = 0 \\\\
+        Die Reihe konvergiert also für alle \(\alpha < -1 \). Sonst divergiert sie. \\
+        Aus dieser Rechnung lässt sich auch das uneigentliche Integral von 1 bis \(\infty\) einer Funktion der Form \(x^{\alpha}\) als Formel von \(\alpha\) (für \(\alpha < -1\)) darstellen.
+        Das Integral existiert nur, wenn \(x^{\alpha + 1}\) im Grenzwertprozess 0 wird.
+        \(\int_1^{\infty} f(t) dt = \lim_{x \to \infty} \frac{1}{\alpha + 1} (x^{\alpha + 1} - 1) = \frac{1}{\alpha + 1} (0 - 1) = \frac{-1}{\alpha + 1}\)
+
+    \end{enumerate}
+\end{document}
