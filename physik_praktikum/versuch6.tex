@@ -1,0 +1,116 @@
+\documentclass{article}
+
+\usepackage[a4paper, top=2cm, bottom=3cm]{geometry}
+\usepackage{babel}[german]
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\newcommand{\proofeq}{\overset{!}{=}}
+\newcommand{\proofeqv}{\overset{!}{\Leftrightarrow}}
+\newcommand{\equivalent}{\overset{\scriptscriptstyle\wedge}{=}}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\date{7.03.2022}
+\title{Physikalisches Grundpraktikum Teil I (Mechanik und Thermodynamik) Versuch 6 Innendruck eines Luftballons}
+\author{Finn Wagner}
+
+\begin{document}
+    \maketitle
+
+    \section{Versuchsziel und Versuchsmethode}
+
+    \section{Auswertung}
+    Der Umfang einer Kugel in 2 Dimensionen ist der eines Kreises mit \(U = 2 \pi R\). \\
+    Umgeformt nach \(R\) ergibt sich \(\frac{U}{2 \pi} = r\) \\
+    Das Volumen einer Kugel betrögt \( V = \frac{4}{3} \pi r^3 \) \\
+    Es wurde zweimal der Umfang des Luftballons gemessen, einmal auf der Lange und Kurzen Seite.
+    Einmal vom Munstück bis oben über den Ballon und einmal die Tallie \\
+    Wir berechnen den Durchschnitt um das Volumen besser als Kugel zu approximieren \\
+    Um das Volumen aus dem Durchmesser zu berechnen setzten wir den Umfang ein \\
+    \[ V = \frac{4}{3} \pi {\left( \frac{U}{2 \pi} \right) }^3 = \frac{4}{3} \pi \frac{U^3}{8 \pi^3} = \frac{1}{6} \frac{U^3}{\pi^2}\]
+
+    Die Fläche des Luftballonhalses berechnet sich aus dem Durchmesser mit \\
+    \( A = \pi {\left(\frac{D}{2}\right)}^2 \) \\
+    Wir stellen die im Skript gegebene Gleichung \( V = A \cdot v_a \cdot t_a \)
+    nach \(v_a\) um. \\
+    \( v_a = \frac{V}{A \cdot t_a} \) \\
+    Jetzt setzen wir die Werte ein und vereinfachen:
+    \[ v_a = \frac{V}{A \cdot t_a} = \frac{\frac{1}{6} \frac{U^3}{\pi^2} }{ \pi {\left(\frac{D}{2}\right)}^2 \cdot t_a} = \frac{2}{3} \frac{U^3}{\pi^3 D^2 t_a} \]
+    Einheitenrechnung \\
+    \[ \frac{m^3}{m^3 \cdot s} = \frac{m}{s}\]
+
+    Wir berechnen aus den Versuchen jeweils die Ausströmgeschwindigkeiten \(v_1\) bis \(v_3\) \\
+    Zuerst berechnen wir den Innendurchmesser der Mundstücks aus den drei gemessenen Werten
+    \(1.15cm, 1.1cm, 1.2cm\). Das ergibt \( (1.15cm + 1.1cm + 1.2cm)/3 = 1.15cm = 0.0115m \) \\
+    Die Fläche \(A\) des Mundstücks beträgt \( \pi {\left(\frac{0.0115m}{2}\right)}^2 = 1,03869m^2\)
+
+    \subsection{Durchführung 1}
+    \(d_1 = 0.584 m\) \(d_2 = 0.511 m\) Durchschnitt der Luftballonumfänge \(0.5475m\) \\
+    Die beiden durchgeführten Zeitmessungen weichen stark voneinander ab: \\
+    \( (1.34s + 1.04s)/2 = 1.19s \) \\
+    Wir setzen in die oben berechnete Formel ein: \\
+    \( v_a = \frac{2}{3} \frac{{(0.5475m)}^3}{\pi^3 {(0.0115m )}^2 \cdot 1.19s} = 22.42 \frac{m}{s}\)
+
+    \subsection{Durchführung 3}
+    \(d_1 = 0.615 m\) \(d_2 = 0.564 m\) Durchschnitt der Luftballonumfänge \(0.5895m\) \\
+    Die beiden durchgeführten Zeitmessungen weichen stark voneinander ab: \\
+    \( (1.45s + 1.61s + 1.64s )/3 = 1,5\bar{6}s \) \\
+    Wir setzen in die oben berechnete Formel ein: \\
+    \( v_a = \frac{2}{3} \frac{{(0.5895m)}^3}{\pi^3 {(0.0115m )}^2 \cdot 1,5\bar{6}s} = 21,25877656 \frac{m}{s}\)
+
+    \subsection{Mittlere Geschwindigkeit}
+    \( 22.4217162 \frac{m}{s}, 24.8927916 \frac{m}{s}, 21,25877656 \frac{m}{s} \) \\
+    Wir berechnen den Mittelwert der Ausströmgeschwindigkeiten:
+    \(( 22.4217162 \frac{m}{s} + 24.8927916 \frac{m}{s} + 21,25877656 \frac{m}{s} )/3 = 22.85776145 \frac{m}{s}\)
+    -umrechnen mit Bernoulliformel
+
+    TODO Berücksichtigen Luftballon ausgeleiert über Versuche
+    TODO Wann ist der Luftballon eigentlich leer?
+    TODO Abhängig von Ballonbeschaffenheit
+    TODO Abhägig wie doll aufgepustet?
+
+    \subsection{Umrechnen zum Überdruck}
+    Die Bernoulligleichung verbindet Drücke und Strömungsgeschwindigkeiten. 
+    Wobei \(p_i\) der Innendruck des Luftballons und \(p_a\) der Außen/Umgebungsdruck\\
+    \(p_i = p_a + \frac{1}{2} \rho v_a^2\)
+    \(p_i - p_a\) ist die Druckdifferenz zwischen dem Inneren und Äußeren des Ballons. Also \\
+    \( (p_i - p_a) = \frac{1}{2} \rho v_a^2 \) \\
+    Gegeben in Aufgabe für \( P_a = 101 325 Pa\) und \(\rho = 1.2041 \frac{kg}{m^3} \) bei 20° Celsius auf Meereshöhe \\
+    Eingesetzt
+    \[ (p_i - p_a) = \frac{1}{2} \cdot 1.2041 \frac{kg}{m^3} \cdot {(22.85776145 \frac{m}{s})}^2 = 314.557 Pa \]
+    TODO Kommastellen wegmachen \\
+    TODO Beachten Vidoe nur mit 30fps aufgenommen Fehlerrechnung
+    \subsection{Versuch mit verkleinerter Öffnung}
+
+    \subsection{Weltall}
+    Umformungen
+    FAKTOR!!!
+
+    \section{Fehlerrechnung}
+    Die Längenmessungen wurden mit einenm handelsüblichen Maßband mit einer
+    Genauigkeit von 1mm gemacht. Abgelesene Werte wurden kaufmännisch auf den
+    nächsten Milimeter gerundet.
+
+    Die Zeitmessungen von unterschiedlichen Personen mit Handystoppuhren gemacht
+
+    Video aufgenommen ausgewertet mit Media Player Classic ausgewertet
+
+    mit 0.2.1.14 Fehlerfortpflanzung \\
+    \[ \Delta v_a = \sqrt{ {\left( \frac{ \partial v_a }{ \partial t } \cdot \Delta t \right)}^2 + {\left( \frac{ \partial v_a }{ \partial U } \cdot \Delta U \right)}^2 } \]
+    \(\Delta t \approx 0.1s\) aus der Aufgabenstellung, wohl eher \(0.25s\) Fehlerabweichung
+    \(\Delta U \approx 0.1mm\) aus der Aufgabenstellung, wohl eher \(0.5cm\) Fehlerabweichung durch ungenaues ansetzen des Maßbandes am Luftballon
+    Geschwindigkeitsfehler \( \frac{m}{s}\)
+    Die durchströmte Fläche A wird als fehlerlos angenommen
+
+    Funktion mit \(v_a\) in Fehlerfortplanzungsformel einsetzen und Messfehler einsetzen
+
+    Das Volumen des Luftballons ist sehr ungenau und weicht sehr stark vom reelen Wert ab, da mit Kugelvolumen berechnet wurde.
+
+
+
+
+\end{document}
