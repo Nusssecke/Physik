@@ -1,0 +1,198 @@
+\documentclass{article}
+
+\usepackage[a4paper, top=2cm, bottom=3cm]{geometry}
+\usepackage{babel}[german]
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\newcommand{\proofeq}{\overset{!}{=}}
+\newcommand{\proofeqv}{\overset{!}{\Leftrightarrow}}
+\newcommand{\equivalent}{\overset{\scriptscriptstyle\wedge}{=}}
+
+
+\date{12.12.2021}
+\title{Aufgabenblatt 8, Mathematik für Physiker 1}
+\author{Florian Adamczyk, Finn Wagner}
+
+\begin{document}
+    \maketitle
+
+    \section*{A 8.1}
+    Es seien \(x,y \in (0,\infty)\). Zeigen Sie, dass
+    \[ \ln(xy) \proofeq \ln(x) + \ln(y) \]
+    Es gilt die in Kapitel 4.1.3 hergeleitete Funktionalgleichung der \(e\) Funktion:
+    \[ e^{a+b} = e^a \cdot e^b \text{ mit } a,b \in \mathbb{R} \]
+    Wir setzen \(a := \ln(x) \) und \(b := \ln(y) \) mit \(a,b\) im Definitonsbereich der natürlichen Logarithmusfunktion also \(x,y \in (0, \infty ) \) \\
+    Damit folgt für \(e^a = e^{\ln(x)} = x\) und für \(e^b = e^{\ln(y)} = y\), mit dem natürlichen Logarithmus als Umkehrfunktion der Exponentialfunktion (Definiton 4.30)
+    Es gilt also:
+    \[e^{a+b} = e^a \cdot e^b = x \cdot y \]
+    Wir wenden nun den natürlichen Logarithmus auf beide Seiten der Gleichung an, da er stetig und monoton wachsend ist folgt:
+    \begin{gather*}
+        \ln(e^{a+b}) = \ln(xy) \\
+        \Leftrightarrow \ln(e^{\ln(x) + \ln(y)}) = \ln(x) + \ln(y) = \ln(xy)
+    \end{gather*}
+    
+    \section*{A 8.2}
+    Berechnen Sie die folgenden Grenzwerte für \(\alpha \in \mathbb{R} \)
+    \begin{enumerate}[ label = (\roman*) ]
+        \item \( \lim_{x \to 0} x^{\alpha} \ln(x) \) \\
+        
+        \begin{enumerate}[ label = \arabic*. Fall]
+            \item Ist \(\alpha > 0\): \\
+            Wir definieren \(y := \frac{1}{x} \Leftrightarrow x = \frac{1}{y}\):
+            Um die Variable des Grenzwerts ersetzen zu können, müssen den Grenzwert von \(y\) berechnen, wenn \(x \to 0\). \\
+            \( \lim_{x \to 0} y(x) = \lim_{x \to 0} \frac{1}{x} = \infty \). (Rechtsseitiger Grenzwert, da Logarithmus nur auf positiven Zahlen definiert) \\
+            Wir setzen \(x = \frac{1}{y}\) und ersetzen \(\lim_{x \to 0}\) mit \(\lim_{y \to \infty}\)
+            \[ \lim_{x \to 0} x^{\alpha} \ln(x) = \lim_{y \to \infty} { \left( \frac{1}{y} \right) }^{\alpha} \ln(\frac{1}{y}) \]
+            Wir formen nun die Exponenten um und wenden das dritte Logarithmusgesetze an, das aus der Defintion der verallgemeinerten Exponentialfunktion folgt:
+            \begin{gather*}
+                \lim_{y \to \infty} { \left( \frac{1}{y} \right) }^{\alpha} \ln(\frac{1}{y}) = \lim_{y \to \infty} \frac{1}{y^{\alpha}} \ln(y^{-1}) \\
+                = \lim_{y \to \infty} -\frac{1}{y^{\alpha}} \ln(y) = \lim_{y \to \infty} -\frac{\ln(y)}{y^{\alpha}} 
+            \end{gather*}
+            Sei nun \(z := \alpha \ln(y) \Leftrightarrow y = e^{\frac{z}{\alpha}} \). Wir berechnen den Grenzwert von \(z\), wenn \( x \to \infty \) \\
+            \( \lim_{y \to \infty} \alpha \ln(y)\) konvergiert nach Proposition 4.31 (c) gegen \( \infty \)
+            Wir formen nun zuerst um mit Definiton 4.32, der verallgemeinerten Exponentialfunktion und setzen dann \(z\) und den neuen Limes ein:
+            \begin{gather*}
+                \lim_{y \to \infty} -\frac{\ln(y)}{y^{\alpha}} = \lim_{y \to \infty} -\frac{\ln(y)}{e^{\alpha \ln(y)}} 
+                = \lim_{z \to \infty} -\frac{\ln(y)}{e^{\alpha \ln(y)}} \\
+                = \lim_{z \to \infty} -\frac{\ln(e^{\frac{z}{\alpha}})}{e^{z}}
+                = \lim_{z \to \infty} -\frac{\frac{z}{\alpha}}{e^z} = -\frac{1}{\alpha} \lim_{z \to \infty} \frac{z}{e^z} \\
+                = -\frac{1}{\alpha} \lim_{z \to \infty} z e^{-z}
+            \end{gather*}
+            Aus A8.2 (ii) mit \(\alpha = 1\) folgt:
+            \[ -\frac{1}{\alpha} \lim_{z \to \infty} \frac{z}{e^z} = -\frac{1}{\alpha} \cdot 0 = 0 \]
+
+            \item Ist \(\alpha \leq 0\)
+            Wir definieren \(\beta = |\alpha| \), \(\Rightarrow \beta > 0\)
+            \[\lim_{x \to 0} x^{\alpha} \ln(x) = \lim_{x \to 0}  x^{-\beta} \ln(x) = \lim_{x \to 0} \frac{\ln(x)}{x^{\beta}} \]
+            Da man bei stetigen Funktionen hier \(\ln(x)\)(aus Definiton 4.30) und \(\frac{1}{x^{\beta}}\)(als Verkettung stetiger Funktionen Satz 4.13)
+            die Funktion und den Grenzwert tauschen kann (Bem. 4.11) gilt:
+            \[ \lim_{x \to 0} \frac{\ln(x)}{x^{\beta}} = \lim_{x \to 0} \ln(x) \cdot \lim_{x \to 0} \frac{1}{x^{\beta}}\]
+            In Prop 4.31(c) ist gegeben \(\lim_{x \to 0} \ln(x) = -\infty \).
+            \(\frac{1}{x^{\beta}}\) konvergiert, da wir hier den rechtsseitigen Grenzwert betrachten (Logarithmus nur auf positiven Zahlen definiert)
+            und da \(\beta > 0\) mit Proposition 4.33(b) gegen \( \infty \).
+            Es folgt:
+            \[\lim_{x \to 0} \ln(x) \cdot \lim_{x \to 0} \frac{1}{x^{\beta}} = - \infty \]
+
+        \end{enumerate}
+
+        \item \( \lim_{x \to \infty} x^{\alpha} e^{-x}\) \\
+        Wir leiten zuerst eine Abschätzung der e-Funktion durch ihre Reihendarstellung her. Wir lassen alle bis auf einen der unendlich vielen Summanden weg:
+        \begin{gather*}
+            e^x = \sum_0^{\infty} \frac{x^k}{k!} > \frac{x^{k+1}}{(k+1)!} \text{ mit } k \in \mathbb{N} \\
+            \Rightarrow \frac{x^{k+1}}{(k+1)!} > \frac{x^{\alpha +1}}{(\alpha + 1)!} \text{ mit } k \geq \alpha \text{ und } \alpha \in \mathbb{R}
+        \end{gather*}
+        Hierraus folgt:
+        \begin{gather*}
+            e^x > \frac{x^{\alpha +1}}{(\alpha + 1)!} \ | \ \cdot (\alpha + 1)! \ | \ :  e^x
+            \Leftrightarrow (\alpha + 1)! > \frac{x^{\alpha +1}}{e^x} \ | \ :x \\
+            \Leftrightarrow \frac{(\alpha+1)!}{x} > x^{\alpha} e^{-x}
+        \end{gather*}
+        Sei O.B.d.A \(x > 0\), es spielt hier für den Grenzwert gegen Unendlich keine Rolle.
+        Damit ist \(x^{\alpha} > 0\), da \(x > 0\) und der Exponent die Zahl nicht negativ machen kann. Und \(e^{-x} > 0\) nach Beispiel 2.45.
+        Es gilt damit
+        \[ \frac{(\alpha+1)!}{x} > x^{\alpha} e^{-x} > 0 \]
+        Wir wenden das Sandwichkriterium an:
+        \begin{gather*}
+            \lim_{x \to \infty} \frac{(\alpha+1)!}{x} > \lim_{x \to \infty} x^{\alpha} e^{-x} > \lim_{x \to \infty} 0 \\
+            (\alpha+1)! \lim_{x \to \infty} \frac{1}{x} \geq \lim_{x \to \infty} x^{\alpha} e^{-x} \geq \lim_{x \to \infty} 0 \\
+            0 \geq \lim_{x \to \infty} x^{\alpha} e^{-x} \geq 0
+        \end{gather*}
+        Damit ist \( \lim_{x \to \infty} x^{\alpha} e^{-x} = 0\)
+
+    \end{enumerate}
+
+    \section*{A 8.3}
+    Sei \(P: \mathbb{R} \to \mathbb{R}\) ein Polynom ungeraden Grades also
+    \[P(x) = \sum_{k=0}^{n} a_k x^{k}, \quad a_k \in \mathbb{R}, \ a_n \neq 0, \ n \in \mathbb{N} \text{ ungerade}\]
+    Zeigen Sie das P eine Nullstelle hat.
+    
+    O.B.d.A sei \(a_n > 0\)
+    Wir berechnen nun den Grenzwert des Polynoms für \(x \to \infty \)
+    \begin{gather*}
+        \lim_{x \to \infty} \sum_{k=0}^{n} a_k x^{k}
+        = \lim_{x \to \infty} \left( a_n \cdot x^n + a_{n-2} \cdot x^{n-2} + \dotsm + a_0 \cdot x^0 \right) \\
+        = \lim_{x \to \infty} x^n \cdot \left( a_n + a_{n-2} \cdot \frac{x^{n-2}}{x^n} + \dotsm + a_0 \cdot \frac{1}{x^n} \right)
+    \end{gather*}
+    Da alle Monome stetig sind und mit Satz 4.13 auch alle ihre Linearkombinationen stetig sind (Korollar 4.14), sowie das Produkt
+    zweier stetiger Funktionen, ist auch der umgeformte Ausdruck stetig. Mit Bemerkung 4.11 ziehen wir den Grenzwert in den Ausdruck.
+    \begin{gather*}
+        \lim_{x \to \infty} x^n \cdot \left( a_n + a_{n-2} \cdot \frac{x^{n-2}}{x^n} + \dotsm + a_0 \cdot \frac{1}{x^n} \right) \\
+        = \lim_{x \to \infty} x^n \cdot \lim_{x \to \infty} \left( a_n + a_{n-2} \cdot \frac{x^{n-2}}{x^n} + \dotsm + a_0 \cdot \frac{1}{x^n} \right)
+    \end{gather*}
+    Der hintere Grenzwert ist \(a_n\),
+    da alle restlichen Terme Vielfache der Reihe \(\frac{1}{n^{\alpha}}, \ \alpha \in \mathbb{R}\) sind und diese gegen 0 konvergieren.
+    Übrig bleibt:
+    \[ \lim_{x \to \infty} \sum_{k=0}^{n} a_k x^{k} = a_n \lim_{x \to \infty} x^n = \infty \]
+    Da \(a_n > 0\) konvergiert dies zu \(\infty \). \\
+    Analog konvergiert
+    \[ \lim_{x \to -\infty} \sum_{k=0}^{n} a_k x^{k} = - \infty \]
+    Da die Funktion gegen \(\infty \) unad \(-\infty \) konvergiert,
+    existiert ein Intervall \([a,b]\) mit \(P(a) \cdot P(b) < 0\). Und da \(P(x)\) als Polynom auf ganz \(\mathbb{R}\) stetig ist,
+    können wir den Zwischenwertsatz anwenden. \\
+    Das Polynom ungeraden Grades nimmt also alle Werte in \(\mathbb{R}\) an, wird also auch insbesondere 0.
+
+
+    \section*{A 8.5}
+    {\Large Lies dir die Aufgabe mal durch und schau mal ob du verstehst was ich da so geschrieben habe. ;)}
+    \begin{enumerate}[ label = (\alph*)]
+        \item \( \lim_{x \to x_0} f(x) = z_0 \proofeqv f(x_0-) = z_0 = f(x_0+) \) \\
+        Die Funktion f sei definiert als \(f: I \to A\) \\
+        ''\(\Rightarrow \)'' Hinrichtung \\
+        Der bedseitige Grenzwert einer Funktion ist definiert als:
+        \[ \lim_{x \to x_0} f(x) = z_0 \equivalent
+        \text{ Für jede Folge } {(x_n)}_{n \in \mathbb{N}} \in I \backslash \{ x_0 \} \text{ mit } x_n \to x_0: \lim_{n \to \infty} f(x_n) = z_0 \]
+        Der linksseitige Grenzwert (Definition 4.19) einer Funktion ist definiert als: 
+        \[f(x_0-) = z_0 \equivalent \text{Für jede Folge } { (x_n)}_{n \in \mathbb{N}} \in I \backslash \{ x_0 \} \text{ mit }
+             x_n \to x_0 \text{ und } x_n < x_0 \ \forall \ n \in \mathbb{N}: \lim_{n \to \infty} f(x_n) = z_0 \]
+        Hierraus ist ersichtlich, das die Menge an Folgen aus der Definition des linksseitigen Grenzwerts,
+        mit dem zusätzlichen Kriterium \((x_n < x_0)\),
+        eine Teilmenge der Folgen aus der Definition des beidseitigen Grenzwerts ist. \\
+        Der linksseitige Grenzwert existiert also da die Konvergenz seiner Folgen gegeben ist.
+        Ebenso existiert der rechtsseitige Grenzwert da auch alle Folgen
+        mit der Einschränkung \((x_n > x_0)\) in der Menge der Folgen des beidseitigen Grenzwerts vorhanden sind.
+        Folglich gilt: \( f(x_0-) = z_0 = f(x_0+) \) \\
+        \linebreak
+        ''\( \Leftarrow \)'' Rückrichtung \\
+        Gegeben sind nun die Konvergenz des rechts- und linksseitigen Grenzwerts. Wir setzen ihre Definitionen ein (\(x_0 = y_0\)):
+        \[f(x_0-) = z_0 \equivalent \text{Für jede Folge } { (x_n)}_{n \in \mathbb{N}} \in I \backslash \{ x_0 \} \text{ mit }
+             x_n \to x_0 \text{ und } x_n < x_0 \ \forall \ n \in \mathbb{N}: \lim_{n \to \infty} f(x_n) = z_0 \]
+        \[f(y_0+) = z_0 \equivalent \text{Für jede Folge } { (y_n)}_{n \in \mathbb{N}} \in I \backslash \{ y_0 \} \text{ mit }
+             y_n \to y_0 \text{ und } y_n < y_0 \ \forall \ n \in \mathbb{N}: \lim_{n \to \infty} f(y_n) = z_0 \]
+        
+        Wir setzen nun die Definition der Konvergenz für \(\lim_{n \to \infty} f(x_n) = z_0\) ein:
+        \begin{equation}
+            \forall \ \varepsilon > 0 \ \exists \ N_x \in \mathbb{N}: |f(x_n) - z_0| < \varepsilon \ \forall \ n \geq N_x
+        \end{equation}
+        genauso für \(\lim_{n \to \infty} f(y_n) = z_0\)
+        \begin{equation}
+            \forall \ \varepsilon > 0 \ \exists \ N_y \in \mathbb{N}: |f(y_n) - z_0| < \varepsilon \ \forall \ n \geq N_y
+        \end{equation}
+        Sei \({(z_n)}_{n \in \mathbb{N}} \) eine Folge mit \(z_n \in I \backslash \{ z_0 \} \).
+        Ihre Folgenglieder seien nur Elemente der Folgen \((x_n)\) und \((y_n)\), mit der Bedingung
+        \[z_n = x_m \lor z_n = y_m \text{ mit } n \leq m, \ m \in \mathbb{N} \]
+        Betrachten wir nun die Konvergenz von \(\lim_{n \to \infty} f(z_n)\)
+        und setzen die Defintion der Konvergenz ein, erhalten wir:
+        \[\forall \ \varepsilon > 0 \ \exists \ M \in \mathbb{N}: |f(z_n) - z_0| < \varepsilon \ \forall \ n \geq M \]
+        Wir setzen nun \(M = \max \{N_x, N_y\} \). \\
+        Ist das Folgenglied \(z_n\) gerade \(x_n\), so ist \( |f(x_n) - z_0| < \varepsilon \) wahr,
+        da \(n > M \geq N_x\) also Gleichung (1) wahr ist. \\
+        Ist das Folgenglied \(z_n\) gerade \(y_n\), so ist \( |f(y_n) - z_0| < \varepsilon \) wahr,
+        da \(n > M \geq N_y\) also Gleichung (2) wahr ist.
+
+        \(\lim_{n \to \infty} f(z_n) \) konvergiert also gegen \(z_0\).
+        Da \((z_n)\), \((x_n)\) und \((y_n)\) beliebig waren konvergiert jede beliebige Folge \((z_n)\) gegen \(z_0\). \\
+        Es gilt also nach Definition des beidseitigen Grenzwertes 
+        \[\lim_{n \to \infty} f(z_n) = z_0 = \lim_{x \to x_0} f(x) = z_0\]
+
+        \item \(f\) ist stetig in \(x_0 \in I\) \( \proofeqv \) \(f(x_0-) = f(x_0) = f(x_0+)\)
+        Mit Satz 4.10 lässt sich die Stetigkeit von \(f\) im Punkt \(x_0\) umformulieren:
+        \[f \text{ ist stetig in } x_0 \equivalent \lim_{x \to x_0} f(x) = f(x_0) \]
+        Die Beweisführung ist equivalent zum Aufgabenteil \((a)\) mit der Ersetzung \(z_0 = f(x_0)\).
+        Es handelt sich hier um einen Spezialfall bei dem der Grenzwert auch von der Funktion angenommen wird.
+
+    \end{enumerate}
+
+\end{document}

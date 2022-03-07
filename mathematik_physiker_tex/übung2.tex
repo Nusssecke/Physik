@@ -1,0 +1,140 @@
+\documentclass{article}
+
+%\usepackage[a4paper, total={170mm,257mm}]{geometry}
+\usepackage[a4paper, top=2cm, bottom=3cm]{geometry}
+\usepackage{babel}[german]
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\date{28.10.2021}
+\title{Aufgabenblatt 2, Mathematik für Physiker 1}
+\author{Florian Adamczyk, Finn Wagner}
+
+\begin{document}
+    \maketitle
+    
+    \section*{A 2.1}
+        \subsection*{(i)}
+        \large Zeigen Sie, dass die Abbildung aus Bsp. 1.15 (b)
+        \(f : \mathbb{N} \times \mathbb{N} \to \mathbb{N}, (n, m) \mapsto 2^{n-1} (2m -1)\)
+        eine Bijektion ist.
+
+        Hierzu sei die Umkehrfunktion (Inverse) \(g\) definiert als: \\
+        Verfahren für \(x \in \mathbb{N}\) beliebig: 
+        Man suche für \(x\) die größte Zweierpotenz die es restlos teilt. Nun nehme man den Logarithmus zur Basis 2 dieser Potenz.
+        Hierzu addiere man 1. Dieser Wert ist \(n\).
+        Für \(m\) teile man \(x\) durch \(n\), addiere 1 hinzu und teile durch 2.
+
+        Es folgt das f, auf Grund der Existenz der Umkehrfunktion, bijektiv ist.
+        
+        \subsection*{(ii)}
+            Zeigen Sie für \(M_1, M_2\) abzählbar, dass auch \(M_1 \times M_2\) abzählbar ist. \\
+            In (i) ist \(f\) eine bijektive Abbildung \(\mathbb{N} \times \mathbb{N} \to \mathbb{N}\). \\
+            Für \(M_1, M_2\) existieren, da beide Menge abzählbar sind, die injektiven Abbildungen \(\phi_1(n): M_1 \to \mathbb{N}\) und \(\phi_2(n): M_2 \to \mathbb{N}\) \\
+            Sei \(g: (M_1, M_2) \to (\mathbb{N}, \mathbb{N}) \: (a, b) \mapsto (\phi_1(a), \phi_2(b))\).
+            \(g\) ist, da \(\phi_1, \phi_2\) beide injektiv waren, auch injektiv.
+            Nun verknüpft man f mit g. Die resultierende Funktion \(f \circ g\) ist, da f bijektiv ist, injektiv.
+            Somit existiert mit \(f \circ g\) eine Funktion die injektiv von \(M_1 \times M_2 \to \mathbb{N}\) abbildet.
+            Daraus folgt das \(M_1 \times M_2\) eine abzählbare Menge ist.
+
+        \section*{A 2.2}
+            \begin{enumerate}[label = (\roman*)]
+                \item Es seien \(f: A \to B\) und \(g: B \to C\) injektiv. Zeigen Sie, dass dann auch \(g \circ f\) injektiv ist. \\
+                f injektiv: \(\forall a_1, a_2 \in A \: f(a_1)=f(a_2) \Leftrightarrow a_1 = a_2\) \\
+                g injektiv: \(\forall b_1, b_2 \in B \: g(b_1)=g(b_2) \Leftrightarrow b_1 = b_2\) \\
+                Zu zeigen ist: \(\forall a_1, a_2 \in A \: g(f(a_1)) = g(f(a_2)) \Leftrightarrow a_1 = a_2 \) \\
+                \(\forall a_1, a_2 \in A \: g(f(a_1)) = g(f(a_2))\), da g injektiv ist, folgt \(f(a_1) = f(a_2)\). Da aber auch f injektiv ist, folgt
+                \(a_1 = a_2\) \\
+                Die linke Richtung gilt auch, da \(f\) und \(g\) Funktionen sind.
+                
+                Damit ist \(g \circ f\) injektiv
+
+                \item Zeigen Sie dass die Umkehrung falsch ist, indem Sie eine injektive Funktion \(g \circ f\) angeben, bei der \(f\) oder \(g\) nicht injektiv ist.\\
+                \(f: \mathbb{R}_+ \to \mathbb{R}: a \mapsto a\) \\
+                \(g: \mathbb{R} \to \mathbb{R}: a \mapsto a^2\) \\
+                \(g \circ f: \mathbb{R}_+ \to \mathbb{R}: a^2\) \\
+                f ist injektiv, g ist nicht injektiv, aber \(g \circ f\) ist wieder injektiv.
+            \end{enumerate}
+
+        \section*{A 2.3}
+        \begin{enumerate}
+            \item Annahme: \((0, 1) \subset \mathbb{R}\) ist abzählbar. Es folgt die Existenz einer surjektiven Abbildung
+            \(\phi: \mathbb{N} \to (0, 1)\) \\
+            Sei \(\phi(n)\) mit \(n \in \mathbb{N}\) \\
+            \(\phi(n) = 0,a_1^n a_2^n a_3^n a_4^n \dots \)
+            mit \(a_i^n \in \{0,1,2,3,4,5,6,7,8,9\} \)
+
+            \item Sei nun \(z = 0,d_1 d_2 d_3 d_4 \dots \)
+            mit
+            \begin{equation*}
+                d_i =
+                \begin{cases}
+                    1 & \text{für } a_n^n \neq 1 \\
+                    2 & \text{alle anderen Fälle}
+                \end{cases}
+            \end{equation*}
+            Diese Zahl weicht an der n-ten Nachkommastelle von allen \(\phi(n)\) ab.
+            Sie ist somit anders als alle \(\phi(n)\), weil sie sich immer and der n-ten Nachkommastelle unterscheidet.
+
+            \item Es gilt \(z \in (0,1 )\) aber \(z \notin \text{Bild}(\phi)\) was ein Wiederspruch zur Surjektivität von \(\phi \) ist.
+            Also war die Annahme falsch. \(q.e.d\)
+        \end{enumerate}
+
+        \section*{A 2.4}
+            \begin{enumerate}[label= (\roman*)]
+                \item Es sei K ein Körper. Zeigen sie, dass \(a \cdot 0 = 0\) für alle \(a \in K\) \\
+                Zu zeigen ist das das neutrale Element der Addition bei der Multiplikation mit einem anderen Element des Körpers sich selbst ergibt.
+                \begin{equation*}
+                    0 =^{\text{Erweitert mit} \: 0 \cdot a} 0 \cdot a - 0 \cdot a = (0+0) \cdot a - 0 \cdot a =^{\text{mit Distributivgesetz}} 0 \cdot a + 0 \cdot a - 0 \cdot a
+                    = 0 \cdot a + 0 = 0 \cdot a
+                \end{equation*}
+
+                \item Zeigen sie das \(\mathbb{F}_n\) kein Körper ist falls \(n \in \mathbb{N}\) keine Primzahl ist. \\
+                mit \(\mathbb{F}_n: (\mathbb{Z}_n, +, \cdot) \) \\
+                und \(\mathbb{Z}_m: (\{0, \dots, m-1\}, +, \cdot \) \\
+                wobei für \(\mathbb{Z}_m\) \(+, \cdot \) definiert sind als: \\
+                \begin{align*}
+                    + := \mathbb{Z}_m \times \mathbb{Z}_m \to \mathbb{Z}_m \: (z_1 + z_2) \mod z_m \\
+                    \cdot := \mathbb{Z}_m \times \mathbb{Z}_m \to \mathbb{Z}_m \: (z_1 \cdot z_2) \mod z_m
+                \end{align*}
+                
+
+                Ist n keine Primzahl, so lässt sie sich in ihre Primfaktoren zerlegen. Ein Primfaktor von n ist immer kleiener als n.
+                Nun teilt man die Menge der Primfaktoren in zwei \(P_1, P_2\) mit \(P_1, P_2 \neq \emptyset \). Seien \(q_1, q_2\) das Produkt aller Zahlen
+                der Mengen \(P_1\) und \(P_2\). Setzt man nun \(q_1 \text{und} q_2\) in \(\cdot \) ein. So ergibt \(q_1 \cdot q_2\) wieder n. \(n \mod n = 0\).
+                Da in diesem Ausdruch aber weder \(q_1\) noch \(q_2\) die Null waren ist die Multiplikation nicht nullteilerfrei.
+                Somit ist \(\mathbb{F}_n\) kein Körper.
+                
+                \item Für \(m \in \mathbb{N}\) definieren wir
+                    \begin{equation*}
+                        m\mathbb{Z} := \{m \cdot z | z \in \mathbb{Z}\}
+                    \end{equation*}
+                    Zeigen Sie dass \((m\mathbb{Z}, +)\) mit der von \(\mathbb{Z}\) induzierten Addition eine abelsche Gruppe ist. \\
+                    Wir überprüfen die Gruppen Axiome: \\
+                    \begin{enumerate}[label = (\alph*)]
+                        \item Assoziativgesetz
+                        \(\rightarrow \) Assoziativ mit \(+\) aus \(\mathbb{Z}\)
+                        \item Existenz eines neutralen Elements:
+                        Die 0 ist immer in \(m\mathbb{Z}\), weil \(0 \in \mathbb{Z}\) und \(m*0 = 0\)
+                        \item Existenz eines inversen Elements:
+                        \(\forall \: x \in m\mathbb{Z} \: \exists \: z \in \mathbb{Z}: x = m*z \Rightarrow (-x)= m*(-z)\)
+                        Mit \((-x) \in m\mathbb{Z}, \: \text{da} (-z) \in \mathbb{Z}\)
+                        \item Abgeschlossenheit von + auf \(\mathbb{Z}\):
+                        \(+: m\mathbb{Z} \times m\mathbb{Z} \to^{!} m\mathbb{Z}\) \\
+                        \(\forall a,b \in m\mathbb{Z} \: \exists \: x,y \mathbb{Z}\)
+                        \(a := mx, b:= my)\)
+                        \(\Rightarrow a+b = mx + my = m(x + y)\)
+                        Weil \((x+y) \in \mathbb{Z}\) ist + auf \(m\mathbb{Z}\) abgeschlossen.
+                        \item Abelsche Gruppe:
+                        \(
+                            a + b = mx + my = m (x + y) = m(y + x) = my + mx = b + a
+                        \)
+                    \end{enumerate}
+                    Zeigen Sie weiter, dass für alle \(z \in \mathbb{Z}\) und \(a \in I\)(\(I\) ist die Menge der Vielfachen von m) gilt, dass \(az \in m\mathbb{Z}\): \\
+                    Für beliebige \(a \in I\) und \(z \in \mathbb{Z}\) \\
+                    \(a := m * b \text{ mit } b \in \mathbb{N} \Rightarrow a * z = m * b * z \Rightarrow az \in m\mathbb{Z} \) weil \(b*z \in \mathbb{Z}\)
+
+                \end{enumerate}
+\end{document}

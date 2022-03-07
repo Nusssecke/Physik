@@ -1,0 +1,452 @@
+\documentclass{article}
+
+\usepackage[a4paper, top=2cm, bottom=3cm]{geometry}
+\usepackage{babel}[german]
+\usepackage{booktabs}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{amsmath}
+
+\date{26.11.2021}
+\title{Aufgabenblatt 6, Mathematik für Physiker 1}
+\author{Florian Adamczyk, Finn Wagner}
+
+\begin{document}
+    \maketitle
+
+    \section*{A6.1 Berechnen Sie die folgenden Reihenwerte}
+    \textbf{Hinweis:} Sie dürfen benutzen, dass \( \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6} \)
+
+    \begin{enumerate}[ label = (\roman*) ]
+        
+        \item \[\sum_{n=1}^{\infty} \frac{1}{ {(2n)}^2 } \] 
+        \[ \sum_{n=1}^{\infty} \frac{1}{ {(2n)}^2 } = \sum_{n=1}^{\infty} \frac{1}{ 4 n^2 } = \frac{1}{4} \sum_{n=1}^{\infty} \frac{1}{ n^2 } \]
+        Ersetzen mit dem Hinweis:
+        \[\frac{1}{4} \sum_{n=1}^{\infty} \frac{1}{ n^2 } = \frac{1}{4} \frac{\pi^2}{6} = \frac{\pi^2}{32} \]
+
+        \item \[ \sum_{n=1}^{\infty} \frac{1}{ {(2n + 1)}^2 } \]
+        Die Folgenglieder der Reihe \( \sum_{n=1}^{n} \frac{1}{n^2} \) sind die Kehrwerte der Quadrate aller natürlichen Zahlen.
+        \( \frac{1}{1^2}, \frac{1}{2^2}, \frac{1}{3^2}, \frac{1}{4^2}, \ldots \) \\
+        Die Folgenglieder der Reihe \( \sum_{n=1}^{n} \frac{1}{ {(2n)}^2 } \) sind die Kehrwerte der Quadrate aller geraden natürlichen Zahlen.
+        \( \frac{1}{2^2}, \frac{1}{4^2}, \frac{1}{6^2}, \frac{1}{8^2}, \ldots \) \\
+        Die Folgenglieder der Reihe \( \sum_{n=1}^{n} \frac{1}{ {(2n + 1)}^2 } \) sind die Kehrwerte der Quadrate aller ungeraden natürlichen Zahlen ab 3.
+        \( \frac{1}{3^2}, \frac{1}{5^2}, \frac{1}{7^2}, \frac{1}{9^2}, \ldots \) \\
+        Addiert man die beiden Reihen \( \sum_{n=1}^{n} \frac{1}{ {(2n)}^2 } \) und \( \sum_{n=1}^{n} \frac{1}{ {(2n + 1)}^2 } \),
+        so erhält eine Summe aller ihrer Folgenglieder,
+        \( \frac{1}{2^2}, \frac{1}{3^2}, \frac{1}{4^2}, \frac{1}{5^2}, \frac{1}{6^2}, \frac{1}{7^2}, \frac{1}{8^2}, \ldots, \frac{1}{ {( 2n+1 )}^2 } \) \\
+        Diese Summe ist äquivalent zu \( \sum_{n=1}^{ 2n+1 } \frac{1}{n^2} - 1 \), da das erste Element, die 1 fehlt.
+        \[ \sum_{n=1}^{ 2n+1 } \frac{1}{n^2} - 1 = \sum_{n=1}^{n} \frac{1}{ {(2n)}^2 } + \sum_{n=1}^{n} \frac{1}{ {(2n + 1)}^2 } \]
+        Bildet man nun den Grenzübergang \( n \to \infty \), so folgt:
+        \[ \sum_{n=1}^{ \infty } \frac{1}{n^2} - 1 = \sum_{n=1}^{ \infty } \frac{1}{ {(2n)}^2 } + \sum_{n=1}^{ \infty } \frac{1}{ {(2n + 1)}^2 } \]
+        Ersetzen wir nun die bereits bekannten Grenzwerte:
+        \[ \frac{\pi^2}{6} - 1 =  \frac{\pi^2}{32} + \sum_{n=1}^{ \infty } \frac{1}{ {(2n + 1)}^2 } \ | \ -\frac{\pi^2}{32}  \]
+        \[ \Leftrightarrow \sum_{n=1}^{ \infty } \frac{1}{ {(2n + 1)}^2 } = \frac{ \pi^2 }{8} - 1 \]
+
+    \end{enumerate}
+   
+    \section*{A6.3 Beweisen Sie das \( \mathbb{C} \) ein Körper ist}
+    Sei eine komplexe Zahl gegeben als \( (x, y) \in \mathbb{R}^2 \) \\
+    Die Addition (+) mit \( (x_1, y_1), (x_2, y_2) \in \mathbb{R}^2 \) sei definiert als: \\
+    \[ (x_1, y_1) + (x_2, y_2) := (x_1 + x_2, \ y_1 + y_2) \]
+    Die Mulitplikation (\( \cdot \)) mit \( (x_1, y_1), (x_2, y_2) \in \mathbb{R}^2 \) sei definiert als: \\
+    \[ (x_1, y_1) \cdot (x_2, y_2) := (x_1 x_2 - y_1 y_2, \ x_1 y_2 + x_2 y_1) \]
+    \textbf{Zu zeigen: \( (\mathbb{R}^2, +) \) ist eine abelsche Gruppe } \\
+    Wir weisen nun alle Eigenschaften einer Gruppe für \( (\mathbb{R}^2, +) \) nach:
+
+    \begin{enumerate}[ label = (\alph*) ]
+
+        \item Zu zeigen: Es gilt das Assoziativgesetz: \\
+        Seien \( (x_1, y_1), (x_2, y_2), (x_3, y_3) \in \mathbb{R}^2 \) \\
+        Es soll also gelten:
+        \[ (x_1, y_1) + ((x_2, y_2) + (x_3, y_3)) =^! ((x_1, y_1) +  (x_2, y_2)) + (x_3, y_3) \]
+        Wir setzen die Definition der Addition für die hinteren beiden Terme ein:
+        \[ (x_1, y_1) + ((x_2, y_2) + (x_3, y_3)) = (x_1, y_1) + (x_2 + x_3, y_2 + y_3) \]
+        Wir setzen erneut die die Definition der Addition ein:
+        \[ (x_1, y_1) + (x_2 + x_3, y_2 + y_3) = ( x_1 + ( x_2 + x_3 ) , y_1 + ( y_2 + y_3) ) \]
+        Wir klammern die Terme um, da die reelen Zahlen ein Körper sind und für sie das Assoziativgesetz gilt:
+        \[ ( x_1 + ( x_2 + x_3 ) , y_1 + ( y_2 + y_3) ) = ( ( x_1 + x_2 ) + x_3, (y_1 + y_2) + y_3 ) \]
+        Wir setzen die Definition der Addition rückwärts ein:
+        \[ ( ( x_1 + x_2 ) + x_3, (y_1 + y_2) + y_3 ) = ( x_1 + x_2, y_1 + y_2 ) + (x_3, y_3) \]
+        Wir setzen die Definition der Addition erneut rückwärts ein:
+        \[ ( x_1 + x_2, y_1 + y_2 ) + (x_3, y_3) = ((x_1, y_1) +  (x_2, y_2)) + (x_3, y_3) \]
+        Damit gilt für die Gruppe \( (\mathbb{R}^2, +) \) das Assoziativgesetz
+
+        \item Zu zeigen: Es existiert ein neutrales Element
+        \[ \exists \ n \in \mathbb{R}^2 : \forall \ a \in \mathbb{R}^2: a + n = n + a = a \]
+        Seien \( (0, 0), \ (x, y) \in \mathbb{R}^2 \) \\
+        \[ (0, 0) + (x, y) = (x + 0, y + 0) = (x , y) \]
+        \[ (x, y) + (0, 0) = (0 + x, 0 + y) = (x , y) \]
+        Wir haben gezeigt, dass ein neutrales Element existiert. Dieses Element ist \( (0, 0) \)
+
+        \item Zu zeigen: Es existiert ein inverses Element
+        \[ \forall \ a \in \mathbb{R}^2 : \exists \ b \in \mathbb{R}^2 : a + b = b + a = n \]
+        Seien \( (x, y), (-x, -y) \in \mathbb{R}^2 \)
+        \[ (x, y) + (-x, -y) = (x - x, y - y) = (0, 0) \]
+        \[ (-x, -y) + (x, y) = (-x + x, -y + y) = (0, 0) \]
+        Wir haben gezeigt, dass zu jedem Element \((x , y)\) ein inverses Element \((-x, -y)\) existiert.
+
+        \item Zu zeigen: Die Gruppe ist abelsch: \\
+        \( \forall a, b \in \mathbb{R}^2: a + b = b + a\) \\
+        Seien \( (x_1, y_1), \ (x_2, y_2) \in \mathbb{R}^2 \) \\
+        Wir setzen die Definition der Addition ein:
+        \[ (x_1, y_1) + (x_2, y_2)  = (x_1 + x_2 , y_1 + y_2) \]
+        Wir ändern die Reihenfolge der Variablen, da die reelen Zahlen ein Körper sind und für sie das Kommutativgesetz gilt:
+        \[ (x_1 + x_2 , y_1 + y_2) = (x_2 + x_1 , y_2 + y_1) \]
+        Wir setzen die Definition der Addition rückwärts ein:
+        \[ (x_2 + x_1 , y_2 + y_1) = (x_2, y_2) + (x_1, y_1) \]
+        Damit ist die Gruppe abelsch. Es gilt das Kommutativgesetz.
+
+    \end{enumerate}
+
+    \textbf{Zu zeigen: \( (\mathbb{R}^2 \backslash \{(0, 0)\}, \cdot) \) ist eine abelsche Gruppe }
+    Wir weisen nun alle Eigenschaften einer Gruppe für \( (\mathbb{R}^2 \backslash \{(0, 0)\}, \cdot) \) nach:
+
+    \begin{enumerate}[ label = (\alph*) ]
+
+        \item Zu zeigen: Es gilt das Assoziativgesetz: \\
+        Seien \( (x_1, y_1), (x_2, y_2), (x_3, y_3) \in \mathbb{R}^2 \) \\
+        Es soll also gelten:
+        \[ (x_1, y_1) \cdot ((x_2, y_2) \cdot (x_3, y_3)) =^! ((x_1, y_1) \cdot  (x_2, y_2)) \cdot (x_3, y_3) \]
+        Wir setzen die Definition der Mulitplikation für die hinteren beiden Terme ein:
+        \[ (x_1, y_1) \cdot ((x_2, y_2) \cdot (x_3, y_3)) = (x_1, y_1) \cdot (x_2 x_3 - y_2 y_3, x_2 y_3 + x_3 y_2) \]
+        Wir setzen erneut die die Definition der Mulitplikation ein:
+        \begin{gather*}
+            (x_1, y_1) \cdot (x_2 x_3 - y_2 y_3, x_2 y_3 + x_3 y_2) = \\
+            ( x_1 (x_2 x_3 - y_2 y_3) - y_1 (x_2 y_3 + x_3 y_2) , x_1 (x_2 y_3 + x_3 y_2) + (x_2 x_3 - y_2 y_3) y_1 )
+        \end{gather*}    
+        Wir klammern die Terme um, da die reelen Zahlen ein Körper sind und für sie Assoziativ- und Distributivgesetz gelten:
+        \begin{gather*}
+            ( x_1 (x_2 x_3 - y_2 y_3) - y_1 (x_2 y_3 + x_3 y_2) , x_1 (x_2 y_3 + x_3 y_2) + (x_2 x_3 - y_2 y_3) y_1 ) = \\
+            ( x_1 x_2 x_3 - x_1 y_2 y_3 - y_1 x_2 y_3 - y_1 x_3 y_2, x_1 x_2 y_3 + x_1 x_3 y_2 + x_2 x_3 y_1 - y_2 y_3 y_1) \\
+            ( x_1 x_2 x_3 - y_1 y_2 x_3 - x_1 y_2 y_3 - x_2 y_1 y_3, x_1 x_2 y_3 - y_1 y_2 y_3 + x_3 x_1 y_2 + x_3 x_2 y_1) \\
+            ( (x_1 x_2 - y_1 y_2) x_3 - (x_1 y_2 + x_2 y_1) y_3, (x_1 x_2 - y_1 y_2) y_3 + x_3 (x_1 y_2 + x_2 y_1) )
+        \end{gather*}
+        Wir setzen die Definition der Mulitplikation rückwärts ein:
+        \begin{gather*}
+            ( (x_1 x_2 - y_1 y_2) x_3 - (x_1 y_2 + x_2 y_1) y_3, (x_1 x_2 - y_1 y_2) y_3 + x_3 (x_1 y_2 + x_2 y_1) ) = \\
+            (x_1 x_2 - y_1 y_2, x_1 y_2 + x_2 y_1) \cdot (x_3, y_3)
+        \end{gather*}
+        Wir setzen die Definition der Mulitplikation erneut rückwärts ein:
+        \[ (x_1 x_2 - y_1 y_2, x_1 y_2 + x_2 y_1) \cdot (x_3, y_3) = ((x_1, y_1) \cdot (x_2, y_2)) \cdot (x_3, y_3) \]
+        Damit gilt für die Gruppe \( (\mathbb{R}^2 \backslash \{(0, 0)\}, \cdot) \) das Assoziativgesetz
+
+        \item Zu zeigen: Es existiert ein neutrales Element
+        \[ \exists \ n \in \mathbb{R}^2 \backslash \{(0, 0)\} : \forall \ a \in \mathbb{R}^2 \backslash \{(0, 0)\} : a + n = n + a = a \]
+        Seien \( (1, 0), \ (x, y) \in \mathbb{R}^2 \backslash \{(0, 0)\} \) \\
+        \[ (1, 0) \cdot (x, y) = (1 \cdot x - 0 \cdot y, 1 \cdot y + x \cdot 0) = (x , y) \]
+        \[ (x, y) \cdot (1, 0) = (x \cdot 1 - y \cdot 0, x \cdot 0 + 1 \cdot y) = (x , y) \]
+        Wir haben gezeigt, dass ein neutrales Element existiert. Dieses Element ist \( (1, 0) \)
+
+        \item Zu zeigen: Es existiert ein inverses Element
+        \[ \forall \ a \in \mathbb{R}^2 \backslash \{(0, 0)\}: \exists \ b \in \mathbb{R}^2 \backslash \{(0, 0)\}: a + b = b + a = n \]
+        Seien \( (x, y), ( \frac{x}{ x^2 + y^2 }, - \frac{y}{ x^2 + y^2 } ) \in \mathbb{R}^2 \backslash \{(0, 0)\} \)
+        \begin{gather*}
+            (x, y) \cdot ( \frac{x}{ x^2 + y^2 }, - \frac{y}{ x^2 + y^2 } ) = \\
+            ( x \cdot \frac{x}{ x^2 + y^2 } - y \cdot - \frac{y}{ x^2 + y^2 }, x \cdot - \frac{y}{ x^2 + y^2 } + \frac{x}{ x^2 + y^2 } \cdot y ) = \\
+            ( \frac{ x^2 + y^2 }{ x^2 + y^2 }, \frac{ -xy + xy }{ x^2 + y^2} ) = (1, 0)
+        \end{gather*}
+        Weiterhin:
+        \begin{gather*}
+            ( \frac{x}{ x^2 + y^2 }, - \frac{y}{ x^2 + y^2 } ) \cdot (x, y) = \\
+            ( \frac{x}{ x^2 + y^2 } \cdot x - - \frac{y}{ x^2 + y^2 } \cdot y, \frac{x}{ x^2 + y^2 } \cdot y + x \cdot - \frac{y}{ x^2 + y^2 } ) = \\
+            ( \frac{ x^2 + y^2 }{ x^2 + y^2 }, \frac{ -xy + xy }{ x^2 + y^2} ) = (1, 0)
+        \end{gather*}
+        Wir haben gezeigt, dass zu jedem Element \((x , y)\) ein inverses Element \(( \frac{x}{ x^2 + y^2 }, - \frac{y}{ x^2 + y^2 } )\) existiert.
+
+        \item Zu zeigen: Die Gruppe ist abelsch: \\
+        \( \forall a, b \in \mathbb{R}^2 \backslash \{(0, 0)\}: a + b = b + a\) \\
+        Seien \( (x_1, y_1), \ (x_2, y_2) \in \mathbb{R}^2 \backslash \{(0, 0)\} \) \\
+        Wir setzen die Definition der Mulitplikation ein:
+        \[ (x_1, y_1) \cdot (x_2, y_2)  = (x_1 x_2 - y_1 y_2, \ x_1 y_2 + x_2 y_1) \]
+        Wir ändern die Reihenfolge der Variablen, da die reelen Zahlen ein Körper sind und für sie das Kommutativgesetz gilt:
+        \[ (x_1 x_2 - y_1 y_2, \ x_1 y_2 + x_2 y_1) = (x_2 x_1 - y_2 y_1, \ x_2 y_1 + x_1 y_2) \]
+        Wir setzen die Definition der Mulitplikation rückwärts ein:
+        \[ (x_2 x_1 - y_2 y_1, \ x_2 y_1 + x_1 y_2) = (x_2, y_2) \cdot (x_1, y_1) \]
+        Damit ist die Gruppe abelsch. Es gilt das Kommutativgesetz.
+
+    \end{enumerate}
+
+    \textbf{Zu zeigen: Es gilt das Distributivgesetz:}
+    \[ \forall \ (x_1, y_1), (x_2, y_2), (x_3, y_3) \in \mathbb{R}^2: (x_1, y_1) \cdot ((x_2, y_2) + (x_3, y_3)) = (x_1, y_1) \cdot (x_2, y_2) + (x_1, y_1) \cdot (x_3, y_3) \]
+    Wir setzen die Definition der Addition ein:
+    \[ (x_1, y_1) \cdot ((x_2, y_2) + (x_3, y_3)) = (x_1, y_1) \cdot (x_2 + x_3, y_2 + y_3) \]
+    Wir setzen zweimal die Definition der Mulitplikation ein:
+    \[ (x_1, y_1) \cdot (x_2 + x_3, y_2 + y_3) = ( x_1 (x_2 + x_3) - y_1 (y_2 + y_3), x_1 (y_2 + y_3) + (x_2 + x_3) y_1 ) \]
+    Wir klammern die Terme um, da die reelen Zahlen ein Körper sind und für sie Assoziativ- und Distributivgesetz gelten:
+    \begin{gather*}
+        ( x_1 (x_2 + x_3) - y_1 (y_2 + y_3), x_1 (y_2 + y_3) + (x_2 + x_3) y_1 ) = \\
+        ( x_1 x_2 + x_1 x_3 - y_1 y_2 - y_1 y_3, x_1 y_2 + x_1 y_3 + x_2 y_1 + x_3 y_1 ) = \\
+        ( (x_1 x_2 - y_1 y_2) + ( x_1 x_3 - y_1 y_3), (x_1 y_2 + x_2 y_1) + (x_1 y_3 + x_3 y_1) )
+    \end{gather*}
+    Wir setzen die Definition der Addition rückwärts ein:
+    \begin{gather*}
+        ( (x_1 x_2 - y_1 y_2) + ( x_1 x_3 - y_1 y_3), (x_1 y_2 + x_2 y_1) + (x_1 y_3 + x_3 y_1) ) = \\
+         (x_1 x_2 - y_1 y_2, x_1 y_2 + x_2 y_1 ) + ( x_1 x_3 - y_1 y_3, x_1 y_3 + x_3 y_1 )
+    \end{gather*}
+    Wir setzen zweimal die Definition der Mulitplikation rückwärts ein:
+    \begin{gather*}
+         (x_1 x_2 - y_1 y_2, x_1 y_2 + x_2 y_1 ) + ( x_1 x_3 - y_1 y_3, x_1 y_3 + x_3 y_1 ) = \\
+         (x_1, y_1) \cdot (x_2, y_2) + (x_1, y_1) \cdot (x_3, y_3)
+    \end{gather*}
+    Damit gilt das Distributivgesetz. \\
+
+    Alle Bedingunge sind erfüllt. \( (\mathbb{R}^2 \backslash \{(0, 0)\}, \cdot) \) ist ein Körper. \\
+    \( \mathbb{C} \) ist ein Körper.
+
+    
+    \section*{A6.3 Beweisen sie die folgenden Gleichungen für \(w, c \in \mathbb{C} \). }
+    
+    \begin{enumerate}[ label = (\alph*) ]
+        \item \( \overline{ w+z} = \overline{w} + \overline{z} \) und \( \overline{wz} = \overline{wz} \) \\
+        \begin{enumerate}
+
+            \item \( \overline{ w+z} =^! \overline{w} + \overline{z} \) \\
+            Seien die komplexen Zahlen \(w, z\) auch dargestellt als \(w = x_1 + iy_1 \) und \(z = x_2 + iy_2 \) \\
+            Wir setzen die Definitionen der komplexen Zahlen \(w, z\) ein:
+            \[ \overline{ w+z} = \overline{ x_1 + iy_1 + x_2 + iy_2} = \overline{ (x_1 + x_2) + i (y_1 + y_2) } \]
+            Das komplex Konjugierte unterscheid sich von der komplexen Zahl in einem negierten Imaginärteil:
+            \[ \overline{ (x_1 + x_2) + i (y_1 + y_2) } = (x_1 + x_2) - i (y_1 + y_2) = (x_1 - iy_1) + (x_2 -iy_2) \]
+            Wir sehen, dass hier die Summe der komplex Konjugierten von \(w\) und \(z\) steht:
+            \[ (x_1 - iy_1) + (x_2 -iy_2) = \overline{w} + \overline{z} \] \\
+
+            Außerdem gilt es zu beweisen dass \( \overline{wz} =^! \overline{wz} \) gilt. \\
+            \[ \overline{wz} = \overline{wz} \ | \ \backslash \ \overline{wz}\]
+            \[ \frac{\overline{wz}}{\overline{wz}} = \frac{\overline{wz}}{\overline{wz}}\]
+            \[ 1 = 1\]
+            Dies ist eine wahre Aussage. Es gilt \( \overline{wz} = \overline{wz} \)
+        
+            \item \( Re(z) = \frac{1}{2} ( z + \overline{z} ) \) und \( Im(z) = \frac{1}{2i} ( z - \overline{z} ) \) \\
+            Zuerst \( Re(z) =^! \frac{1}{2} ( z + \overline{z} ) \) \\
+            Sei die komplexe Zahl \(z\) auch dargestellt als \(z = x + iy \) \\
+            Wir setzen die Definition von \(z\) ein:
+            \[ \frac{1}{2} ( z + \overline{z} ) = \frac{1}{2} ( (x + iy) + (x -iy))  = \frac{1}{2} (2x) = x = Re(z) \]
+
+            Nun \( Im(z) =^! \frac{1}{2i} ( z - \overline{z} ) \) \\
+            Sei die komplexe Zahl \(z\) auch dargestellt als \(z = x + iy \) \\
+            Wir setzen die Definition von \(z\) ein:
+            \[ \frac{1}{2i} ( z - \overline{z} ) = \frac{1}{2i} ( (x + iy) - (x -iy))  = \frac{1}{2i} (2iy) = y = Im(z) \]
+
+            \item \( |z| \geq 0 \) und \( |z| = 0 \Leftrightarrow z = 0\) \\
+            Zuerst \( |z| \geq^! 0 \) \\
+            Sei die komplexe Zahl \(z\) auch dargestellt als \(z = x + iy \) \\
+            \[ |z| = | x + iy | = \sqrt{ x^2 + y^2 } \]
+            Da das Quadrat einer Zahl immer größer gleich 0 ist, die Summe zweier Quadrate ebenfalls positiv.
+            Die Wurzel einer positiven Zahl ist positiv. \\
+            Es gilt:
+            \[ |z| = \sqrt{ x^2 + y^2 } \geq 0 \]
+
+            Nun \( |z| = 0 \Leftrightarrow^! z = 0\) \\
+            Sei die komplexe Zahl \(z\) auch dargestellt als \(z = x + iy \) \\
+            \[ |z| = | x + iy | = \sqrt{x^2 + y^2 } = 0 \]
+            \begin{gather*}
+                \sqrt{x^2 + y^2 } = 0 \ | \ Quadrieren \\
+                x^2 + y^2 = 0 \ | \ -y^2 \\
+                x^2 = -y^2
+            \end{gather*}
+            Die Gleichung \( x^2 = -y^2 \) ist nur für \( x=y=0\) erfüllt, damit ist \(z = 0\).
+
+            \item \( |\overline{z}| = |z| \)  und \( z \cdot \overline{z} = {|z|}^2 \) \\
+            Zuerst \( |\overline{z}| = |z| \) \\
+            Sei die komplexe Zahl \(z\) auch dargestellt als \(z = x + iy \) \\
+            Das komplex Konjugierte von \(z\) ist damit \(\overline{z} = x - iy\)
+            Wir setzen in die Gleichung ein, und führen den Betrag aus:
+            \[ |\overline{z}| = |x - iy| = \sqrt{ x^2 + {(-y)}^2 } = \sqrt{ x^2 + y^2 } \]
+            Dies ist aber gerade der Betrag der Zahl \(z\):
+            \[ \sqrt{ x^2 + y^2 } = |x + iy| = |z| \]
+
+            Nun \( z \cdot \overline{z} = {|z|}^2 \) \\
+            Wir setzen die Definition von \(z\) und \(\overline{z}\) ein und vereinfachen:
+            \[ z \cdot \overline{z} = (x + iy) (x -iy) = x^2 - iyx + iyx -i^2y^2 \]
+            Wir schreiben hier um mit \( a = {\sqrt{a}}^2 \)
+            \[ x^2 + y^2 = {\sqrt{ x^2 + y^2}}^2 = {|z|}^2 \]
+            Weil \( \sqrt{x^2 + y^2}\) der Betrag von \(z\) ist.
+
+            \item \( |w \cdot z| = |w| \cdot |z| \) \\
+            Seien die komplexen Zahlen \(w, z\) auch dargestellt als \(w = x_1 + iy_1 \) und \(z = x_2 + iy_2 \) \\
+            Wir setzen die Definitionen der komplexen Zahlen \(w, z\) ein:
+            \[ |w \cdot z| = | (x_1 + iy_1) (x_2 + iy_2) | = | x_1 x_2 + x_1 i y_2 + iy_1 x_2 + iy_1 iy_2 |  = | (x_1 x_2 - y_1 y_2) + i( x_1 y_2 +  y_1 x_2) | \]
+            Wir formen so um, das die komplexe Zahl in Realteil und Imaginärteil gegliedert ist:
+            \[ | x_1 x_2 + x_1 i y_2 + iy_1 x_2 + iy_1 iy_2 | = | (x_1 x_2 - y_1 y_2) + i( x_1 y_2 +  y_1 x_2) | \]
+            Wir setzen die Definition des komplexen Betrags ein:
+            \[ | (x_1 x_2 - y_1 y_2) + i( x_1 y_2 +  y_1 x_2) | = \sqrt{ {(x_1 x_2 - y_1 y_2)}^2 + {( x_1 y_2 +  y_1 x_2)}^2 } \]
+            Wir multiplizieren die Klammern aus:
+            \begin{gather*}
+                \sqrt{ {(x_1 x_2 - y_1 y_2)}^2 + {( x_1 y_2 +  y_1 x_2)}^2 } = \\
+                \sqrt{ (x_1^2 x_2^2 -2 (x_1 x_2 - y_1 y_2) + y_1^2 y_2^2 ) + (x_1^2 y_2^2 + 2( x_1 y_2 +  y_1 x_2) + y_1^2 x_2^2) } 
+            \end{gather*}
+            Wir kürzen den Term \( (2 (x_1 x_2 - y_1 y_2)) \)
+            \begin{gather*}
+                \sqrt{ (x_1^2 x_2^2 -2 (x_1 x_2 - y_1 y_2) + y_1^2 y_2^2 ) + (x_1^2 y_2^2 + 2( x_1 y_2 +  y_1 x_2) + y_1^2 x_2^2) } = \\
+                \sqrt{ x_1^2 x_2^2 + y_1^2 y_2^2 + x_1^2 y_2^2 + y_1^2 x_2^2 }
+            \end{gather*}
+            Wir faktorisieren den Ausdruck:
+            \[ \sqrt{ x_1^2 x_2^2 + x_1^2 y_2^2 + y_1^2 x_2^2 + y_1^2 x_2^2 } = \sqrt{ (x_1^2 + y_1^2)  (x_2^2 + y_2^2) } \]
+            Wir teilen auf zwei Wurzeln auf:
+            \[ \sqrt{ (x_1^2 + y_1^2)  (x_2^2 + y_2^2) } = \sqrt{ x_1^2 + y_1^2} \sqrt{ x_2^2 + y_2^2 } \]
+            Wir setzen die Definition des komplexen Betrags rückwärts ein:
+            \[ \sqrt{ x_1^2 + y_1^2 } \sqrt{ x_2^2 + y_2^2 } = |x_1 + iy_1| | x_2 + iy_2| \]
+            Wir setzen die Definitionen der komplexen Zahlen \(w, z\) rückwärts ein:
+            \[ |x_1 + iy_1| | x_2 + iy_2| = |w| |z| \]
+
+            \item \( |w + z| \leq |w| + |z| \) und \( |w-z| \geq |w||-|z|| \) \\
+            Zuerst \( |w + z| \leq^! |w| + |z| \) \\
+            Seien die komplexen Zahlen \(w, z\) auch dargestellt als \(w = x_1 + iy_1 \) und \(z = x_2 + iy_2 \) \\
+            Wir setzen die Definitionen der komplexen Zahlen \(w, z\) ein:
+            \begin{align*}
+                |w + z| &\leq |w| + |z| \\
+                \Leftrightarrow |(x_1 + iy_1) + (x_2 + iy_2) | &\leq |x_1 + iy_1| + |x_2 + iy_2| \\ 
+                \Leftrightarrow |(x_1 + x_2) + i(y_1 + y_2) | &\leq |x_1 + iy_1| + |x_2 + iy_2| \\
+            \end{align*}
+            Wir setzen die Definition des komplexen Betrags ein und quadrieren:
+            \begin{align*}
+                |(x_1 + x_2) + i(y_1 + y_2) | &\leq |x_1 + iy_1| + |x_2 + iy_2| \\
+                \Leftrightarrow \sqrt{ {(x_1 + x_2)}^2 + {(y_1 + y_2)}^2 } &\leq \sqrt{ x_1^2 + y_1^2} + \sqrt{ x_2^2 + y_2^2} \ | \ Quadrieren \\
+                \Leftrightarrow {(x_1 + x_2)}^2 + {(y_1 + y_2)}^2 &\leq {\left( \sqrt{ x_1^2 + y_1^2} + \sqrt{ x_2^2 + y_2^2} \right)}^2 \ | \ Ausmultiplizieren \\
+                \Leftrightarrow x_1^2 + 2 x_1 x_2 + x_2^2 + y_1^2 + 2 y_1 y_2 + y_2^2 &\leq \\ 
+                x_1^2 + y_1^2 + 2 \sqrt{ x_1^2 + y_1^2} & \sqrt{ x_2^2 + y_2^2} + x_2^2 + y_2^2 \\
+            \end{align*}
+            Wir können die Terme \(x_1^2\), \(x_2^2\), \(y_1^2\) und \(y_2^2\) kürzen:
+            \begin{align*}
+                x_1^2 + 2 x_1 x_2 + x_2^2 + y_1^2 + 2 y_1 y_2 + y_2^2 &\leq \\ 
+                x_1^2 + y_1^2 + 2 \sqrt{ x_1^2 + y_1^2} & \sqrt{ x_2^2 + y_2^2} + x_2^2 + y_2^2 \\
+                \Leftrightarrow 2 x_1 x_2  + 2 y_1 y_2 \leq 2 \sqrt{ (x_1^2 + y_1^2) (x_2^2 + y_2^2) }
+            \end{align*}
+            Nun quadrieren wir erneut und multiplizieren aus:
+            \begin{align*}
+                2 x_1 x_2  + 2 y_1 y_2 &\leq 2 \sqrt{ (x_1^2 + y_1^2) (x_2^2 + y_2^2) } \ | \ Quadrieren \\
+                \Leftrightarrow  {( 2 x_1 x_2  + 2 y_1 y_2 )}^2 &\leq 4 (x_1^2 + y_1^2) (x_2^2 + y_2^2) \ | \ Ausmultiplizieren \\
+                \Leftrightarrow  4 x_1^2 x_2^2 + 8 x_1 x_2 y_1 y_2 + 4 y_1^2 y_2^2 & \leq 4 x_1^2 x_2^2 + 4 x_1^2 y_2^2 + 4 y_1^2 x_2^2 + 4 y_1^2 y_2^2
+            \end{align*}
+            Wir können die Terme \(4 x_1^2 x_2^2\) und \(4 y_1^2 y_2^2\) kürzen:
+            \begin{align*}
+               4 x_1^2 x_2^2 + 8 x_1 x_2 y_1 y_2 + 4 y_1^2 y_2^2 & \leq 4 x_1^2 x_2^2 + 4 x_1^2 y_2^2 + 4 y_1^2 x_2^2 + 4 y_1^2 y_2^2 \\
+               \Leftrightarrow 8 x_1 x_2 y_1 y_2 & \leq 4 x_1^2 y_2^2 + 4 y_1^2 x_2^2 \ | \ - 8 x_1 x_2 y_1 y_2 \\
+               \Leftrightarrow 0 & \leq 4 x_1^2 y_2^2 - 8 x_1 x_2 y_1 y_2 + 4 y_1^2 x_2^2 \ | \ \backslash 4 \\
+               \Leftrightarrow 0 & \leq x_1^2 y_2^2 - 2 x_1 x_2 y_1 y_2 + y_1^2 x_2^2\ | \ Faktorisieren \\
+               \Leftrightarrow 0 & \leq {(x_1 y_2 - y_1 x_2)}^2
+            \end{align*}
+            Das Quadrat einer Zahl ist immer größer gleich Null. Damit ist dies eine wahre Aussage.
+            Es gilt also \( |w + z| \leq |w| + |z| \)
+
+            Nun \( |w-z| \geq^! ||w|-|z|| \): \\
+            Wir setzen die Definitionen der komplexen Zahlen \(w, z\) ein:
+            \begin{align*}
+                |w-z| \geq ||w|-|z|| \\
+                \Leftrightarrow | x_1 + iy_1 - x_2 -iy_2 | & \geq ||x_1 + iy_1| - |x_2 + iy_2|| \\
+                \Leftrightarrow | x_1 - x_2 + i(y_1 -y_2) | & \geq ||x_1 + iy_1| - |x_2 + iy_2|| \\
+            \end{align*}
+            Wir setzen die Definition des komplexen Betrags ein und quadrieren:
+            \begin{align*}
+                | x_1 - x_2 + i(y_1 -y_2) | & \geq ||x_1 + iy_1| - |x_2 + iy_2|| \\
+                \Leftrightarrow \sqrt{ {(x_1 - x_2)}^2 + {( y_1 - y_2)}^2 } & \geq | \sqrt{ x_1^2 + y_1^2 } - \sqrt{ x_2^2 + y_2^2 } | \ | \ Quadrieren \\
+                \Leftrightarrow {(x_1 - x_2)}^2 + {( y_1 - y_2)}^2 & \geq { \sqrt{ x_1^2 + y_1^2 } - \sqrt{ x_2^2 + y_2^2 } }^2 \ | \ Ausmultiplizieren \\
+                \Leftrightarrow x_1^2 - 2 x_1 x_2 + x_2^2 + y_1^2 - 2 y_1 y_2 + y_2^2 & \geq \\
+                (x_1^2 + y_1^2) - &2 \sqrt{ x_1^2 + y_1^2 } \sqrt{ x_2^2 + y_2^2 } + (x_2^2 + y_2^2)
+            \end{align*}
+            Wir können die Terme \(x_1^2\), \(x_2^2\), \(y_1^2\) und \(y_2^2\) kürzen:
+            \begin{align*}
+                x_1^2 - 2 x_1 x_2 + x_2^2 + y_1^2 - 2 y_1 y_2 + y_2^2 & \geq \\
+                (x_1^2 + y_1^2) - &2 \sqrt{ x_1^2 + y_1^2 } \sqrt{ x_2^2 + y_2^2 } + (x_2^2 + y_2^2) \\
+                \Leftrightarrow - 2 x_1 x_2 - 2 y_1 y_2 & \geq - 2 \sqrt{ x_1^2 + y_1^2 } \sqrt{ x_2^2 + y_2^2 }
+            \end{align*}
+            Wir dividieren durch \(-1\), dabei dreht sich die Umgleichung um:
+            \begin{align*}
+                2 x_1 x_2 + 2 y_1 y_2 & \leq 2 \sqrt{ x_1^2 + y_1^2 } \sqrt{ x_2^2 + y_2^2 }
+            \end{align*}
+            Nun quadrieren wir erneut und multiplizieren aus:
+            \begin{align*}
+                2 x_1 x_2 + 2 y_1 y_2 & \leq 2 \sqrt{ x_1^2 + y_1^2 } \sqrt{ x_2^2 + y_2^2 } \ | \ Quadrieren \\
+                \Leftrightarrow {\left( 2 x_1 x_2 + 2 y_1 y_2 \right)}^2 & \leq 4 (x_1^2 + y_1^2) (x_2^2 + y_2^2) \ | \ Ausmultiplizieren \\
+                \Leftrightarrow 4 x_1^2 x_2^2 + 8 x_1 x_2 y_1 y_2 + 4 y_1^2 y_2^2 & \leq 4 x_1^2 x_2^2 + 4 x_1^2 y_2^2 + 4 x_2^2 y_1^2 + 4 y_1^2 y_2^2
+            \end{align*}
+            Wir können die Terme \(4 x_1^2 x_2^2\) und \(4 y_1^2 y_2^2\) kürzen:
+            \begin{align*}
+                4 x_1^2 x_2^2 + 8 x_1 x_2 y_1 y_2 + 4 y_1^2 y_2^2 & \leq 4 x_1^2 x_2^2 + 4 x_1^2 y_2^2 + 4 x_2^2 y_1^2 + 4 y_1^2 y_2^2 \\
+                \Leftrightarrow 8 x_1 x_2 y_1 y_2 & \leq 4 x_1^2 y_2^2 + 4 x_2^2 y_1^2 \ | \ - 8 x_1 x_2 y_1 y_2 \\
+                \Leftrightarrow 0 & \leq 4 x_1^2 y_2^2 - 8 x_1 x_2 y_1 y_2 + 4 y_1^2 x_2^2 \ | \ \backslash 4 \\
+                \Leftrightarrow 0 & \leq x_1^2 y_2^2 - 2 x_1 x_2 y_1 y_2 + y_1^2 x_2^2\ | \ Faktorisieren \\
+                \Leftrightarrow 0 & \leq {(x_1 y_2 - y_1 x_2)}^2
+            \end{align*}
+            Das Quadrat einer Zahl ist immer größer gleich Null. Damit ist dies eine wahre Aussage.
+            Es gilt also: \( |w-z| \geq^! ||w|-|z|| \) \\
+        \end{enumerate}
+
+        \section*{A6.4 Beweisen Sie die Konvergenz der folgenden Folgen und bestimmen Sie deren Grenzwert}
+        \begin{enumerate}[ label = (\roman*) ]
+
+            \item \(z_n := \frac{i^n}{3^n}\) \\
+            Das Epsilonkriterium:
+            \[\forall \: \epsilon > 0 \; \exists \; N_{\epsilon} \in \mathbb{N} : \forall n \geq N_{\epsilon}: \: |x_n - x| < \epsilon
+                \text{ mit } \epsilon \in \mathbb{R} \text{ und } n \in \mathbb{N}\]
+            Zu zeigen: Die Folge \((z_n)\) konvergiert gegen 0 \\
+            Es soll also gelten \(|\frac{i^n}{3^n} -0|\)
+            Die Folge \(i^n\) ist zyklisch und nimmt die folgenden Werte an: \\
+            \(i\) für \(n \% 4 = 1\),  \(-1\) für \(n \% 4 = 2\), \(-i\) für \(n \% 4 = 3\), \(1\) für \(n \% 4 = 0\) \\
+            Damit ist ein Folgenglied entweder komplett reel: \(\frac{-1}{3^n}\) und \(\frac{1}{3^n}\), sein Betrag damit \(\frac{1}{3^n}\) \\
+            Oder es ist komplett imaginär: \(\frac{-i}{3^n}\) und \(\frac{i}{3^n}\), sein Betrag damit ebenfalls \(\frac{1}{3^n}\) \\
+            Der Betrag eines jeden Folgengliedes ist gleich, er ist \(\frac{1}{3^n}\). \\
+            Wir setzen die Definition der komlexen Wurzel ein:
+            \[ |\frac{i^n}{3^n} -0| = |\frac{i^n}{3^n}| = \frac{1}{3^n} < \frac{1}{n}\]
+            Die Aussage \(n < 3^n\) ist triviall mit vollständiger Induktion zu zeigen. \\
+            Es gilt nun also: \\
+            \[\forall \: \epsilon > 0 \; \exists \; N_{\epsilon} \in \mathbb{N} : \forall n \geq N_{\epsilon}: \: \frac{1}{n} < \epsilon
+                \text{ mit } \epsilon \in \mathbb{R} \text{ und } n \in \mathbb{N}\]
+            Dies ist eine wahre Aussage. Diese ist equivalent zum Supremumsaxiom (Folgerungen aus dem Supremumsaxiom (c)).
+            Also war die Annahme richtig. 0 ist der Grenzwert und die Folge konvergiert.
+
+            \item \( \sum_{n=0}^{\infty} \frac{i^n}{3^n} \) \\
+            \[ |\frac{i^n}{3^n} -0| = |\frac{i^n}{3^n}| = \sqrt{ {\left( \frac{1}{3^n} \right)}^2 } = \frac{1}{3^n} = {\frac{1}{3}}^n\]
+            Die Reihe lässt sich also auch schreiben als \(\sum_{n=0}^{\infty} {\frac{1}{3}}^n \), dass ist die geometrische Reihe.
+            Da \(\frac{1}{3}\) kleiner als 1 ist, konvergiert sie. Die Reihe konvergiert gegen \(\frac{1}{1-q}\) also \(\frac{3}{2}\)
+            
+            \item \(z_n := \frac{ 3n^2 - 4n + in^2 }{ 4in^2 -in + 1 } \) \\
+            Wir erweitern den Bruch mit dem komplex Konjugierten des Nenners:
+            \[ \frac{ 3n^2 - 4n + in^2 }{ 4in^2 -in + 1 } = \frac{ 3n^2 - 4n + in^2 }{ 4in^2 -in + 1 } \frac{ -4in^2 +in + 1 }{ -4in^2 +in + 1 } \]
+            Nun ausmultiplizieren und vereinfachen:
+            \begin{gather*}
+                \frac{ (3n^2 - 4n + in^2) (-4in^2 +in + 1) }{ (4in^2 -in + 1) (-4in^2 +in + 1) } = \\
+                \frac{ -4 i^2 n^4 + i^2 n^3 - 12 i n^4 + 19i n^3 - 3 i n^2 + 3 n^2 - 4 n }{ - 16 i^{2} n^{4} + 8 i^{2} n^{3} - i^{2} n^{2} + 1 } = \\
+                \frac{ 4 n^4 - n^3 - 12 i n^4 + 19i n^3 - 3 i n^2 + 3 n^2 - 4 n }{ 16 n^4 - 8 n^3 + n^2 + 1 } = \\
+                \frac{ 4 n^4 - n^3 + 3 n^2 - 4n }{16 n^4 - 8 n^3 + n^2 + 1} + i\frac{ -12 n^4 +19 n^3 -3n^2}{16 n^4 - 8 n^3 + n^2 + 1} = \\
+                \frac{n^4}{n^4} \frac{ 4 - n^{-1} + 3 n^{-2} - 4n^{-3} }{16 - 8 n^{-1} + n^{-2} + 1n^{-4} } 
+                    + \frac{n^4}{n^4} i\frac{ -12 + 19 n^{-1} -3n^{-2} }{16 - 8 n^{-1} + n^{-2} + 1 n^{-4}} = \\
+                \frac{ 4 - n^{-1} + 3 n^{-2} - 4n^{-3} }{16 - 8 n^{-1} + n^{-2} + 1n^{-4} } 
+                    + i\frac{ -12 + 19 n^{-1} -3n^{-2} }{16 - 8 n^{-1} + n^{-2} + 1 n^{-4}}
+            \end{gather*}
+            Nach Satz 3.10 konvergiert eine komplexe Folge gegen die Summe des Grenzwertes ihrer Folge für den reelen Anteil
+            und des Grenzwertes der Folge für ihren imaginären Anteil. Wir untersuchen diese beiden Teilfolgen nun auf Konvergenz.
+            Wir wissen das \(\frac{1}{n}\) gegen 0 konvergiert. Mit Satz 2.27(e) folgt daraus dass auch \(\frac{1}{n} \frac{1}{n} = \frac{1}{n^2}\) gegen 0 konvergiert.
+            Ebenso alle weiteren Folgen \(n^{-x}\). Mit Satz 2.27(c) und Satz 2.27(e) folgt das eine Summe von \(\lambda \: n^{-x}\) ebenfalls gegen Null konvergiert.
+            Bildet man nun den Grenzwert so gehen alle Terme außer (4, 16) für die erste Folge und (-12, 16) für die zweite gegen Null. Der Grenzwert ist also:
+            \begin{gather*}
+                \lim_{n \to \infty} \frac{ 4 - n^{-1} + 3 n^{-2} - 4n^{-3} }{16 - 8 n^{-1} + n^{-2} + 1n^{-4} }
+                + i\frac{ -12 + 19 n^{-1} -3n^{-2} }{16 - 8 n^{-1} + n^{-2} + 1 n^{-4}} = \\ 
+                \lim_{n \to \infty} \frac{ 4 - n^{-1} + 3 n^{-2} - 4n^{-3} }{16 - 8 n^{-1} + n^{-2} + 1n^{-4} }
+                + \lim_{n \to \infty} i\frac{ -12 + 19 n^{-1} -3n^{-2} }{16 - 8 n^{-1} + n^{-2} + 1 n^{-4}} \\ 
+                = \frac{4}{16} + i\frac{-12}{16} = \frac{1}{4} - i\frac{3}{4}
+            \end{gather*}
+            Die Folge konvergiert gegen \(\frac{1}{4} - i\frac{3}{4}\)
+
+            \item \(z_n := \frac{3n - 1}{9n + 100} + \frac{n^2}{n^2 + n + 1}i \) \\
+            Umformen:
+            \begin{gather*}
+                \frac{3n - 1}{9n + 100} + \frac{n^2}{n^2 + n + 1}i = \\
+                \frac{n}{n} \frac{3 - 1n^{-1}}{9 + 100n^{n-1}} + \frac{n^2}{n^2} \frac{1}{1 + n^{-1} + n^{-2}}i \\
+                \frac{3 - 1n^{-1}}{9 + 100n^{n-1}} + \frac{1}{1 + n^{-1} + n^{-2}}i
+            \end{gather*}
+            Nach Satz 3.10 konvergiert eine komplexe Folge gegen die Summe des Grenzwertes ihrer Folge für den reelen Anteil
+            und des Grenzwertes der Folge für ihren imaginären Anteil. Wir untersuchen diese beiden Teilfolgen nun auf Konvergenz.
+            Wir wissen das \(\frac{1}{n}\) gegen 0 konvergiert. Mit Satz 2.27(e) folgt daraus dass auch \(\frac{1}{n} \frac{1}{n} = \frac{1}{n^2}\) gegen 0 konvergiert.
+            Ebenso alle weiteren Folgen \(n^{-x}\). Mit Satz 2.27(c) und Satz 2.27(e) folgt das eine Summe von \(\lambda \: n^{-x}\) ebenfalls gegen Null konvergiert.
+            Bildet man nun den Grenzwert so gehen alle Terme außer (3, 9) für die erste Folge und (1, 1) für die zweite Folge gegen Null. Der Grenzwert ist also:
+            \begin{gather*}
+                \lim_{n \to \infty} \frac{3 - 1n^{-1}}{9 + 100n^{n-1}} + \frac{1}{1 + n^{-1} + n^{-2}}i = \\
+                \lim_{n \to \infty} \frac{3 - 1n^{-1}}{9 + 100n^{n-1}} + \lim_{n \to \infty} \frac{1}{1 + n^{-1} + n^{-2}}i = \\
+                \frac{3}{9} + \frac{1}{1}i = \frac{1}{3} + i
+            \end{gather*}
+            Die Folge konvergiert gegen \(\frac{1}{3} + i\)
+        \end{enumerate}
+    \end{enumerate}
+
+\end{document}
