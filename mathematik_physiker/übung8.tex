@@ -105,9 +105,6 @@
     \end{enumerate}
 
     \section*{A 8.3}
-    Wir formulieren die Summendarstellung des Polynoms um mit \(k' = 2k + 1\)
-    \[P(x) = \sum_{k=0}^{n} a_{(2k + 1)} x^{2k + 1} \]
-
     Sei \(P: \mathbb{R} \to \mathbb{R}\) ein Polynom ungeraden Grades also
     \[P(x) = \sum_{k=0}^{n} a_k x^{k}, \quad a_k \in \mathbb{R}, \ a_n \neq 0, \ n \in \mathbb{N} \text{ ungerade}\]
     Zeigen Sie das P eine Nullstelle hat.
@@ -119,7 +116,7 @@
         = \lim_{x \to \infty} \left( a_n \cdot x^n + a_{n-2} \cdot x^{n-2} + \dotsm + a_0 \cdot x^0 \right) \\
         = \lim_{x \to \infty} x^n \cdot \left( a_n + a_{n-2} \cdot \frac{x^{n-2}}{x^n} + \dotsm + a_0 \cdot \frac{1}{x^n} \right)
     \end{gather*}
-    Da alle Monome stetig sind und mit Satz 4.13 auch alle ihre Linearkombinationen stetig sind, sowie das Produkt
+    Da alle Monome stetig sind und mit Satz 4.13 auch alle ihre Linearkombinationen stetig sind (Korollar 4.14), sowie das Produkt
     zweier stetiger Funktionen, ist auch der umgeformte Ausdruck stetig. Mit Bemerkung 4.11 ziehen wir den Grenzwert in den Ausdruck.
     \begin{gather*}
         \lim_{x \to \infty} x^n \cdot \left( a_n + a_{n-2} \cdot \frac{x^{n-2}}{x^n} + \dotsm + a_0 \cdot \frac{1}{x^n} \right) \\
@@ -132,7 +129,7 @@
     Da \(a_n > 0\) konvergiert dies zu \(\infty \). \\
     Analog konvergiert
     \[ \lim_{x \to -\infty} \sum_{k=0}^{n} a_k x^{k} = - \infty \]
-    Da die Funktion gegen \(\infty \) und \(-\infty \) konvergiert,
+    Da die Funktion gegen \(\infty \) unad \(-\infty \) konvergiert,
     existiert ein Intervall \([a,b]\) mit \(P(a) \cdot P(b) < 0\). Und da \(P(x)\) als Polynom auf ganz \(\mathbb{R}\) stetig ist,
     können wir den Zwischenwertsatz anwenden. \\
     Das Polynom ungeraden Grades nimmt also alle Werte in \(\mathbb{R}\) an, wird also auch insbesondere 0.
