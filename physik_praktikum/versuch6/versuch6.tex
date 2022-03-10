@@ -165,11 +165,11 @@
         % 2/3 * U^3 /(pi^3 D^2 t) where U=0.5685, D=0.0115, t=1.2
 
     \subsubsection{Durchführung 3}
-        Luftballonumfang: \(a = \SI{0.615}{m}, b = \SI{0.564}{m} \). Durchschnitt: \(U = \SI{0.5859}{m} \) \\
+        Luftballonumfang: \(a = \SI{0.615}{m}, b = \SI{0.564}{m} \). Durchschnitt: \(U = \SI{0.5895}{m} \) \\
         Ausströmzeit \( \frac{\SI{1.45}{s} + \SI{1.61}{s} + \SI{1.64}{s} }{2} = \SI{1.57}{s} \) \\
         Einsetzen der Werte in Formel (\ref{eq:calc_velocity}):
-        \[ v_a = \frac{2}{3} \frac{{( \SI{0.5859}{m} )}^3}{\pi^3 {( \SI{0.0115}{m} )}^2 \cdot \SI{1.57}{s} } = \SI{20.8274}{\frac{m}{s}} \]
-        % 2/3 * U^3 /(pi^3 D^2 t) where U=0.5859, D=0.0115, t=1.57 TODO:???
+        \[ v_a = \frac{2}{3} \frac{{( \SI{0.5859}{m} )}^3}{\pi^3 {( \SI{0.0115}{m} )}^2 \cdot \SI{1.57}{s} } = \SI{21.2136}{\frac{m}{s}} \]
+        % 2/3 * U^3 /(pi^3 D^2 t) where U=0.5895, D=0.0115, t=1.57 
 
     \subsection{Mittlere Geschwindigkeit}
     \( 22.4217162 \frac{m}{s}, 24.8927916 \frac{m}{s}, 21.25877656 \frac{m}{s} \) \\
@@ -177,7 +177,7 @@
     \begin{equation} \label{val:mittlere_geschw}
         \frac{ (22.4217162 \frac{m}{s} + 24.8927916 \frac{m}{s} + 21.25877656 \frac{m}{s}) }{3} = \bar{v}_a 22.85776145 \frac{m}{s}
     \end{equation}
-    TODO: Kommastellen
+    TODO: Kommastellen TODO Updaten
 
     \subsection{Umrechnen zum Überdruck}
     Wir verwenden Formel\ref{eq:ballon_druck} mit \(p_i\) als Innendruck des Luftballons und \(p_a\) als Außen/Umgebungsdruck.
@@ -224,6 +224,9 @@
 
             Die durchströmte Fläche A wird als fehlerlos angenommen.
 
+        TODO: Alle Größen erklären!
+        TODO: Sonstiges hochladen?
+
         \subsection{Fehlerforpflanzung}
             Den Fehler für die berechnete Geschwindigkeit bekommen wir mithilfe der Gaußschen Fehlerfortpflanzung (0.2.1.14 aus\cite{AnleitungPraktikum})
             Wir setzen die Funktion zur Berechnung von \(v_a\)\ref{eq:calc_velocity} durch die beiden (fehlerbehafteten, D ist fehlerlos)
@@ -269,6 +272,7 @@
                 % sqrt((4 b^2 U^4)/(D^4 π^6 t^2) + (4 a^2 U^6)/(9 D^4 π^6 t^4)) with U = 0.5859, D=0.0115, t=1.57, a=0.25, b=0.009
 
         \subsection{Mittlere Geschwindigkeitsfehler}
+            TODO: Idee Fehler über mittelwerte der gemessenen Größen
             TODO: Darf man das? TODO: Update
             Der mittlere Fehler der Geschwindigkeiten liegt bei
             \begin{equation} \label{val:geschw_fehler}
@@ -279,8 +283,6 @@
         \subsection{Fehler umrechnen auf Überdruck}
             Den Fehler des Überdrucks erhält man durch einsetzen des Ergebnisses für den Fehler der mittleren Geschwindigkeit\ref{val:geschw_fehler}
             in die Gleichung zur Berechnung des Überdrucks\ref{eq:ballon_uberdruck}:
-            TODO: Emily meint Gaußsche Fehlerfortpflanzung Wäre rho * delta v * v
-            TODO: Oder einfach einsetzen
             \begin{equation}
                 \Delta (p_i - p_a) = 
             \end{equation}
@@ -289,12 +291,16 @@
         TODO: ?
         
     \subsection{Weltall}
-        Wir berechnen \(t_a^{Weltall}\)
+        Wir berechnen \(t_a^{Weltall}\) über den gesamten Druck im Luftballon \( p_i \)
         Umformungen
         TODO: Faktor wie viel länger!!!
     
     
     \section{Ergebnis}
+        TODO: Formel für Druck in Abhängigkeit in von Umfang und Zeit
+        TODO: Diagramm mit Werten und Druckfunktion von Zeit und Umfang, in zwei Grafen mit jeweils einer Variable.
+        TODO: Geschwindigkeitsdiagramm mit Fehlerbalken
+
         Hier die korrigierten Werte?
         TODO: Kommastellen wegmachen \\
 
