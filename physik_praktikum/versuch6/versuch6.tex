@@ -91,7 +91,7 @@
 
     \subsection{Aufbau und Material}
     \begin{itemize}
-        \item Maßband mit mindestensTODO:?->5 Milimetergenauigkeit, am besten ein weiches Rollbandmaß
+        \item Maßband mit mindestens Milimetergenauigkeit, am besten ein weiches Rollbandmaß
         \item Stoppuhr (Genauigkeit mindestens \( \frac{1}{10}s \))
         \item Smartphone zur Videoaufnahme
     \end{itemize}
@@ -100,7 +100,7 @@
     \begin{enumerate}
         \item Bestimmen sie den Durchmesser D des Mundstückes.
         \item Blasen sie den Luftballon auf. Halten sie das Ende zu. Bestimmen Sie den Umfang mithilfe des Maßband.
-        Messen Sie den Umfang von Mundstück bis zum obersten Punkt (Umfang a), sowie den Umfang der \glqq{}Tallie\grqq{} (Umfang b) TODO:Ref Schematik.
+        Messen Sie den Umfang von Mundstück bis zum obersten Punkt (Umfang a), sowie den Umfang der \glqq{}Tallie\grqq{} (Umfang b) wie in Abbildung\ref{fig:messungen}
         \item Lassen Sie die Luft aus dem Ballon ausströmen. Der Luftballon muss nicht festgehalten werden.
         Messen Sie die Zeit, in welcher die Luft aus dem Luftballon entweicht.
         Nutzen Sie die Stoppuhr oder werten sie die Zeit am Video aus. Für Videoaufnahmen empfielt es sich den Ballon festzukleben.\ref{fig:Festgeklebt}
@@ -124,8 +124,11 @@
     \begin{equation} \label{eq:volumen}
         V = \frac{4}{3} \pi {\left( \frac{U}{2 \pi} \right) }^3 = \frac{4}{3} \pi \frac{U^3}{8 \pi^3} = \frac{1}{6} \frac{U^3}{\pi^2}
     \end{equation}
-    Im nächsten Schritt stellen wir die im Skript gegebene Gleichung nach \(v_a\) um.
-    \[ V = A \cdot v_a \cdot t_a \Rightarrow v_a = \frac{V}{A \cdot t_a}\] TODO: Wo kommt die Formel her?
+    Nun stellen wir eine weiter Formel auf. In der Ausströmzeit \(t_a\) fliest das gesamte Volumen des Luftballons \(V\)
+    mit der Geschwindigkeit \(v_a\) durch die Fläche des Mundstücks \(A\). Wir formen nach \(v_a\) um:
+    \begin{equation} \label{eq:geschw_zeit_beziehung}
+        V = A \cdot v_a \cdot t_a \Rightarrow v_a = \frac{V}{A \cdot t_a}
+    \end{equation} TODO: Wo kommt die Formel her?
     Hier setzen wir nun die Formel für das Volumen (\ref{eq:volumen}) und die durchströmte Fläche (\ref{eq:durch_flache}) ein.
     \begin{equation} \label{eq:calc_velocity}
         v_a = \frac{V}{A \cdot t_a} = \frac{\frac{1}{6} \frac{U^3}{\pi^2} }{ \pi {\left(\frac{D}{2}\right)}^2 \cdot t_a} = \frac{2}{3} \frac{U^3}{\pi^3 D^2 t_a}
@@ -143,7 +146,7 @@
     \begin{equation}
         \frac{ (\SI{1.15}{cm} + \SI{1.1}{cm} + \SI{1.2}{cm}) }{3} = \SI{1.15}{cm} = \SI{0.0115}{m}
     \end{equation}
-    Die Fläche \(A\) des Mundstücks beträgt \( \pi {\left( \frac{ \SI{0.0115}{m} }{2} \right)}^2 = 1.03869 \cdot 10^{-4} \si{m^2} \).
+    Die Fläche \(A\) des Mundstücks beträgt \label{eq:fläche_berechnet}\( \pi {\left( \frac{ \SI{0.0115}{m} }{2} \right)}^2 = \SI{1.03869e-4}{m^2} \).
 
     \subsection{Durchführungen}
     Für alle Durchführungen wurde ein Wert für \(a\) und ein Wert für \(b\) gemessen, sowie 2 bis 3 Zeitmessungen.
@@ -166,18 +169,19 @@
 
     \subsubsection{Durchführung 3}
         Luftballonumfang: \(a = \SI{0.615}{m}, b = \SI{0.564}{m} \). Durchschnitt: \(U = \SI{0.5895}{m} \) \\
-        Ausströmzeit \( \frac{\SI{1.45}{s} + \SI{1.61}{s} + \SI{1.64}{s} }{2} = \SI{1.57}{s} \) \\
+        Ausströmzeit \( \frac{\SI{1.45}{s} + \SI{1.61}{s} + \SI{1.64}{s} }{3} = \SI{1.57}{s} \) \\
         Einsetzen der Werte in Formel (\ref{eq:calc_velocity}):
         \[ v_a = \frac{2}{3} \frac{{( \SI{0.5859}{m} )}^3}{\pi^3 {( \SI{0.0115}{m} )}^2 \cdot \SI{1.57}{s} } = \SI{21.2136}{\frac{m}{s}} \]
         % 2/3 * U^3 /(pi^3 D^2 t) where U=0.5895, D=0.0115, t=1.57 
 
     \subsection{Mittlere Geschwindigkeit}
-    \( 22.4217162 \frac{m}{s}, 24.8927916 \frac{m}{s}, 21.25877656 \frac{m}{s} \) \\
+    \( 22.4217 \frac{m}{s}, 24.8928 \frac{m}{s}, 21.2136 \frac{m}{s} \) \\
     Wir berechnen den Mittelwert der Ausströmgeschwindigkeiten:
     \begin{equation} \label{val:mittlere_geschw}
-        \frac{ (22.4217162 \frac{m}{s} + 24.8927916 \frac{m}{s} + 21.25877656 \frac{m}{s}) }{3} = \bar{v}_a 22.85776145 \frac{m}{s}
+        \frac{ (22.4217 \frac{m}{s} + 24.8928 \frac{m}{s} + 21.2136 \frac{m}{s}) }{3} = \bar{v}_a = 22.8427 \frac{m}{s}
     \end{equation}
-    TODO: Kommastellen TODO Updaten
+    % ( 22.4217+24.8928+21.2136 )/3
+    TODO: SI
 
     \subsection{Umrechnen zum Überdruck}
     Wir verwenden Formel\ref{eq:ballon_druck} mit \(p_i\) als Innendruck des Luftballons und \(p_a\) als Außen/Umgebungsdruck.
@@ -189,8 +193,9 @@
     Gegeben ist in der Aufgabenstellung\cite{Aufgabenstellung} für \( P_a = 101 325 Pa\) und \(\rho = 1.2041 \frac{kg}{m^3} \) bei 20° Celsius auf Meereshöhe. 
     Eingesetzt für die mittlere Geschwindigkeit: TODO: Kommastellen
     \begin{equation}
-        (p_i - p_a) = \frac{1}{2} \cdot 1.2041 \frac{kg}{m^3} \cdot {(22.85776145 \frac{m}{s})}^2 = 314.557 Pa
+        (p_i - p_a) = \frac{1}{2} \cdot 1.2041 \frac{kg}{m^3} \cdot {(22.8427 \frac{m}{s})}^2 = \SI{314.143}{\pascal}
     \end{equation}
+    % 1/2 * 1.2041 * (22.8427)^2
 
     \section{Fehlerrechnung}
         \subsection{Messunsicherheit}
@@ -226,6 +231,7 @@
 
         TODO: Alle Größen erklären!
         TODO: Sonstiges hochladen?
+        TODO: Human Benchmark
 
         TODO: Ausströmgeschwindigkeit konstant berücksichtigt???
 
@@ -257,9 +263,9 @@
             \subsubsection{Durchführung 1}
                 Aus den Werten für \(U\), \(t\), \( \Delta t \) und \(\Delta U \) folgt mit Formel\ref{eq:fehler}
                 \begin{equation}
-                    U = \SI{0.5475}{m}, t = \SI{1.19}{s}, \Delta t = \SI{0.25}{s}, \Delta U = \SI{0.009}{m} \Rightarrow \SI{4.83588}{\frac{m}{s}} 
+                    U = \SI{0.5475}{m},\ t = \SI{1.19}{s}, \Delta t = \SI{0.25}{s}, \Delta U = \SI{0.009}{m} \Rightarrow \SI{4.83848}{\frac{m}{s}} 
                 \end{equation}
-                % sqrt((4 b^2 U^4)/(D^4 π^6 t^2) + (4 a^2 U^6)/(9 D^4 π^6 t^4)) with U = 0.5474, D=0.0115, t=1.19, a=0.25, b=0.009
+                % sqrt((4 b^2 U^4)/(D^4 π^6 t^2) + (4 a^2 U^6)/(9 D^4 π^6 t^4)) with U = 0.5475, D=0.0115, t=1.19, a=0.25, b=0.009
             \subsubsection{Durchführung 2}
                 Aus den Werten für \(U\), \(t\), \( \Delta t \) und \(\Delta U \) folgt mit Formel\ref{eq:fehler}
                 \begin{equation}
@@ -269,38 +275,102 @@
             \subsubsection{Durchführung 3}
                 Aus den Werten für \(U\), \(t\), \( \Delta t \) und \(\Delta U \) folgt mit Formel\ref{eq:fehler}
                 \begin{equation}
-                    U = \SI{0.5859}{m}, t = \SI{1.57}{s}, \Delta t = \SI{0.25}{s}, \Delta U = \SI{0.009}{m} \Rightarrow \SI{3.45255}{\frac{m}{s}} 
-                \end{equation} TODO: Werte falsch!!!
+                    U = \SI{0.5859}{m},\ t = \SI{1.57}{s}, \Delta t = \SI{0.25}{s}, \Delta U = \SI{0.009}{m} \Rightarrow \SI{3.45255}{\frac{m}{s}} 
+                \end{equation}
                 % sqrt((4 b^2 U^4)/(D^4 π^6 t^2) + (4 a^2 U^6)/(9 D^4 π^6 t^4)) with U = 0.5859, D=0.0115, t=1.57, a=0.25, b=0.009
 
         \subsection{Mittlere Geschwindigkeitsfehler}
-            TODO: Idee Fehler über mittelwerte der gemessenen Größen
-            TODO: Darf man das? TODO: Update
+            TODO: Idee Fehler über mittelwerte der gemessenen Größen TODO: Darf man das?
+            TODO: Oder die Mittelwerte der Längen und der Zeiten berechnen und dann Fehler
             Der mittlere Fehler der Geschwindigkeiten liegt bei
             \begin{equation} \label{val:geschw_fehler}
-                \frac{ \SI{4.83588}{\frac{m}{s}} + \SI{5.31905}{\frac{m}{s}} + \SI{3.45255}{\frac{m}{s}} }{3} = \SI{4.536747}{\frac{m}{s}}
+                \frac{ \SI{4.83848}{\frac{m}{s}} + \SI{5.31905}{\frac{m}{s}} + \SI{3.45255}{\frac{m}{s}} }{3} = \SI{4.536694}{\frac{m}{s}}
             \end{equation}
-            % ( 4.83588 + 5.31905 + 3.45255 )/3
+            % ( 4.83848 + 5.31905 + 3.45255 )/3
 
         \subsection{Fehler umrechnen auf Überdruck}
-            Den Fehler des Überdrucks erhält man durch einsetzen des Ergebnisses für den Fehler der mittleren Geschwindigkeit\ref{val:geschw_fehler}
-            in die Gleichung zur Berechnung des Überdrucks\ref{eq:ballon_uberdruck}:
+            Den Fehler des Überdrucks erhält man durch einsetzen der mittleren GeschwindigkeitTODO:ref plus/minus ihren Fehler\ref{val:geschw_fehler}
+            in die Gleichung zur Berechnung des Überdrucks\ref{eq:ballon_uberdruck} mit \(\rho = \SI{1.2041}{\frac{kg}{m^3}}\):
+            Obere Schranke:
             \begin{equation}
-                \Delta (p_i - p_a) = 
+                \Delta (p_i - p_a) = \frac{1}{2} \cdot \rho {(v_a + \Delta v_a)}^2 = 
+                \frac{1}{2} \cdot \SI{1.2041}{\frac{kg}{m^3}} \cdot { \left( \SI{22.8427}{\frac{m}{s}} + \SI{4.536694}{\frac{m}{s}} \right) }^2 = \SI{451.3155}{\pascal}
             \end{equation}
+            Untere Schranke:
+            \begin{equation}
+                \Delta (p_i - p_a) = \frac{1}{2} \cdot \rho {(v_a + \Delta v_a)}^2 = 
+                \frac{1}{2} \cdot \SI{1.2041}{\frac{kg}{m^3}} \cdot { \left( \SI{22.8427}{\frac{m}{s}} - \SI{4.536694}{\frac{m}{s}} \right) }^2 = \SI{201.7529}{\pascal}
+            \end{equation}
+            % 1/2 * 1.2041 kg/m^3 * (22.8427m/s - 4.536694 m/s)^2
+            Der Fehler des Drucks ist:
+            \begin{equation}
+                \begin{gathered}
+                    \SI{451.3155}{\pascal} - \SI{314.143}{\pascal} = \SI{137.1725}{\pascal} \\
+                    \SI{314.143}{\pascal} + \SI{451.3155}{\pascal} = \SI{112.3901}{\pascal}
+                \end{gathered}
+            \end{equation}
+            Durchschnitt:
+            \begin{equation}
+                \frac{ \SI{137.1725}{\pascal} + \SI{112.3901}{\pascal} }{2} = \SI{124.7813}{\pascal}
+            \end{equation}
+            Der Fehler für den Druck ist also \(\pm \SI{124.7813}{\pascal}\)
     
     \section{Versuch mit verkleinerter Öffnung}
-        TODO: ?
+        TODO: ? Vielleicht nicht machen aber sagen, dass man so den Versuch genauer messen kann.
         
     \subsection{Weltall}
-        Wir berechnen \(t_a^{Weltall}\) über den gesamten Druck im Luftballon \( p_i \)
-        Umformungen
-        TODO: Faktor wie viel länger!!!
+        Wir berechnen \(t_a^{Weltall}\) über den gesamten Druck im Luftballon \( p_i \), wir setzen die Beziehung \((p_i - p_a) + p_a = p_i \) in Formel\ref{eq:ballon_druck} ein und formen um:
+        \begin{equation}
+            \begin{gathered}
+                p_i = p_w + \frac{1}{2} \rho v_a^2 \Leftrightarrow \\
+                (p_i - p_a) + p_a = p_w + \frac{1}{2} \rho v_a^2 \Leftrightarrow \\
+                \frac{2((p_i - p_a) + p_a)}{ \rho } = v_a^2
+            \end{gathered}
+        \end{equation}
+        Für die mittlere Geschwindigkeit \(v_a\) setzen wir die Beziehung\ref{eq:geschw_zeit_beziehung} ein:
+        \begin{equation}
+            \begin{gathered}
+                \frac{ 2((p_i - p_a) + p_a)}{ \rho } = { \left( \frac{V}{A \cdot t_a} \right) }^2 \Leftrightarrow \\
+                \sqrt{ \frac{ 2((p_i - p_a) + p_a)}{ \rho } } = \left( \frac{V}{A \cdot t_a} \right) \Leftrightarrow \\
+                t_a = \frac{V}{ A \cdot \sqrt{ \frac{ 2((p_i - p_a) + p_a)}{ \rho }} }
+            \end{gathered}
+        \end{equation}
+        Einheitenkontrolle:
+        \begin{equation}
+            \frac{\si{m^3}}{\si{m^2} \cdot \sqrt{\frac{ \si{\pascal} }{ \frac{\si{kg}}{\si{m^3}} } }} = \frac{\si{m}}{ \sqrt{\frac{\frac{\si{kg}}{\si{m}\cdot\si{s^2}}}{\frac{\si{kg}}{\si{m^3}}}} } = \frac{\si{m}}{\sqrt{\frac{\si{m^2}}{\si{s^2}}}} = \si{s}
+        \end{equation}
+
+        Für das Volumen des Luftballons nehmen wir den Mittelwert der Umfänge und setzen Sie in die Formel für das Kugelvolumen\ref{eq:volumen} ein:
+        \begin{equation} \label{eq:volumen_berechnet}
+            \frac{ \SI{0.5475}{m} + \SI{0.5685}{m} + \SI{0.5895}{m} }{3} = \SI{0.5685}{m} \Rightarrow \frac{1}{6} \frac{ {\left( \SI{0.5685}{m} \right)}^3}{\pi^2} = \SI{0.00310270}{m^3}
+        \end{equation}
+        % 1/6 * (0.5685)^3/pi^2 
+        Wir setzen unser berechnetes Ergebnis für den Druck \(\left(p_i - p_a\right) = \SI{314.14}{\pascal} \), Luftdruck auf der Erde \(p_a = \SI{101325}{\pascal} \),
+        das Volumen des Luftballons\ref{eq:volumen_berechnet} \(V = \SI{0.00310270}{m^3}\),
+        die Fläche des Mundstücks\ref{eq:fläche_berechnet} \( A = \SI{1.03869e-4}{m^2} \), sowie die Dichte von Luft \( \rho = \SI{1.2041}{\frac{kg}{m^3}} \); TODO: Werte aus der Aufgabenstellung\cite{AnleitungPraktikum}
+        \begin{equation}
+            t_a^{Weltall} = \frac{ \SI{0.00310270}{m^3} }{ \SI{1.03869e-4}{m^2} \cdot \sqrt{ \frac{ 2(\SI{314.14}{\pascal} + \SI{101325}{\pascal})}{ \SI{1.2041}{\frac{kg}{m^3}} }} } = \SI{0.0727}{s} = \SI{72.7}{ms}
+        \end{equation}
+        % 0.00310270 / (1.03869e-4 * sqrt( 2 * (314.14 + 101325 ) / 1.2041))seconds
+        Wir berechen im letzten Schritt den Faktor um den die Zeit \(t_a^{Versuch}\) aus unserer Versuchsdurchführung länger ist als die Zeit \(t_a^{Weltall}\).
+        Wir setzen hier für die Austrittszeit in unseren Versuchen auch den Durchschnitt an:
+        \begin{equation}
+            t_a^{Versuch} = \frac{ \SI{1.19}{\second} + \SI{1.2}{\second} + \SI{1.57}{\second} }{3} = \SI{1.32}{\second} = t_a^{Versuch}
+        \end{equation}
+        \begin{equation}
+            \frac{t_a^{Versuch}}{t_a^{Weltall}} = \frac{ \SI{1.32}{\second} }{ \SI{0.0727}{\second} } = 18.1568
+        \end{equation}
+        Die Ausströmzeit auf der Erde ist \(\approx 18\) mal länger als im Weltall. \\
+
+        TODO: Voluemnfehler? Der hier berechnete Faktor ist, wenn man die aus der Aufgabenstellung bezogenen Werte GUtes Ergebnis weil Fehler nur in berechnetem Wert aber Atmosphären Druck überwiegt
     
     
     \section{Ergebnis}
+        Endwert: \(\SI{314.14}{\pascal} \pm Fehler \) TODO: Wie viel Nachkommastellen?
+        TODO: Prozentabweichung Fehler
+        TODO: Überall SI benutzen!!!
         TODO: Formel für Druck in Abhängigkeit in von Umfang und Zeit
-        TODO: Diagramm mit Werten und Druckfunktion von Zeit und Umfang, in zwei Grafen mit jeweils einer Variable.
+        TODO: Diagramm mit Werten und Druckfunktion von Zeit und Umfang, in zwei Grafen mit jeweils einer Variable plotten.
         TODO: Geschwindigkeitsdiagramm mit Fehlerbalken
 
         Hier die korrigierten Werte?

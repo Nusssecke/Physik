@@ -12,6 +12,12 @@
 \usepackage{siunitx}
 \usepackage[version=4]{mhchem}
 
+\usepackage{biblatex}
+\DefineBibliographyStrings{ngerman}{
+  urlseen = {Abruf vom}
+}
+\addbibresource{quellen.bib}
+
 \newcommand{\proofeq}{\overset{!}{=}}
 \newcommand{\proofeqv}{\overset{!}{\Leftrightarrow}}
 \newcommand{\equivalent}{\overset{\scriptscriptstyle\wedge}{=}}
@@ -19,8 +25,8 @@
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 \date{7.03.2022}
-\title{Physikalisches Grundpraktikum Teil I (Mechanik und Thermodynamik) Versuch 5 Lufballon mit \ce{CO2}}
-\author{Finn Wagner}
+\title{Physikalisches Grundpraktikum Teil I \\ (Mechanik und Thermodynamik) \\ Versuch 5 Lufballon mit \ce{CO2}}
+\author{Wafaa Al Nachawti, Finn Wagner}
 
 \begin{document}
     \maketitle
@@ -122,7 +128,7 @@
             \item 2 Luftballons
             \item 1 Flasche Mineralwasser Classic; Wasser mit viel Kohlensäure
             \item Smartphone zum Aufnehmen eines Videos
-            \item Maßband mit Milimetergenauigkeit, am besten ein weiches Rollbandmaß
+            \item Maßband mit mindestens Milimetergenauigkeit, am besten ein weiches Rollbandmaß
             \item 1 Stoppuhr oder Computerprogramm zum auswerten der Zeiten im Video
         \end{itemize}
 
@@ -208,6 +214,14 @@
         TODO: Umfangfehlerrechnung aus Versuch 6 klauen. Hier aber mehr auf schwierig Umfänge zu vergleichen eingehen. Volumenfehler
         TODO: Theoriefehler aus Herleitung???
 
+    \section{Ergebnis}
+        TODO: Plot, ort, zeit geschwindigkeit des Luftballons beim Fall? mit pgfplots
+
+        TODO: Prozent abweichung vom Literaturwert
+
+        TODO: Wie viel Co2 in Waserflasche gelöst.
+        TODO:Literaturwert Quelle angeben
+
     \section{Fall auf der Venus}
         Wir bestimmen nun, wie lang der Fall des mit \ce{CO2} gefüllten Luftballons auf der Venus dauern würde. Wir nehmen an,
         das die Atmosphäre der Venus zu \( 100\% \) aus \ce{CO2} besteht. Die Schwerkraft auf der Venus beträgt \(g_{Venus} = \SI{8.87}{\frac{m}{s}}\).
@@ -215,24 +229,74 @@
         Wir nehmen für diese Rechnung an, das es auf der Venus nur Raumtemparatur mit \(T = \SI{20}{\celsius}\) warm ist.
         Die Viskosität von \ce{CO2} ist dann \( \eta_{\ce{CO2}} = \SI{14.73e-6}{\pascal\cdot\second} \)
 
-        TODO: Aufgabe vergleichen Sie Fallzeiten!
+        Wir gehen hier beim aufstellen der Formel ähnlich vor wie bei der Formel für die Dichte. Wir nehmen Formel\ref{eq:fall}
+        und setzen die Werte für den Fall eines mit \(\ce{CO2}\) gefüllten Luftballons auf der Erde und auf der Venus ein:
+        \begin{equation}
+            v_{Erde} = \frac{ \left( m_H + \rho_{\ce{CO2} \cdot V } \right) \cdot g_{Erde} - \rho_{Luft} \cdot V \cdot g_{Erde} }{ 6\pi \cdot r \cdot \eta_{Luft} }
+        \end{equation}
+        \begin{equation}
+            v_{Venus} = \frac{ \left( m_H + \rho_{\ce{CO2} \cdot V } \right) \cdot g_{Venus} - \rho_{\ce{CO2}} \cdot V \cdot g_{Venus} }{ 6\pi \cdot r \cdot \eta_{\ce{CO2}} }
+        \end{equation}
+        Wir bilden nun das Verhältnis der beiden Fallgeschwindigkeiten:
+        % TODO: Cancel
+        \begin{equation}
+            \begin{gathered} \label{eq:geschwindigkeiten_verhältnis}
+                \frac{ v_{Erde} }{ v_{Venus} } = 
+                \frac{ 
+                    \frac{ \left( m_H + \rho_{\ce{CO2}} \cdot V \right) \cdot g_{Erde} - \rho_{Luft} \cdot V \cdot g_{Erde} }{ 6 \pi \cdot r \cdot \eta_{Luft} } }{ 
+                    \frac{ \left( m_H + \rho_{\ce{CO2}} \cdot V \right) \cdot g_{Venus} - \rho_{\ce{CO2}} \cdot V \cdot g_{Venus} }{ 6 \pi \cdot r \cdot \eta_{\ce{CO2}} } 
+                } = \\
+                \frac{ \eta_{\ce{CO2}}}{ \eta_{Luft} } \cdot
+                \frac{ 
+                    \left( m_H + \rho_{\ce{CO2}} \cdot V \right) \cdot g_{Erde} - \rho_{Luft} \cdot V \cdot g_{Erde} }{
+                    \left( m_H + \rho_{\ce{CO2}} \cdot V \right) \cdot g_{Venus} - \rho_{\ce{CO2}} \cdot V \cdot g_{Venus}
+                } = \\
+                \frac{ \eta_{\ce{CO2}}}{ \eta_{Luft} } \cdot
+                \frac{
+                    \left( m_H + \rho_{\ce{CO2}} \cdot V \right) \cdot g_{Erde} - \rho_{Luft} \cdot V \cdot g_{Erde} }{
+                    m_H \cdot g_{Venus} + \rho_{\ce{CO2}} \cdot V \cdot g_{Venus} - \rho_{\ce{CO2}} \cdot V \cdot g_{Venus}
+                } = \\
+                \frac{ \eta_{\ce{CO2}}}{ \eta_{Luft} } \cdot
+                \frac{
+                    \left( m_H + \rho_{\ce{CO2}} \cdot V \right) \cdot g_{Erde} - \rho_{Luft} \cdot V \cdot g_{Erde} }{
+                    m_H \cdot g_{Venus}
+                } =^{\text{Bruch aufteilen}} \\
+                \frac{ \eta_{\ce{CO2}}}{ \eta_{Luft} } \cdot
+                \left( 
+                    \frac{ g_{Erde} }{ g_{Venus} } + 
+                    \frac{ g_{Erde} }{ g_{Venus} } \cdot \frac{ \rho_{\ce{CO2}} \cdot V }{m_H} -
+                    \frac{ g_{Erde} }{ g_{Venus} } \cdot \frac{ \rho_{Luft} \cdot V }{ m_H }
+                \right) =^{\text{Ausklammern}} \\
+                \frac{ \eta_{\ce{CO2}}}{ \eta_{Luft} } \cdot \frac{ g_{Erde} }{ g_{Venus} } \cdot
+                \left( 1 + \frac{ \rho_{\ce{CO2}} \cdot V }{m_H} - \frac{ \rho_{Luft} \cdot V }{ m_H } \right) = \\
+                \frac{ \eta_{\ce{CO2}}}{ \eta_{Luft} } \cdot \frac{ g_{Erde} }{ g_{Venus} } \cdot
+                \left( 1 + \frac{V}{m_H} \cdot \left( \rho_{\ce{CO2}} - \rho_{Luft} \right) \right)
+            \end{gathered}
+        \end{equation}
+        Jetzt setzen wir für die Geschwindigkeiten die Beziehung zur Fallzeit und Geschwindigkeit\ref{eq:geschwindigkeit} ein:
+        \begin{equation} \label{eq:zeiten_verhältnis}
+            \frac{ v_{Erde} }{ v_{Venus} } = \frac{ \frac{h}{t_{Erde}} }{ \frac{h}{t_{Venus}} } = \frac{t_{Venus}}{t_{Erde}}
+        \end{equation}
+        Wir setzen das Geschwindigkeits-\ref{eq:geschwindigkeiten_verhältnis} und Zeitverhältnis\ref{eq:zeiten_verhältnis} gleich und setzen die Werte
+        für das Volumen \(V = TODO:Einsetzen\SI{1}{m^3}\)
+        für die Beschleunigungen \(g_{Erde} = \SI{9.81}{\frac{m}{s^2}} \), \(g_{Venus} = \SI{8.87}{\frac{m}{s^2}} \),
+        sowie die Viskositäten \(\eta_{\ce{CO2}} = \SI{14.73e-6}{\pascal \cdot \second} \),  \(\eta_{Luft} = \SI{18.21e-6}{\pascal \cdot \second} \) und
+        die Dichte von Luft \(\rho_{Luft} = \SI{1.2041}{\frac{kg}{m^3}}\) und die im vorherigen Experiment bestimmte Dichte von \ce{CO2} \(\rho_{\ce{CO2}} = TODO: Einsetzen\SI{1}{\frac{kg}{m^3}} \) ein.
+        Werte aus Aufgabenstellung\cite{Aufgabenstellung}.
+        \begin{equation}
+            \frac{t_{Venus}}{t_{Erde}} = \frac{ \eta_{\ce{CO2}}}{ \eta_{Luft} } \cdot \frac{ g_{Erde} }{ g_{Venus} } \cdot \left( 1 + \frac{V}{m_H} \cdot \left( \rho_{\ce{CO2}} - \rho_{Luft} \right) \right) = 
+            \frac{ \SI{14.73e-6}{\pascal \cdot \second} }{ \SI{18.21e-6}{\pascal \cdot \second} } \cdot \frac{ \SI{8.87}{\frac{m}{s^2}} }{ \SI{9.81}{\frac{m}{s^2}} } \cdot
+            \left( 1 + \frac{TODO:Volumen\SI{1}{m^3}}{ \SI{0.005}{\kilogram} } \cdot \left( TODO: Dichte co2\SI{1}{\frac{kg}{m^3}} - \SI{1.2041}{\frac{kg}{m^3}} \right) \right)
+        \end{equation}
+        TODO: \(t_v = 1,274s\)
+        TODO: Das Verhältnis ist, die Fallzeit auf der Venus ist länger/kürzer
+        TODO: Aufgabe vergleichen Sie Fallzeiten! Warum länger/kürzer, Abhängigkeit Dichte, Viskosität, Gewichtskraft.
 
-    TODO: Plot, ort, zeit geschwindigkeit des Luftballons beim Fall?
 
-    TODO: Prozent abweichung vom Literaturwert
+    \printbibliography[title={Quellen}]
 
-    TODO: Wie viel Co2 in Waserflasche gelöst.
-    TODO:Literaturwert Quelle angeben
-
-    \section{Quellen}
-        \url{https://de.wikipedia.org/wiki/Gesetz_von_Stokes}
-        Anleitung zum Physikalischen Grundpraktikum Teil I (Mechanik und Thermodynamik) JLU Gießen II. Physikalisches Institut Version 1.3, 28.02.2022 von Jens Sören Lange
-        https://texample.net/tikz/examples/bernoulli/
-        Luftballon Bild
-        TODO: Quellen aus Versuch 6 klauen
-        TODO: Move to quellen.bib
-        \url{https://de.wikipedia.org/wiki/Fall_mit_Luftwiderstand}
-
+    TODO: Bilder
     TODO: Aufgabenstellung nochmal genau lesen.
+    TODO: Messergebnisse nochmal neu aufschreiben und anheften.
 
 \end{document}
