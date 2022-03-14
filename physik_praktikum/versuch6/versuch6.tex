@@ -1,7 +1,10 @@
 \documentclass{article}
 
 \usepackage[a4paper, top=2cm, bottom=3cm]{geometry}
+
 \usepackage[ngerman]{babel}
+\usepackage{csquotes}
+
 \usepackage{booktabs}
 \usepackage{mathtools}
 \usepackage{amssymb}
@@ -12,6 +15,9 @@
 
 \usepackage{graphicx}
 \usepackage{wrapfig}
+
+\usepackage{pgfplots}
+
 \usepackage{siunitx}
 
 \usepackage{biblatex}
@@ -28,7 +34,7 @@
 
 \date{7.03.2022}
 \title{Physikalisches Grundpraktikum Teil I \\ (Mechanik und Thermodynamik) \\ Versuch 6 Innendruck eines Luftballons}
-\author{Finn Wagner}
+\author{Anselm Maibaum, Finn Wagner}
 
 \begin{document}
     \maketitle
@@ -48,27 +54,17 @@
     Wichtig anzumerken ist hier, das die Bernoulligleichung eine ideale Strömung voraussetzt.
     Also dass das Fluid laminar fließend, es inkompressibel ist und es keine innere Viskosität besitzt 
     Außerdem muss die Dichte \( \rho \) des Fluids, sowie der Druck entlang aller möglichen Stromlinie konstant sein.
-    Vereinfachend nehmen wir auch an, das die Geschwindigkeit entlang aller Stromlinien indentisch ist. \cite{Aufgabenstellung}
+    Vereinfachend nehmen wir auch an, das die Geschwindigkeit entlang aller Stromlinien indentisch ist\cite{Aufgabenstellung}.
     Außerdem wird die Reibung des Fluids an Oberflächen vernachlässigt.
     Für genauere Berechnung könnten Korrekturterme für Luft aus der Fachliteratur entnommen werden.
 
-    In unserem Versuch verwenden wir einen aufgeblasenen Luftballon, aus welchem Luft (auf Grund von Druckdifferenzen) mit \(v_a\) ausströmt. 
-
-    Für unseren Versuch spielt der Druck, der aus der Schwerkraft entsteht keine Rolle.
-    Der Versuch kann mit dem Luftballon und Mundstück horizontal zum Boden (Siehe Abbildung\ref{fig:messungen}, a horizontal) durchgeführt werden.
-    Damit spielt die Schwerkraft bei der Bewegung des Gases keine Rolle. Aber auch bei Messungen bei denen der Luftballon z.B. einfach losgelassen wird,
-    ist der Effekt zu vernachlässigen.
-
-    Beispielhaft berechnen wir den maximalen Druckbeitrag (hydrostatischer Druck \cite{Luftdruck}).
-    Die Länge des Luftballons sei \(h = \SI{0.25}{m}\), die Dichte der Luft \(\rho = \SI{1.2041}{\frac{kg}{m^3}} \)\cite{Aufgabenstellung}
-    und die Erdbeschleunigung \(g = \SI{9.81}{\frac{m}{s^2}} \)
-    \begin{equation}
-        \SI{0.25}{m} \cdot \SI{1.2041}{\frac{kg}{m^3}} \cdot \SI{9.81}{\frac{m}{s^2}} = \SI{2.95}{Pa} % 0.25m * 1.20141kg/m^3 * 9.81m/s^2 as pascals
-    \end{equation}
-    Es ergeben sich \(\SI{2.95}{Pa}\) ein, wie wir später in der Auswertung sehen werden, vernachlässigbarer Beitrag.
-
+    In unserem Versuch verwenden wir einen aufgeblasenen Luftballon, aus welchem Luft (auf Grund von Druckdifferenzen) mit \(v_a\) ausströmt.
+    Für unseren Versuch spielt der Druck, der aus der Schwerkraft entsteht keine Rolle (siehe Fehlerrechnung\ref{fehlerrechnung}).
+    Wir nehmen die Ausströmgeschwindigkeit während des Versuchs als konstant an.
+    
     Wir wissen das der Innendruck des Luftballons \(p_i\) größer ist als der Außendruck \(p_a\)
-    und sich nur um den dynamischen Anteil mit der Ausströmungsgeschwindigkeit \(v_a\) unterscheidet. Mit der Dichte des strömenden Mediums Luft \( \rho \) folgt: 
+    und sich nur um den dynamischen Anteil mit der Ausströmungsgeschwindigkeit \(v_a\) unterscheidet.
+    Mit der Dichte des strömenden Mediums Luft \( \rho \) folgt: 
     \begin{equation} \label{eq:ballon_druck}
         p_i = p_a + \frac{1}{2} \rho v_a^2
     \end{equation}
@@ -77,13 +73,15 @@
         \includegraphics[width=7cm]{luftstoß.png}
         \caption{Veranschaulichung des Versuchs und Gleichung\ref{eq:ballon_druck}}
     \end{figure}
-
     Weiterhin nehmen wir den Innendruck des Luftballons als während des Versuchs konstant an.
+
     Ziel des Versuches ist es die Druckdifferenz \( (p_i - p_a) := p_b \) also den Überdruck des Ballons (\cite{Überdruck}) zu bestimmen.
+    Wir messen dafür den Umfang des Luftballons und die Zeit in der die Luft aus dem Ballon ausströmt und berechnen über das Volumen des Luftballons, die Öffnung, durch die Luft entweicht,
+    sowie die Zeit die sei dazu braucht die Ausströmgeschwindigkeit. Diese können wir dann mit der Formel\ref{eq:ballon_druck} in den Innendruck des Luftballons umrechnen.
 
     \section{Versuchsaufbau und Durchführung}
     
-    \begin{figure}[h]\label{fig:messungen}
+    \begin{figure}[h]\label{fig:abmessungen}
         \centering
         \includegraphics[height=6cm]{luftballons.png}
         \caption{Messgrößen am Luftballon}
@@ -92,7 +90,7 @@
     \subsection{Aufbau und Material}
     \begin{itemize}
         \item Maßband mit mindestens Milimetergenauigkeit, am besten ein weiches Rollbandmaß
-        \item Stoppuhr (Genauigkeit mindestens \( \frac{1}{10}s \))
+        \item Stoppuhr (Genauigkeit mindestens \( \frac{1}{10}\unit{\second} \))
         \item Smartphone zur Videoaufnahme
     \end{itemize}
 
@@ -100,12 +98,13 @@
     \begin{enumerate}
         \item Bestimmen sie den Durchmesser D des Mundstückes.
         \item Blasen sie den Luftballon auf. Halten sie das Ende zu. Bestimmen Sie den Umfang mithilfe des Maßband.
-        Messen Sie den Umfang von Mundstück bis zum obersten Punkt (Umfang a), sowie den Umfang der \glqq{}Tallie\grqq{} (Umfang b) wie in Abbildung\ref{fig:messungen}
+        Messen Sie den Umfang von Mundstück bis zum obersten Punkt (Umfang a), sowie den Umfang der \enquote{Tallie} (Umfang b) wie in Abbildung\ref{fig:abmessungen}
         \item Lassen Sie die Luft aus dem Ballon ausströmen. Der Luftballon muss nicht festgehalten werden.
         Messen Sie die Zeit, in welcher die Luft aus dem Luftballon entweicht.
         Nutzen Sie die Stoppuhr oder werten sie die Zeit am Video aus. Für Videoaufnahmen empfielt es sich den Ballon festzukleben.\ref{fig:Festgeklebt}
         \item Wiederholen Sie die Messung (Schritt 2 \& 3) drei mal und notieren Sie ihre Ergebnisse.
     \end{enumerate}
+    TODO: Durchführungs Beobachtungen
 
     \section{Formeln}
     Die direkt gemessenen Größen sind der Umfang des Luftballons, die Ausströmzeit, sowie der Durchmesser des Mundstücks.
@@ -128,25 +127,24 @@
     mit der Geschwindigkeit \(v_a\) durch die Fläche des Mundstücks \(A\). Wir formen nach \(v_a\) um:
     \begin{equation} \label{eq:geschw_zeit_beziehung}
         V = A \cdot v_a \cdot t_a \Rightarrow v_a = \frac{V}{A \cdot t_a}
-    \end{equation} TODO: Wo kommt die Formel her?
+    \end{equation}
     Hier setzen wir nun die Formel für das Volumen (\ref{eq:volumen}) und die durchströmte Fläche (\ref{eq:durch_flache}) ein.
     \begin{equation} \label{eq:calc_velocity}
         v_a = \frac{V}{A \cdot t_a} = \frac{\frac{1}{6} \frac{U^3}{\pi^2} }{ \pi {\left(\frac{D}{2}\right)}^2 \cdot t_a} = \frac{2}{3} \frac{U^3}{\pi^3 D^2 t_a}
     \end{equation}
     Umstellungsprobe durch Einheitenrechnung:
     \begin{equation*}
-        \frac{m^3}{m^3 \cdot s} = \frac{m}{s}
-    \end{equation*}  
-
+        \unit{\frac{m^3}{m^2 \cdot s}} = \unit{\frac{m}{s}}
+    \end{equation*}
 
     \section{Auswertung}
     Wir berechnen aus den drei Versuchen jeweils die Ausströmgeschwindigkeiten \(v_1\) bis \(v_3\). \\
-    Zuerst berechnen wir den Innendurchmesser des Mundstücks aus den drei gemessenen Werten TODO: Ref Messwerte
+    Zuerst berechnen wir den Innendurchmesser des Mundstücks aus den drei gemessenen Werten\ref{fig:Messwerte}
     \(\SI{1.15}{cm}, \SI{1.1}{cm}, \SI{1.2}{cm} \). Das ergibt
     \begin{equation}
         \frac{ (\SI{1.15}{cm} + \SI{1.1}{cm} + \SI{1.2}{cm}) }{3} = \SI{1.15}{cm} = \SI{0.0115}{m}
     \end{equation}
-    Die Fläche \(A\) des Mundstücks beträgt \label{eq:fläche_berechnet}\( \pi {\left( \frac{ \SI{0.0115}{m} }{2} \right)}^2 = \SI{1.03869e-4}{m^2} \).
+    Die Fläche \(A\) des Mundstücks beträgt\label{eq:fläche_berechnet}: \( \pi {\left( \frac{ \SI{0.0115}{m} }{2} \right)}^2 = \SI{1.03869e-4}{m^2} \approx \SI{1.04}{{cm}^2}\).
 
     \subsection{Durchführungen}
     Für alle Durchführungen wurde ein Wert für \(a\) und ein Wert für \(b\) gemessen, sowie 2 bis 3 Zeitmessungen.
@@ -172,16 +170,15 @@
         Ausströmzeit \( \frac{\SI{1.45}{s} + \SI{1.61}{s} + \SI{1.64}{s} }{3} = \SI{1.57}{s} \) \\
         Einsetzen der Werte in Formel (\ref{eq:calc_velocity}):
         \[ v_a = \frac{2}{3} \frac{{( \SI{0.5859}{m} )}^3}{\pi^3 {( \SI{0.0115}{m} )}^2 \cdot \SI{1.57}{s} } = \SI{21.2136}{\frac{m}{s}} \]
-        % 2/3 * U^3 /(pi^3 D^2 t) where U=0.5895, D=0.0115, t=1.57 
+        % 2/3 * U^3 /(pi^3 D^2 t) where U=0.5895, D=0.0115, t=1.57
 
     \subsection{Mittlere Geschwindigkeit}
-    \( 22.4217 \frac{m}{s}, 24.8928 \frac{m}{s}, 21.2136 \frac{m}{s} \) \\
+    \( \SI{22.4217}{\frac{m}{s}}, \SI{24.8928}{\frac{m}{s}}, \SI{21.2136}{\frac{m}{s}} \) \\
     Wir berechnen den Mittelwert der Ausströmgeschwindigkeiten:
     \begin{equation} \label{val:mittlere_geschw}
-        \frac{ (22.4217 \frac{m}{s} + 24.8928 \frac{m}{s} + 21.2136 \frac{m}{s}) }{3} = \bar{v}_a = 22.8427 \frac{m}{s}
+        \frac{ ( \SI{22.4217}{\frac{m}{s}}  + \SI{24.8928}{\frac{m}{s}} + \SI{21.2136}{\frac{m}{s}} ) }{3} = \bar{v}_a = \SI{22.8427}{\frac{m}{s}}
     \end{equation}
     % ( 22.4217+24.8928+21.2136 )/3
-    TODO: SI
 
     \subsection{Umrechnen zum Überdruck}
     Wir verwenden Formel\ref{eq:ballon_druck} mit \(p_i\) als Innendruck des Luftballons und \(p_a\) als Außen/Umgebungsdruck.
@@ -190,14 +187,33 @@
     \begin{equation} \label{eq:ballon_uberdruck}
         (p_i - p_a) = \frac{1}{2} \rho v_a^2
     \end{equation}
-    Gegeben ist in der Aufgabenstellung\cite{Aufgabenstellung} für \( P_a = 101 325 Pa\) und \(\rho = 1.2041 \frac{kg}{m^3} \) bei 20° Celsius auf Meereshöhe. 
-    Eingesetzt für die mittlere Geschwindigkeit: TODO: Kommastellen
+    Gegeben ist in der Aufgabenstellung\cite{Aufgabenstellung} für \( P_a = \SI{101 325}{\pascal} \) und \(\rho = \SI{1.2041}{\frac{kg}{m^3}} \) bei 20° Celsius auf Meereshöhe. 
+    Eingesetzt für die mittlere Geschwindigkeit:
     \begin{equation}
-        (p_i - p_a) = \frac{1}{2} \cdot 1.2041 \frac{kg}{m^3} \cdot {(22.8427 \frac{m}{s})}^2 = \SI{314.143}{\pascal}
+        (p_i - p_a) = \frac{1}{2} \cdot \SI{1.2041}{\frac{kg}{m^3}} \cdot { ( \SI{22.8427}{\frac{m}{s}} )}^2 = \SI{314.143}{\pascal}
     \end{equation}
     % 1/2 * 1.2041 * (22.8427)^2
+    % TODO: Geschwindigkeitsdiagramm mit Fehlerbalken
+    
+    \section{Fehlerrechnung}\label{fehlerrechnung}
+        \subsection{Theoriefehler}
+            Um auf die In der Einleitung aufgestelle Bernoulligleichung\ref{eq:bernoulli} zu kommen wurden bereits sehr viele Annahmen gemacht.
+            Wir betrachten nun noch den Fehler der weglassen, des aus der Schwerkraft erzeugten Druck ensteht.
+            Der Versuch kann mit dem Luftballon und Mundstück horizontal zum Boden (Siehe Abbildung\ref{fig:abmessungen}, a horizontal) durchgeführt werden.
+            Damit spielt die Schwerkraft bei der Bewegung des Gases keine Rolle. Aber auch bei Messungen bei denen der Luftballon z.B. einfach losgelassen wird,
+            ist der Effekt guten Gewissens zu vernachlässigen.
 
-    \section{Fehlerrechnung}
+            Beispielhaft berechnen wir den maximalen Druckbeitrag (hydrostatischer Druck\cite{Luftdruck}).
+            Die Länge des Luftballons sei \(h = \SI{0.25}{m}\), die Dichte der Luft \(\rho = \SI{1.2041}{\frac{kg}{m^3}} \)\cite{Aufgabenstellung}
+            und die Erdbeschleunigung \(g = \SI{9.81}{\frac{m}{s^2}} \)
+            \begin{equation}
+                \SI{0.25}{m} \cdot \SI{1.2041}{\frac{kg}{m^3}} \cdot \SI{9.81}{\frac{m}{s^2}} = \SI{2.95}{Pa} % 0.25m * 1.20141kg/m^3 * 9.81m/s^2 as pascals
+            \end{equation}
+            Es ergibt sich ein Fehler von \(\pm \SI{2.95}{Pa}\). Jenachdem wie der Luftballon orientiert ist, schwankt der Wert zwischen diesen Grenzen.
+            Wie wir weiter unten sehen werden, ein vernachlässigbar kleiner Anteil am Gesamtfehler.
+
+            TODO: Ausströmgeschwindigkeit konstant berücksichtigt???
+
         \subsection{Messunsicherheit}
             Wir bestimmen zunächst die Messunsicherheiten für den Versuch.
             Direkt gemessen wurde der Umfang, daraus ergibt sich die Messunsicherheit \(\Delta U\)
@@ -214,26 +230,20 @@
             
             Die Auflösung der für den Versuch verwendeten Stoppuhr (Handystoppuhr) ist eine \(\SI{1}{ms}\).
             Die menschliche Reaktionszeit beträgt aber bereits \(\approx \SI{180}{ms} \)\cite{Reaktionszeit}
-            Um den abklingenden Ton oder den sich nicht mehr veränderden Ballon zu reagieren verstreicht also bereits eine ganze Weile.
-            Bis dann die Stoppuhr gedrückt wurde sind dann bereits \(\approx \SI{0.2}{s}\) vergangen.
+            Um auf den abklingenden Ton oder den sich nicht mehr veränderden Ballon zu reagieren verstreicht also bereits eine ganze Weile.
+            Bis dann die Stoppuhr gedrückt wurde sind bereits \(\approx \SI{0.2}{s}\) vergangen.
             Da die gleiche Verzögerung auch beim Beginn der Messung entsteht schätzen wir den Messfehler auf \(\SI{0.25}{s}\)
             Bei unseren Durchführungen stoppten mehrere Personen gleichzeitig nach einem Countdown die Zeit. Die Messungen der
             Person die den Ballon selber losließ war \(\approx \SI{0.2}{s} \) länger als die der anderen Messenden.
             Was sich ebenfalls auf die Reaktionszeit zurückführen lässt.
             Deutlich genauere Messwerte sind mit Hilfe von Videoanalyse zu bekommen, wobei der Messfehler hier die Framerate des Videos ist.
-            Nicht einfach zu beurteilen, ist aber auch hier, wann der Ballon wirklich \glqq{}leer\grqq{} ist. Was das Ergebnis weiter verfälscht.
+            Nicht einfach zu beurteilen, ist aber auch hier, wann der Ballon wirklich \enquote{leer} ist. Was die Messung weiter verfälscht.
 
             Nach eingien weiteren Experimenten mit dem Luftballon zeigte sich außerdem das die Spannkraft nachließ und das Volumen
             nicht zu seiner Ausgangsgröße zurückkehrte, sich also der Innendruck des Luftballons änderte.
             Die hier verwendeten Messungen fanden am selben Ballon, mit den ersten drei Aufpustvorgängen statt, womit der Effekt noch vernachlässigbar ist.
 
             Die durchströmte Fläche A wird als fehlerlos angenommen.
-
-        TODO: Alle Größen erklären!
-        TODO: Sonstiges hochladen?
-        TODO: Human Benchmark
-
-        TODO: Ausströmgeschwindigkeit konstant berücksichtigt???
 
         \subsection{Fehlerforpflanzung}
             Den Fehler für die berechnete Geschwindigkeit bekommen wir mithilfe der Gaußschen Fehlerfortpflanzung (0.2.1.14 aus\cite{AnleitungPraktikum})
@@ -280,8 +290,7 @@
                 % sqrt((4 b^2 U^4)/(D^4 π^6 t^2) + (4 a^2 U^6)/(9 D^4 π^6 t^4)) with U = 0.5859, D=0.0115, t=1.57, a=0.25, b=0.009
 
         \subsection{Mittlere Geschwindigkeitsfehler}
-            TODO: Idee Fehler über mittelwerte der gemessenen Größen TODO: Darf man das?
-            TODO: Oder die Mittelwerte der Längen und der Zeiten berechnen und dann Fehler
+            TODO: Stattdessen: Fehler über Mittelwerte der gemessenen Längen und Zeiten berechnen.
             Der mittlere Fehler der Geschwindigkeiten liegt bei
             \begin{equation} \label{val:geschw_fehler}
                 \frac{ \SI{4.83848}{\frac{m}{s}} + \SI{5.31905}{\frac{m}{s}} + \SI{3.45255}{\frac{m}{s}} }{3} = \SI{4.536694}{\frac{m}{s}}
@@ -289,7 +298,7 @@
             % ( 4.83848 + 5.31905 + 3.45255 )/3
 
         \subsection{Fehler umrechnen auf Überdruck}
-            Den Fehler des Überdrucks erhält man durch einsetzen der mittleren GeschwindigkeitTODO:ref plus/minus ihren Fehler\ref{val:geschw_fehler}
+            Den Fehler des Überdrucks erhält man durch einsetzen der mittleren Geschwindigkeit plus/minus ihren Fehler\ref{val:geschw_fehler}
             in die Gleichung zur Berechnung des Überdrucks\ref{eq:ballon_uberdruck} mit \(\rho = \SI{1.2041}{\frac{kg}{m^3}}\):
             Obere Schranke:
             \begin{equation}
@@ -313,12 +322,9 @@
             \begin{equation}
                 \frac{ \SI{137.1725}{\pascal} + \SI{112.3901}{\pascal} }{2} = \SI{124.7813}{\pascal}
             \end{equation}
-            Der Fehler für den Druck ist also \(\pm \SI{124.7813}{\pascal}\)
-    
-    \section{Versuch mit verkleinerter Öffnung}
-        TODO: ? Vielleicht nicht machen aber sagen, dass man so den Versuch genauer messen kann.
+            Der Fehler für den Druck ist also \(\pm \SI{124.78}{\pascal}\)
         
-    \subsection{Weltall}
+    \section{Weltall}
         Wir berechnen \(t_a^{Weltall}\) über den gesamten Druck im Luftballon \( p_i \), wir setzen die Beziehung \((p_i - p_a) + p_a = p_i \) in Formel\ref{eq:ballon_druck} ein und formen um:
         \begin{equation}
             \begin{gathered}
@@ -337,7 +343,9 @@
         \end{equation}
         Einheitenkontrolle:
         \begin{equation}
-            \frac{\si{m^3}}{\si{m^2} \cdot \sqrt{\frac{ \si{\pascal} }{ \frac{\si{kg}}{\si{m^3}} } }} = \frac{\si{m}}{ \sqrt{\frac{\frac{\si{kg}}{\si{m}\cdot\si{s^2}}}{\frac{\si{kg}}{\si{m^3}}}} } = \frac{\si{m}}{\sqrt{\frac{\si{m^2}}{\si{s^2}}}} = \si{s}
+            \frac{\si{m^3}}{\si{m^2} \cdot \sqrt{\frac{ \si{\pascal} }{ \frac{\si{kg}}{\si{m^3}} } }} =
+            \frac{\si{m}}{ \sqrt{\frac{\frac{\si{kg}}{\si{m}\cdot\si{s^2}}}{\frac{\si{kg}}{\si{m^3}}}} } =
+            \frac{\si{m}}{\sqrt{\frac{\si{m^2}}{\si{s^2}}}} = \si{s}
         \end{equation}
 
         Für das Volumen des Luftballons nehmen wir den Mittelwert der Umfänge und setzen Sie in die Formel für das Kugelvolumen\ref{eq:volumen} ein:
@@ -347,13 +355,15 @@
         % 1/6 * (0.5685)^3/pi^2 
         Wir setzen unser berechnetes Ergebnis für den Druck \(\left(p_i - p_a\right) = \SI{314.14}{\pascal} \), Luftdruck auf der Erde \(p_a = \SI{101325}{\pascal} \),
         das Volumen des Luftballons\ref{eq:volumen_berechnet} \(V = \SI{0.00310270}{m^3}\),
-        die Fläche des Mundstücks\ref{eq:fläche_berechnet} \( A = \SI{1.03869e-4}{m^2} \), sowie die Dichte von Luft \( \rho = \SI{1.2041}{\frac{kg}{m^3}} \); TODO: Werte aus der Aufgabenstellung\cite{AnleitungPraktikum}
+        die Fläche des Mundstücks\ref{eq:fläche_berechnet} \( A = \SI{1.03869e-4}{m^2} \),
+        sowie die Dichte von Luft \( \rho = \SI{1.2041}{\frac{kg}{m^3}} \) (Werte aus der Aufgabenstellung\cite{AnleitungPraktikum})
         \begin{equation}
-            t_a^{Weltall} = \frac{ \SI{0.00310270}{m^3} }{ \SI{1.03869e-4}{m^2} \cdot \sqrt{ \frac{ 2(\SI{314.14}{\pascal} + \SI{101325}{\pascal})}{ \SI{1.2041}{\frac{kg}{m^3}} }} } = \SI{0.0727}{s} = \SI{72.7}{ms}
+            t_a^{Weltall} = \frac{ \SI{0.00310270}{m^3} }{ \SI{1.03869e-4}{m^2} \cdot \sqrt{ \frac{ 2(\SI{314.14}{\pascal} + \SI{101325}{\pascal})}{ \SI{1.2041}{\frac{kg}{m^3}} }} }
+             = \SI{0.0727}{s} = \SI{72.7}{ms}
         \end{equation}
         % 0.00310270 / (1.03869e-4 * sqrt( 2 * (314.14 + 101325 ) / 1.2041))seconds
         Wir berechen im letzten Schritt den Faktor um den die Zeit \(t_a^{Versuch}\) aus unserer Versuchsdurchführung länger ist als die Zeit \(t_a^{Weltall}\).
-        Wir setzen hier für die Austrittszeit in unseren Versuchen auch den Durchschnitt an:
+        Wir setzen hier für die Ausströmzeit in unseren Versuchen auch den Durchschnitt der gemessenen Ausströmzeiten an:
         \begin{equation}
             t_a^{Versuch} = \frac{ \SI{1.19}{\second} + \SI{1.2}{\second} + \SI{1.57}{\second} }{3} = \SI{1.32}{\second} = t_a^{Versuch}
         \end{equation}
@@ -361,31 +371,51 @@
             \frac{t_a^{Versuch}}{t_a^{Weltall}} = \frac{ \SI{1.32}{\second} }{ \SI{0.0727}{\second} } = 18.1568
         \end{equation}
         Die Ausströmzeit auf der Erde ist \(\approx 18\) mal länger als im Weltall. \\
+        TODO: Es ist logisch, dass der Ballon im Weltall länger braucht, da???
 
-        TODO: Voluemnfehler? Der hier berechnete Faktor ist, wenn man die aus der Aufgabenstellung bezogenen Werte GUtes Ergebnis weil Fehler nur in berechnetem Wert aber Atmosphären Druck überwiegt
-    
+        Fehlerbehaftet sind bei diser Rechnung das Volumen des Luftballons, sowie die der durch das Experiment bestimmte Innendruck des Luftballons.
+        Wobei der Fehler des Drucks hier keine Rolle spielt, da der Atmosphärendruck auf der Erde drei Größenordnungen größer ist und als genau angenommen wird.
+        Das Volumen ist aber durchaus sehr ungenau und hat den Hauptanteil am Fehler dieses Ergebnisses.
     
     \section{Ergebnis}
-        Endwert: \(\SI{314.14}{\pascal} \pm Fehler \) TODO: Wie viel Nachkommastellen?
-        TODO: Prozentabweichung Fehler
-        TODO: Überall SI benutzen!!!
-        TODO: Formel für Druck in Abhängigkeit in von Umfang und Zeit
-        TODO: Diagramm mit Werten und Druckfunktion von Zeit und Umfang, in zwei Grafen mit jeweils einer Variable plotten.
-        TODO: Geschwindigkeitsdiagramm mit Fehlerbalken
-
-        Hier die korrigierten Werte?
-        TODO: Kommastellen wegmachen \\
+        Wir haben in diesem Experiment für den Überdruck eines Luftballons \(p_i - p_a\) einen Wert von
+        \[ \SI{314.14}{\pascal} \pm \SI{124.78}{\pascal} \]
+        bestimmt.
+        Das sind \( \SI{0.0031414}{bar} \pm \SI{0.0012478}{bar} \).\\
+        Der Überdruck des Luftballons sind also
+        \[ \frac{\SI{314.4}{\pascal}}{\SI{101325}{\pascal}} \cdot 100 = 0.31\% \] des Atmosphären Luftdrucks auf der Erde.
+        % TODO: Diagramm mit Werten und Druckfunktion von Zeit und Umfang, in zwei Grafen mit jeweils einer Variable plotten und 3D.
 
     \section{Diskussion}
-        Ergebnis gut für Größenordnung sonst nichts, nicht veralgemeinerbar auf verschiedene Luftballons, Größe, Spannkraft etc.
+        Das Ergebnis dieses Versuches ist auf Grund der sehr ungenauen Messmethoden sehr ungenau. Der Fehler beträgt \(\frac{\SI{124.78}{\pascal}}{\SI{314.14}{\pascal} } \cdot 100 = 39.72\% \)
+        des gemessenen Wertes und ist eigentlich nur zum einschätzen der Größenordnung zu gebrauchen.
+        Zum Vergleich wurde der Ballon mit einer Handelsüblichen Fahrradpumpe mit Manometer aufgepumpt. Bei vollständig aufgepustetem Ballon war kein Ausschlag auf der Skala des Barometers (Werte von 1 bis 5 bar)
+        zu sehen, was der bestimmten Größenordnung Glaubwürdigkeit verleiht.
 
-        Den Fehler, der entsteht, da das Mundstück nicht Teil des Luftballonvolumens ist und der Luftballon keine Kugel ist wird hier nicht berücksichtigt.
-        Hätte aber einen erheblichen Einfluss auf die Ungenauigkeit. Sehr schwache Annahme.
-        TODO: Abhängig von Ballonbeschaffenheit \\
-        TODO: Abhägig wie doll aufgepustet? Weggemittelt \\
-        TODO: Bernoullifehler Luft 2.95Pa
-        TODO: FOTOS !!!
-        TODO: Pascal in Verbindung mit Bar vergleichen. Sinnvolles Ergebnis?
+        Auch wenn man hier den Druckfehler des Schweredrucks durch geschickten Aufbau vermeiden kann\ref{fig:Festgeklebt}, ist er im Vergleich zum Fehler der Messwerte verschwindend gering.
+
+        Außerdem ist das Ergebnis weder vergleichbar noch verallgemeinerbar, da die Ballonbeschaffenheiten unterschiedlich sind;
+        jeder Luftballon unterschiedlich groß und schwer ist. Aber auch verschieden schwer aufzupusten ist, also sich die
+        Spannkraft auch zwischen gleich großen Luftballons stark unterscheiden kann.
+        Auch gilt für Gummi und damit für einen Luftballon nicht immer das Hook'sche Gesetz\cite{Gummi}, was nicht berücksichtigt wird. Das heißt wie stark der Luftballon aufgepustet war zum Start des
+        Experiments hat einen Einfluss der hier nicht berücksichtigt wird. Damit ist auch die Annahme, das die Ausströmgeschwindigkeit gleich bleibt nicht korrekt.
+
+        Das Experiment ließe sich durch mehrere Dinge deutlich genauer machen.
+        Natürlich könnte man den Überdruck mit einem sehr genauen Manometer direkt messen.
+        Man könnte um näher an den echten Wert zu kommen den Luftballon nicht als Kugel (ohne Mundstück), sondern als Ellipsoid (mit Mundstück) approximieren oder noch besser das Volumen des Luftballons direkt
+        über verdrängtes Wasser in einem Becken messen.
+        
+        Um den Fehler in der Zeitmessung zu minimieren, ließe sich auch die Ausströmfläche verkleinern, sodass die Luft deutlich länger braucht um aus dem Luftballon auszuströmen.
+        Z.B. mit Hilfe eines Strohhamls mit dem man das Mundstück erweitert, kommt man bereits auf Ausströmzeiten von über 10 Sekunden, womit die Messfehler nicht mehr so ins Gewicht schlagen. TODO: FOTO
+
+        Das Ergebnis dieses Versuches war für uns sehr überraschend, da die Größenordnung des Überdrucks nur einige Milibar beträgt.
+        Im Alltag begegnet man meist Drücken von \(\SI{1}{bar}\) oder mehr, so dass die Ergebnisse auf den ersten Blick erstaunlich klein schienen. 
+        Aber weitere Experimentelle Abwandlung, sowie der Versuch mit der Luftpumpe zeigen deutlich, das ein Luftballon nur einen geringen Überdruck hat TODO: Mehr
+
+        TODO: Bei aufpusten 1.003 bar oder 0.003 bar?
+        TODO: FOTO: Luftballon mit Strohhalm, Video Strohhalm an Hand, 
+        TODO: Alle Größen erklären!
+        TODO: Sonstiges hochladen? Videos?
 
     \section{Messfehler Abschätzung}\label{Messfehler_Umfang}
         Wir führen einen weiteren kleinen Versuch duch um die Messungenauigkeit des Umfangs bei einem Luftballon zu bestimmen.
@@ -421,23 +451,27 @@
         Die Messungen lagen im Abstand von ca. \(\SI{0.9}{cm}\) vom Mittelwert.
         Es ist also begründet anzunehmen, dass die Messunsicherheit ungefähr bei \(\SI{0.9}{cm}\) liegt.\cite{Standardabweichung}
     
+    \section*{} % TODO: Remove
     \printbibliography[title={Quellen}]
 
-    \begin{figure}[h!]\label{fig:Umfang}
+    \begin{figure}[!h]\label{fig:Umfang}
         \centering
         \includegraphics[width=\textwidth]{luftballon_umfang_messung.jpg}
         \caption{Messen des Luftballonumfangs \(a\)}
     \end{figure}
 
-    \begin{figure}[h!]\label{fig:Festgeklebt}
+    \begin{figure}[!h]\label{fig:Festgeklebt}
         \centering
         \includegraphics[width=\textwidth]{lufballon_festgeklebt.png}
         \caption{Standbild der Videoaufnahme der Ausstömungszeitmessung}
     \end{figure}
 
-    TODO: Messungen überarbeiten und anhängen
+    \begin{figure}[!h]\label{fig:Messwerte}
+        \centering
+        \includegraphics[height=14cm]{messwerte.jpg}
+        \caption{Messwerte der drei Versuchsdurchführungen}
+    \end{figure}
 
     TODO: Aufgabenstellung nochmal genau lesen.
-    TODO: Update .gitgnore Datei mit sonstigem Output hier im Ordner
     
 \end{document}
