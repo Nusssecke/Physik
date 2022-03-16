@@ -34,47 +34,97 @@
 
 \date{7.03.2022}
 \title{Physikalisches Grundpraktikum Teil I \\ (Mechanik und Thermodynamik) \\ Versuch 2 Drehbewegung}
-\author{Finn Wagner}
+\author{Finn Bietz, Finn Wagner}
 
 \begin{document}
-    \maketitle
+	
+	\maketitle
 
-    TODO: Messwert Zettel vorbereiten.
-    \section{Versuchsziel und Versuchsmethode}
-      In diesem Experiment soll das Trägheitsmoment eines Kreisels über drei verschiedene Methoden bestimmt werden.
-      
+	TODO: GIMP Bild machen
 
-      Was ist ein Trägheitsmoment? aus Lehrbuch
+	\section{Versuchsziel und Versuchsmethode}
+			In diesem Experiment soll das Trägheitsmoment eines Kreisels über drei verschiedene Methoden bestimmt werden.
+			TODO: Was ist ein Trägheitsmoment?
+			TODO: Formeln
+			TODO: Noch was aus der Aufgabenstellung abschreiben?
 
-      Durchführung mit Bild woher Variblen an Bild
-      Ergebnisse(Messergebnisse), da nochmal ordentlich
-      Auswertung
-      Formeln aus der Anleitung nicht nochmal herleiten
+	\section{Trägheitsmoment über die Winkelbeschleunigung}
 
+		\subsection{Grundlagen}
 
-      1. Teilversuch Graphische Auswertung daraus S
-      Fehler auch Graphische
-      \( \Delta I = \left|\right| \) <- maximaler Fehler
-      Bei wenigen Messungen eher maximaler Fehler da schlechte Statistik für Standardabweichung nicht gut.
+		\subsection{Durchführung}
+		\begin{enumerate}
+			\item Masse des Gewichts \(m\) messen.
+			\item Messen des Radius der Schnuraufwicklung mit dem Messschieber
 
+			\item Aufwickenln des Fadens und anhängen des Gewichts an die Kreisscheibe.
+			\item Zeitmessung für Umdrehungen mit \enquote{Runden} Knopf von Smarthphone Stoppuhr
 
-      z.B. I = 0.0728359
-      \( \Delta I = 0.00017 \) <- nur zwei signifikante stellen
-      I = 0,7284 +- 0.0017
+		\end{enumerate}
 
-      Länge ca.5 Seiten.
+		Durch Anhängen eines Gew
 
-    Vergleich der Ergebnisse
+		\subsection{Ergebnisse}
+		TODO: Messergebnisse Abschreiben
+		Mit Hilfer der Waage wurde die Masse des kleinen Gewichts \(m\) auf \(\SI{99}{\gram}\) bestimmt.
+		Die benutzte Waage hat eine Genauigkeit von einem Gramm.
+		Die Schnuraufwicklung hat den Radius \(r = \SI{4.93}{\centimetre}\). Die dazu verwendete Schieblehre
+		hat eine Genauigkeit von \(\SI{0.05}{\millimetre}\) 
+
+		\begin{tabular*}{c c c c c c}
+			Anzahl Umdrehungen & 1 & 2 & 3 & 4 & 5 \\
+			Verstrichen Zeit & \(\SI{4.89}{\second}\) & \(\SI{2.14}{\second}\) &  \(\SI{1.67}{\second}\) & \(\SI{1.33}{\second}\) & \(\SI{1.21}{\second}\) \\
+		\end{tabular*}
+		Für die Messungen wurde eine Handystoppuhr verwendet. Der Winkel wurde mit dem Auge geschätzt. Messwerte aus\ref{fig:Messwerte1}.
+
+		\subsection{Fehlerrechnung}
+		Maximaler Fehler, aus m, r, S
+
+		\subsection{Auswertung}
+			\subsubsection{Formeln}
+				Durch anhängen des Gewichts mit der Masse \(m\) auf den aufgewickelten Faden erzeugt man ein Drehmoment \(M = mgr\) wodurch der Kreisel eine konstante Winkelbeschleunigung
+				\begin{equation}
+					M = I \alpha = I \frac{d\omega}{dt}
+				\end{equation}
+				erfährt.
+				Zwischen dem Winkel und der Winkelbeschleunigung besteht die Beziehung (wenn der Kreisel mit Winkelgeschwindigkeit und Winkel 0 beginnt \(\omega = \phi = 0\))
+				\begin{equation}
+					\phi = \frac{1}{2} \alpha t^2
+				\end{equation}
+				Setzen wir die beiden Formeln TODO:Refs in einander ein, so ergibt Schieblehre
+				\begin{equation}
+					I = \frac{M}{\alpha} = \frac{Mt^2}{2\phi}
+				\end{equation}
+
+			TODO: Einsetzen
+
+		\subsection{Endergebnis}
+		TODO: ?
+
+	\section{Trägheitsmoment über die Schwingungsdauer einer Pendelbewegung}
+
+	\section{Trägheitsmoment über eine Präzessionsbewegung}
+
+	\section{Fazit}
+	TODO: Welcher Versuch ist am Besten geignet, am einfachsten, am genausten, etc... um das Trägheitsmoment zu bestimmen.
+	Vergleich der Ergebnisse
     Hoffentlich ähnliche Ergebnisse.
     Diskutiere z.B Reibungseffekte, Kleinwinkelnäherung, etc.
     Fazit beste Methode, z.B. kleinester Fehler, Durchführung am wenigsten Aufpassen.
 
-    Anhang Messwerte
 
-    \section{Grundlagen}
+	\printbibliography[title={Quellen}]
 
-    \section{Durchführung}
+	\begin{figure}[!h]\label{fig:Messwerte1}
+		\centering
+		\includegraphics[height=14cm]{messwerte.jpg}
+		\caption{Messwerte der drei Versuchsdurchführungen}
+	\end{figure}
 
-    \section{Formeln}
+	\begin{figure}[!h]\label{fig:Messwerte2}
+		\centering
+		\includegraphics[height=14cm]{messwerte.jpg}
+		\caption{Messwerte der drei Versuchsdurchführungen}
+	\end{figure}
 
 \end{document}
