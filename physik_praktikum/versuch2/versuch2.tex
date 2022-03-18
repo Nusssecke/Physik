@@ -51,7 +51,7 @@
 		Der Kreisel ist eine Scheibe die in ihrem Mittelpunkt auf eine Stab aufgesteckt ist. Die Scheibe kann um ihren Mittelpunkt frei rotieren.
 		Der Stab wird im Schwerpunkt des Systems Scheibe-Stab mit einem Drehgelenk gestützt und auf der gegenüberliegenden Seite von einem Gegengewicht in Waage gehalten.
 		Das Drehgelenk kann in alle Richtungen drehen. Zum fixieren des Gelenks steht in den ersten beiden Versuchen ein Stativ zur Verfügung.
-		\begin{figure}[!h]\label{fig:aufbau}
+		\begin{figure}[!ht]\label{fig:aufbau}
 			\centering
 			\includegraphics[width=\textwidth]{aufbau.png}
 			\caption{Allgemeiner Versuchsaufbau}
@@ -59,7 +59,8 @@
 
 	\section{Allgemeine Theorie}\label{Allgemeine_Theorie}
 		Ein Trägheitsmoment ist der Zusammenhang zwischen der kinetischen Rotationsenergie eines Körpers und seiner Winkelgeschwindigkeit, nach der Formel \(K = \frac{1}{2}I \omega^2\).
-		Damit stellt es den gleichen Zusammenhang her wie die Masse bei translatorischen Bewegungen. Die Formeln \(K = \frac{1}{2} m v^2\), sowie \(K = \frac{1}{2} I \omega^2 \) ähneln sich dabei stark.
+		Damit stellt es den gleichen Zusammenhang her wie die Masse bei translatorischen Bewegungen. % TODO: Maß für den Wiederstand die ein Körper der Änderung seines Bewegungszustandes entgegensetzt. gegen Beschleunigung bei Drehbewegungen
+		Die Formeln \(K = \frac{1}{2} m v^2\), sowie \(K = \frac{1}{2} I \omega^2 \) ähneln sich dabei stark.
 		Das Trägheitsmoment kann man für diskrete oder kontinuierliche Masseverteilungen bestimmen.
 		Für nur rotierende Körper ist die Summe aller Bewegungsenergien die gesamte Rotationsenergien. Zu einem diskreten Zeitpunkt lassen sich die Rotationen als geradlinige Bewegungen betrachten. Es gilt also:
 		\begin{equation}
@@ -129,7 +130,7 @@
 			Der Winkel wurde mit dem Auge geschätzt. \\
 
 			\subsubsection{Winkel und Zeiten}
-				\begin{table}[!h]
+				\begin{table}[!ht]
 					\centering
 					\begin{tabular}{ | c | c | } 
 						\hline
@@ -146,7 +147,7 @@
 				\end{table}
 				
 				Damit ergibt sich für die Winkel und die insgesamt verstrichene Zeit:
-				\begin{table}[!h]
+				\begin{table}[!ht]
 					\centering
 					\begin{tabular}{ | c | c | } 
 						\hline
@@ -296,7 +297,7 @@
 			Dieses rücktreibende Drehmoment hängt vom Auslenkungswinkel ab und kann für kleine Winkel (Kleinwinkelnäherung) als harmonische Schwingung betrachtet werden.
 			Über die Periodendauer der Pendelbewegung, die Masse und ihren Abstand zum Mittelpunkt können wir das Drehmoment der Scheibe berechnen.
 
-			\begin{figure}[!h]
+			\begin{figure}[!ht]
 				\centering
 				\includegraphics[width=0.5\textwidth]{schwingung_aufbau.png}
 				\caption{\label{fig:Schwingung_Aufbau}Der Versuchsaufbau mit relevanten Größen}
@@ -348,7 +349,8 @@
 				\begin{equation}
 					T = 2 \pi \sqrt{ \frac{I'}{D} }
 				\end{equation}
-				Setzen wir für \(I'\) und \(D\) die in den Formeln (\ref{eq:Neues_Trägheismoment}) und (\ref{eq:Genähertes_Direktionsmoment}) ein, erhalten wir die folgende Formel:
+				Setzen wir für \(I'\) und \(D\) die in den Formeln (\ref{eq:Neues_Trägheismoment}) und (\ref{eq:Genähertes_Direktionsmoment}) gegebenen Beziehungen ein,
+				erhalten wir die folgende Formel:
 				\begin{equation}
 					T = 2 \pi \sqrt{ \frac{ I + m \cdot R^2 }{ R \cdot m \cdot g } }
 				\end{equation}
@@ -454,17 +456,18 @@
 		Diskutiere z.B Reibungseffekte, Kleinwinkelnäherung, etc.
 		Fazit beste Methode, z.B. kleinster Fehler, Durchführung am wenigsten Aufpassen.
 		Direkt bestimmen mit Gewicht und Radius
-
+        Masse raten/bestimmen aus Trägheitsmomenten
+		Trägheitsmoment in Relation setzen
 
 	\printbibliography[title={Quellen}]
 
-	\begin{figure}[!h]\label{fig:Messwerte1}
+	\begin{figure}[!ht]\label{fig:Messwerte1}
 		\centering
 		\includegraphics[height=14cm]{messwerte1.jpg}
 		\caption{Messwerte der ersten beiden Teilversuche}
 	\end{figure}
 
-	\begin{figure}[!h]\label{fig:Messwerte2}
+	\begin{figure}[!ht]\label{fig:Messwerte2}
 		\centering
 		\includegraphics[height=14cm]{messwerte2.jpg}
 		\caption{Messwerte des letzten Teilversuchs}
