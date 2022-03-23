@@ -21,6 +21,7 @@
 
 \usepackage{siunitx}
 \sisetup{locale = DE}
+\usepackage[version=4]{mhchem}
 
 \usepackage{biblatex}
 \DefineBibliographyStrings{ngerman}{
@@ -34,11 +35,12 @@
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
-\date{7.03.2022}
-\title{Physikalisches Grundpraktikum Teil I \\ (Mechanik und Thermodynamik) \\ Versuch 5 Lufballon mit \ce{CO2}}
-\author{Wafaa Al Nachawti, Finn Wagner}
+\date{24.03.2022}
+\title{Physikalisches Grundpraktikum Teil I \\ (Mechanik und Thermodynamik) \\ Versuch 5 Luftballon mit \ce{CO2}}
+\author{Wafaa Al Nachwati, Finn Wagner}
 
 \begin{document}
+
     \maketitle
 
     \section{Versuchsziel und Versuchsmethode}
@@ -48,11 +50,9 @@
     \section{Grundlagen}
     Wir füllen zwei Luftballons, einmal mit Luft und einmal mit \ce{CO2}. Auf beide Luftballons wirkt die gleiche Auftriebskraft, da sie das gleiche Volumen an Luft verdrängen.
     Aber, da sich ihre Massen unterscheiden wirkt auf den mit \ce{CO2} gefüllten Luftballon, wie wir später sehen werden, auf Grund der höheren Dichte von \ce{CO2}
-    eine stärkere Gewichtskraft, die mehr von der Geschwindigkeits abhängigen Reibungskraft überwinden kann. Der mit \ce{CO2} gefüllte Luftballon fällt schneller.
+    eine stärkere Gewichtskraft, die mehr von der geschwindigkeitsabhängigen Reibungskraft überwinden kann. Der mit \ce{CO2} gefüllte Luftballon fällt schneller.
     Aus dieser Beziehung zwischen Dichte und Geschwindigkeit stellen wir eine Formel auf und können durch Messen des Volumens der Luftballons, sowie der Fallgeschwindigkeiten
-    zunächst den Faktor zwischen den beiden Dichten, aber da wir die Dichte von Luft bereits kennen\cite{Aufgabenstellung}, die Dichte von \ce{CO2} berechnen.
-
-    TODO: Co2 aus Wasser lösen, Druck Gleichgewicht etc.
+    zunächst den Faktor zwischen den beiden Dichten, aber da wir die Dichte von Luft bereits kennen~\cite{Aufgabenstellung}, die Dichte von \ce{CO2} berechnen.
 
     \section{Formeln}
     Auf jeden Körper wirkt im Schwerefeld der Erde eine Zentralkraft Richtung Erdmittelpunkt, proportional zur Masse des Körpers.
@@ -64,21 +64,21 @@
         m = \rho_K \cdot V \cdot g
     \end{equation}
     Weiterhin wirkt auf Körper mit echter Ausdehnung (keine Punktmasse) in Flüssigkeiten/Gasen wie Luft eine Auftriebskraft, 
-    die durch Verdrengung des Mediums entsteht. Sie ist abhängig vom verdrengten Volumen und der Dichte des Mediums (Gases \(\rho_G\)) in dem sich der Körper befindet.
+    die durch Verdrängung des Mediums entsteht. Sie ist abhängig vom verdrängten Volumen und der Dichte des Mediums (Gases \(\rho_G\)) in dem sich der Körper befindet.
     \begin{equation} \label{eq:auftrieb}
         F_A = \rho_{G} \cdot V \cdot g
     \end{equation}
     Als dritte Kraft wirkt bei unserem Versuch eine Reibungskraft gegen den Fall des Luftballons an.
-    Die Stokes'sche Reibung ist proportional zur Geschwindigkeit \(v\), dem Radius \(r\) des Luftballons, so wie der Viskosität \( \eta \) der Luft.
+    Die stokessche Reibung ist proportional zur Geschwindigkeit \(v\), dem Radius \(r\) des Luftballons, so wie der Viskosität \( \eta \) der Luft.
     \begin{equation} \label{eq:stokes_reibung}
         F_R = 6 \pi \cdot r \cdot \eta \cdot v
     \end{equation}
-    TODO: Wir setzen hier Stokes'sche Reibung an, da wir uns vollständig im Bereich laminarer Strömung aufgrund sehr kleiner Geschwindigkeiten befinden
+    Wir setzen hier stokessche Reibung an, da wir uns vollständig im Bereich laminarer Strömung aufgrund sehr kleiner Geschwindigkeiten befinden.
     Der Luftballon wird als von der Schwerkraft nach unten beschleunigt, vom Auftrieb und von der Reibungskraft gebremst.
-    Der Luftballon beschleunigt bis zu seiner maximalen Fallgeschwindigkeit\cite{Fall-Luftwiederstand} und fällt ab dann mit einer konstanten Geschwindigkeit weiter,
-    wird also nicht mehr weiter beschleunigt, da auf den Ballon keine resultierende Kraft mehr wirkt\ref{eq:gleichgewicht}.
-    Da für unsere Gegebenheiten (TODO: machen in Fehlerrechnung) die Zeit in der der Luftballon beschleunigt im Vergleich zur gesamten Fallzeit sehr gering ist,
-    setzen wir für den gesamten Fall das Kräftegleichgewicht an:
+    Der Luftballon beschleunigt bis zu seiner maximalen Fallgeschwindigkeit (Siehe~\cite{Fall-Luftwiederstand}) und fällt ab dann mit einer konstanten Geschwindigkeit weiter,
+    wird also nicht mehr weiter beschleunigt, da auf den Ballon keine resultierende Kraft mehr wirkt (Gleichung~\ref{eq:gleichgewicht}).
+    Da für unsere Gegebenheiten die Zeit in der der Luftballon beschleunigt im Vergleich zur gesamten Fallzeit sehr gering ist,
+    setzen wir für den gesamten Fall das Kräftegleichgewicht an, tun also so, als ob der Ballon direkt mit seiner Endgeschwindigkeit fällt:
     \begin{equation} \label{eq:gleichgewicht}
         F_G = F_A + F_R
     \end{equation}
@@ -86,7 +86,7 @@
     \begin{equation} \label{eq:geschwindigkeit}
         v = \frac{h}{t_{Fall}}
     \end{equation}
-    Die Endgeschwindigkeit des Ballons lässt sich aus dem Kräftegleichgewicht\ref{eq:gleichgewicht} durch einsetzen der Stokes'schen Reibung ausdrücken:
+    Die Endgeschwindigkeit des Ballons lässt sich aus dem Kräftegleichgewicht (Formel~\ref{eq:gleichgewicht}) durch einsetzen der stokesschen Reibung ausdrücken:
     \begin{equation}
         \begin{gathered} \label{eq:stokes_geschwindigkeit}
             F_G = F_A + F_R \Rightarrow F_R = F_G - F_A \\
@@ -94,30 +94,30 @@
             \Rightarrow v = \frac{ F_G - F_A }{ 6 \pi \cdot r \cdot \eta }
         \end{gathered}
     \end{equation}
-    Wir setzen nun Gleichung\ref{eq:geschwindigkeit} und Gleichung\ref{eq:stokes_geschwindigkeit} gleich.
+    Wir setzen nun Gleichung~(\ref{eq:geschwindigkeit}) und Gleichung~(\ref{eq:stokes_geschwindigkeit}) gleich.
     \begin{equation} \label{eq:fall_halb}
         \frac{h}{t_{Fall}} = \frac{ F_G - F_A }{ 6 \pi \cdot r \cdot \eta }
     \end{equation}
     Im Experiment werden zwei Luftballons, einer gefüllt mit \ce{CO2} und einer gefüllt mit Luft, aus der selben Höhe \(h\) fallengelassen.
-    Die Masse m eines solchen gefüllten Luftballons setzt sich aus der Masses \( m_h \) des Ballons (der Ballonhülle aus Gummi), sowie dem in ihm enthaltenen Gas\ref{eq:masse_dichte_rel} zusammen
+    Die Masse m eines solchen gefüllten Luftballons setzt sich aus der Masse \( m_h \) des Ballons (der Ballonhülle aus Gummi), sowie dem in ihm enthaltenen Gas (Formel~\ref{eq:masse_dichte_rel}) zusammen.
     Wir setzen diese Masse in die Formel für die Schwerkraft\ref{eq:schwerkraft} ein:
     \begin{equation} \label{eq:schwerkraft_ballon}
         F_G = m \cdot g = m_H \cdot g + \rho \cdot V \cdot g = \left( m_H + \rho \cdot V \right) \cdot g
     \end{equation}
-    Die Schwerkraft\ref{eq:schwerkraft_ballon}, sowie die Auftriebskraft\ref{eq:auftrieb} setzen wir in die Gleichung\ref{eq:fall_halb} ein:
+    Die Schwerkraft (Formel~\ref{eq:schwerkraft_ballon}), sowie die Auftriebskraft (Formel~\ref{eq:auftrieb}) setzen wir in Gleichung~\ref{eq:fall_halb} ein:
     \begin{equation} \label{eq:fall}
         \frac{h}{t_{Fall}} = \frac{ \left( m_H + \rho_{F\ddot{u}llung} \cdot V \right) \cdot g - \rho_{Medium} \cdot V \cdot g }{ 6 \pi \cdot r \cdot \eta_{Medium} }
     \end{equation}
-    Zu unterscheiden sind die beiden Dichten. \(\rho_{F\ddot{u}llung}\) ist die Dichte des Gases im Luftballon, \(rho_{Medium}\) die Dichte des Gases in der Atmosphäre.
-    Für den Luftballon gefüllt mit Luft wird die Formel\ref{eq:fall} zu:
+    Zu unterscheiden sind die beiden Dichten. \(\rho_{F\ddot{u}llung}\) ist die Dichte des Gases im Luftballon, \(\rho_{Medium}\) die Dichte des Gases in der Atmosphäre.
+    Für den Luftballon gefüllt mit Luft wird Formel~\ref{eq:fall} zu:
     \begin{equation} \label{eq:fall_luft}
         \frac{h}{t_{Luft}} = \frac{ \left( m_H + \rho_{Luft} \cdot V \right) \cdot g - \rho_{Luft} \cdot V \cdot g }{ 6 \pi \cdot r \cdot \eta_{Luft} }
     \end{equation}
-    Und für den Luftballon gefüllt mit \ce{CO2} wird die Formel\ref{eq:fall} zu:
+    Und für den Luftballon gefüllt mit \ce{CO2} wird Formel~\ref{eq:fall} zu:
     \begin{equation} \label{eq:fall_co2}
         \frac{h}{t_{\ce{CO2}}} = \frac{ \left( m_H + \rho_{\ce{CO2}} \cdot V \right) \cdot g - \rho_{Luft} \cdot V \cdot g }{ 6 \pi \cdot r \cdot \eta_{Luft} }
     \end{equation}
-    Wir teilen nun die Formel für den Fall in \ce{CO2}\ref{eq:fall_co2} durch die für den Fall in Luft\ref{eq:fall_luft} und vereinfachen:
+    Wir teilen nun die Formel für den Fall in \ce{CO2} durch die für den Fall in Luft und vereinfachen:
     % TODO: \cancel{} für alles was noch sinnvoll weggestrichen
     \begin{equation} \label{eq:calc_rho_faktor}
         \begin{gathered}
@@ -130,12 +130,10 @@
             \frac{ m_H + V \cdot \left( \rho_{\ce{CO2}} - \rho_{Luft} \right)}{ m_H } = 1 + \frac{V}{m_H} \left( \rho_{\ce{CO2}} - \rho_{Luft} \right)
         \end{gathered}
     \end{equation} 
-    Gleichung\ref{eq:calc_rho_faktor} formen wir im letzen Schritt noch nach \(\rho_{\ce{CO2}}\) auf:
+    Im letzten Schritt formen wir noch nach \(\rho_{\ce{CO2}}\) um:
     \begin{equation} \label{eq:calc_rho_co2}
         \rho_{\ce{CO2}} = \rho_{Luft} + \left( \frac{t_{Luft}}{t_{\ce{CO2}}} - 1 \right) \frac{m_H}{V}
     \end{equation}
-
-    TODO: Luftballon Kugel approximieren. Ein kugelförmiger Körper mit Dichte \(\rho_K\) in einer Flüssigkeit mit Dichte \(\rho_{Fl}\) fällt in eben jener Flüssigkeit nach unten
 
     \section{Versuchsaufbau}
         \begin{figure}[h]
@@ -149,31 +147,31 @@
                 \includegraphics[height=6cm]{luftballons.png}
                 \caption{Messgrößen am Luftballon}
             \end{minipage}
-        \end{figure} TODO: Allign
+        \end{figure} % TODO: \Allign
 
         \subsection{Material}
         \begin{itemize}
             \item 2 Luftballons
             \item 1 Flasche Mineralwasser Classic; Wasser mit viel Kohlensäure
             \item Smartphone zum Aufnehmen eines Videos
-            \item Maßband mit mindestens Milimetergenauigkeit, am besten ein weiches Rollbandmaß
+            \item Maßband mit mindestens Millimetergenauigkeit, am besten ein weiches Rollbandmaß
             \item 1 Stoppuhr oder Computerprogramm zum auswerten der Zeiten im Video
         \end{itemize}
 
     \section{Durchführung}
         \subsection{Ballon mit \texorpdfstring{\ce{CO2}}{CO2} aufpumpen}
             \begin{enumerate}
-                \item Stülpen Sie den Luftballon (d.h.\ das Mundstück des Luftballons) auf den Hals der Mineralwasserflasche (Abb TODO: Bild hinzufügen)
-                \item Schütteln Sie die Wasserflasche wiederholt, um die im Wasser gelöste Kohlensäure in \ce{CO2}-Gas umzuwandeln und den Luftballon dadurch auf zublasen.
+                \item Stülpen Sie den Luftballon (d.h.\ das Mundstück des Luftballons) auf den Hals der Mineralwasserflasche (Abbildung TODO: Bild hinzufügen)
+                \item Schütteln Sie die Wasserflasche wiederholt, um die im Wasser gelöste Kohlensäure in \ce{CO2}-Gas umzuwandeln und den Luftballon dadurch aufzublasen.
                 Achten Sie darauf das kein Wasser in den Ballon kommt, um die Masse des Ballons nicht zu verändern.
                 \item Der Ballon muss am Ende nicht vollständig aufgeblasen sein; etwa \(\SI{15}{cm}\) sind bereits ausreichend.
-                \item Halten sie den Ballon zu und nehmen sie ihn vorsichtig von der Flasche, sodass kein \ce{CO2} eintweicht und knoten Sie ihn zu.
+                \item Halten sie den Ballon zu und nehmen sie ihn vorsichtig von der Flasche, sodass kein \ce{CO2} entweicht und knoten Sie ihn zu.
             \end{enumerate}
         
         \subsection{Zweiten Ballon füllen}
             \begin{enumerate}[resume]
                 \item Bestimmen Sie die Umfänge des mit \ce{CO2} gefüllten Ballons mithilfe des Maßbands.
-                Messen Sie den Umfang vom Mundstück bis zum obersten Punkt (Umfang a), sowie die \enquote{Tallie} (Umfang b) (TODO:ref Bild)
+                Messen Sie den Umfang vom Mundstück bis zum obersten Punkt (Umfang a), sowie die \enquote{Taille} (Umfang b) (TODO:ref Bild)
                 \item Pusten Sie einen zweiten Ballon (mit Luft) auf. Lassen sie in kleinen Schritten Luft aus dem Ballon und messen Sie wiederholt die Umfänge,
                 bis die beiden Luftballons ein identisches Volumen haben.
                 \item Knoten Sie den Luftballon zu.
@@ -193,67 +191,84 @@
         \subsection{Videoauswertung}
             \begin{enumerate}
                 \item Messen Sie bei allen aufgenommen Videos die Fallzeiten der Luftballons vom Zeitpunkt an dem sie losgelassen wurden, bis sie auf den Boden aufkommen.
-                Dies kann durch mitstoppen mit einer Stoppuhr beim anschauen des Videos oder durch direktes auswerten des Videos mit Hilfe eines geigneten Computerprogramms oder Handyapp
+                Dies kann durch mitstoppen mit einer Stoppuhr beim anschauen des Videos oder durch direktes auswerten des Videos mit Hilfe eines geeigneten Computerprogramms oder Handyapp
             \end{enumerate}
-        TODO: Bilder, 1.Ballon auf Flasche, 2.Ballon auf Flasche geschüttelt, 3. Fallversuch
-
-        Bei unserer Durchführung haben wir uns für die Unterkannte eines Türrahmens entschieden. TODO:
     
+    \section{Messergebnisse}
+    Für die drei Messungen haben wir die folgenden Werte aufgenommen: \\
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            & \( t_{\ce{co2}} [s] \) & \( t_{Luft} [s] \) \\
+            \hline
+            \( t_1 \) & 1.195 & 1.542 \\
+            \hline
+            \( t_2 \) & 1.251 & 1.528\\
+            \hline
+            \( t_3 \) & 1.306 & 1.515 \\
+            \hline
+            \end{tabular} \\
+        \end{center}
+        Aus den Messwerten berechnen wir die Mittelwerte, also die durchschnittliche Fallzeit: \\
+        \( \overline{t_{\ce{co2}}} \approx \SI{1.251}{\second} \) \\
+        \( \overline{t_{Luft}} \approx \SI{1.5283}{\second} \) \\
+        von einer Höhe \( h = \SI{1.97}{\metre} \) \\
+        Für den Umfang der Luftballons:
+        \( a = \SI{0.467}{\metre} \), \( b = \SI{0.45}{\metre} \), \( U = \frac{ \SI{0.476}{m} + \SI{0.45}{m} }{2} = \SI{0.463}{m} \) \\
+        \( m_H = \SI{5}{\gram} \) % TODO: <-- nicht gemessen eigentlich 2 Gramm
+
     \section{Auswertung}
-        Es wurde versucht die beiden Luftballons bestmöglich auf das gleiche Volumen zu bringen.
-        Wir berechnen aus den Messungen der Umfänge ein Volumen, was wir für beide Luftballons ansetzen.
-        Für a:
+        Wir berechnen das Volumen des Luftballons mit der Annahme, dass der Luftballon ein kugelförmiger Körper ist:
+        \begin{equation}\label{eq:volumen}
+            \begin{gathered}
+                V = \frac{4}{3} \pi {\left( \frac{U}{2 \pi} \right) }^3 = \frac{4}{3} \pi \frac{U^3}{8 \pi^3} = \frac{1}{6} \frac{U^3}{\pi^2} \\
+                V = \frac{ {( \SI{0.463}{\metre} )}^3 }{ 6 \cdot \pi^2} = \SI{1.676e-3}{m^3}
+            \end{gathered}
+        \end{equation}
+        Für die Dichte ergibt also:
         \begin{equation}
-            a_1 = \SI{0.475}{m}, a_2 = \SI{0.477}{m} \Rightarrow a = \SI{0.476}{m} 
+            \begin{gathered}
+                \rho_{\ce{CO2}} = \SI{ 1.2041 }{ \frac{kg}{m^3} } + (\frac{t_{Luft}}{t_{CO_2}} - 1)\frac{m_H}{V} \\
+                \rho_{\ce{CO2}} = \SI{ 1.2041 }{ \frac{kg}{m^3} } + (\frac{ \SI{1.528}{s} }{ \frac{1.251}{s} } - 1) \frac{ \SI{0.005}{\kilogram} }{ \SI{0.001676}{m^3} } \\
+                \rho_{\ce{CO2}} \approx 1.8647 \unit{ \frac{kg}{m^3} }
+            \end{gathered}
         \end{equation}
-        Für b wurde bei beiden Luftballons der selbe Umfang \(b = \SI{0.45}{m} \) gemessen.
-        Wir berchnen den Mittelwert aus \(a\) und \(b\), um den Luftballon besser als Kugel approximieren zu können.
+        Der Literaturwert der Dichte von \( \ce{CO2} \) ist 1,977 \( \frac{ \unit{\kilogram} }{ {\unit{\metre}}^3 } \) \\
+        Für die Abweichung des experimentellen Werts von dem Literaturwert: \\
         \begin{equation}
-            U = \frac{ \SI{0.476}{m} + \SI{0.45}{m} }{2} = \SI{0.463}{m}
+            \frac{\rho_{exp}}{\rho_{Literatur}} = \frac{ \SI{ 1.8647 }{ \frac{kg}{m^3} } }{ \SI{1.977}{ \frac{kg}{m^3} }  } = 0,942
         \end{equation}
-        Volumen der Luftballons berechnen:
-        \begin{equation} \label{eq:volumen}
-            V = \frac{4}{3} \pi {\left( \frac{U}{2 \pi} \right) }^3 = \frac{4}{3} \pi \frac{U^3}{8 \pi^3} = \frac{1}{6} \frac{U^3}{\pi^2}
-        \end{equation}
-        Wir setzen den Umfang \(U\) ein:
+        Also eine Abweichung von ungefähr 5,8 \%.
+            
+        \subsection*{Fehlerrechnung:}
+        Für die Fehlerrechnung wird die Standardabweichung des Mittelwertes berechnet.
         \begin{equation}
-            V =  \frac{1}{6} \frac{{(\SI{0.463}{m})}^3}{\pi^2} = \SI{1.676e-3}{m^3}
+            \begin{gathered}
+                \sigma(\overline{t_{co2}})= \frac{1}{\sqrt{N}} \sigma(t) \\
+                \approx \sqrt{\frac{1}{N-1} [(t_1-\overline{t})^2 + (t_2-\overline{t})^2 + (t_3-\overline{t})^2} ] \\
+                = \sqrt{ \frac{1}{2} [ (1.195-1.251)^2 + (1.251-1.251)^2 + (1.306-1.251)^2 ] } \\
+                \approx 0.0555
+            \end{gathered}
         \end{equation}
+        ????
+        \begin{equation}
+            \begin{gathered}
+                \sigma(\overline{t_{Luft}})= \frac{1}{\sqrt{N}} \sigma(t) \\
+                \approx \sqrt{ \frac{1}{N-1} [ (t_1-\overline{t})^2 + (t_2-\overline{t})^2 + (t_3-\overline{t})^2 } ] \\
+                = \sqrt{ \frac{1}{2} [ (1.542-1.528)^2 + (1.528-1.528)^2 + (1.515-1.525)^2 ] } \\
+                \approx 0.0122
+            \end{gathered}
+        \end{equation}
+
         
-        Berechnen Sie aus den drei Messungen die Mittelwerte und setzen sie ein.
-
-        Mit der Dichte \(\rho_{Luft}\) aus der Aufgabenstellug\cite{Aufgabenstellung}
-        und dem Mittelwert der aus den Videos bestimmten Fallzeiten berechnen wir mit Formel\ref{eq:calc_rho_co2} die Dichte von \ce{CO2}:
-        \begin{equation}
-            \rho_{CO_2} = \SI{1.2041}{\frac{kg}{m^3}} + (\frac{t_{Luft}}{t_{CO_2}} - 1)+\frac{m_H}{V}
-        \end{equation}
-        TODO: Formel für die Dichte von co2 mit Volumenformel eingesetzt?
-        TODO: Trennen Formeln und Auswertung?
-
-    \section{Fehlerrechnung}
-        Prallaxe von Video???
-        Nicht auf gleiche Höhe am Anfang.
-        Luftstömungen?
-        
-        TODO: Fehler Luftballon aufgepustet nicht Umgebungsluft?
-        TODO: Fehler Luft im Co2 ballon, alternativ Sodastream?
-        TODO: Schwer zu sehen wann Boden berührt
-        TODO: Wiegen sie den Luftballon.
-        TODO: Fehler Luftballon wiegt 2g
-        TODO: (Wasser in Ballon?)
-        TODO: Video aufgenommen ausgewertet mit Media Player Classic?App ausgewertet
-        TODO: Beachten Vidoe nur mit 30fps aufgenommen Fehlerrechnung
-        TODO: Umfangfehlerrechnung aus Versuch 6 klauen. Hier aber mehr auf schwierig Umfänge zu vergleichen eingehen. Volumenfehler
-        TODO: Theoriefehler aus Herleitung???
-
     \section{Fall auf der Venus}
         Wir bestimmen nun, wie lang der Fall des mit \ce{CO2} gefüllten Luftballons auf der Venus dauern würde. Wir nehmen an,
         das die Atmosphäre der Venus zu \( 100\% \) aus \ce{CO2} besteht. Die Schwerkraft auf der Venus beträgt \(g_{Venus} = \SI{8.87}{\frac{m}{s}}\).
         Die Atmosphäre auf der Venus ist mit mehr als \(\SI{400}{\celsius}\) sehr heiß und die Viskosität ist abhängig von der Temperatur.
-        Wir nehmen für diese Rechnung an, das es auf der Venus nur Raumtemparatur mit \(T = \SI{20}{\celsius}\) warm ist.
+        Wir nehmen für diese Rechnung an, das es auf der Venus nur Raumtemperatur mit \(T = \SI{20}{\celsius}\) warm ist.
         Die Viskosität von \ce{CO2} ist dann \( \eta_{\ce{CO2}} = \SI{14.73e-6}{\pascal\cdot\second} \)
 
-        Wir gehen hier beim aufstellen der Formel ähnlich vor wie bei der Formel für die Dichte. Wir nehmen Formel\ref{eq:fall}
+        Wir gehen hier beim aufstellen der Formel ähnlich vor wie bei der Formel für die Dichte. Wir nehmen Formel~()\ref{eq:fall})
         und setzen die Werte für den Fall eines mit \(\ce{CO2}\) gefüllten Luftballons auf der Erde und auf der Venus ein:
         \begin{equation}
             v_{Erde} = \frac{ \left( m_H + \rho_{\ce{CO2} \cdot V } \right) \cdot g_{Erde} - \rho_{Luft} \cdot V \cdot g_{Erde} }{ 6\pi \cdot r \cdot \eta_{Luft} }
@@ -262,7 +277,7 @@
             v_{Venus} = \frac{ \left( m_H + \rho_{\ce{CO2} \cdot V } \right) \cdot g_{Venus} - \rho_{\ce{CO2}} \cdot V \cdot g_{Venus} }{ 6\pi \cdot r \cdot \eta_{\ce{CO2}} }
         \end{equation}
         Wir bilden nun das Verhältnis der beiden Fallgeschwindigkeiten:
-        % TODO: Cancel
+        % TODO: Canceln
         \begin{equation}
             \begin{gathered} \label{eq:geschwindigkeiten_verhältnis}
                 \frac{ v_{Erde} }{ v_{Venus} } = 
@@ -316,23 +331,48 @@
         TODO: Das Verhältnis ist, die Fallzeit auf der Venus ist länger/kürzer
         TODO: Aufgabe vergleichen Sie Fallzeiten! Warum länger/kürzer, Abhängigkeit Dichte, Viskosität, Gewichtskraft.
 
-    TODO: Aufgabenstellung nochmal genau lesen.
-    TODO: Messergebnisse nochmal neu aufschreiben und anheften.
+    \section{Diskussion Ergebnis}
+        TODO: Plot, Ort, Zeit Geschwindigkeit des Luftballons beim Fall? mit pgfplots
 
-    \section{Ergebnis}
-        TODO: Plot, ort, zeit geschwindigkeit des Luftballons beim Fall? mit pgfplots
+        TODO: Prozentabweichung vom Literaturwert
 
-        TODO: Prozent abweichung vom Literaturwert
-
-        TODO: Wie viel Co2 in Waserflasche gelöst.
+        TODO: Wieviel Co2 in Wasserflasche gelöst.
         TODO:Literaturwert Quelle angeben
 
-    \section{Diskusion}
-        TODO:
+        TODO: Fehler Luftballon aufgepustet nicht Umgebungsluft?
+        TODO: Fehler Luft im Co2 Ballon, alternativ Sodastream?
+        TODO: Schwer zu sehen wann Boden berührt
+        TODO: Wiegen sie den Luftballon.
+        TODO: Fehler Luftballon wiegt 2g
+        TODO: (Wasser in Ballon?)
+        TODO: Video aufgenommen ausgewertet mit Media Player Classic?App ausgewertet
+        TODO: Beachten Video nur mit 30fps aufgenommen Fehlerrechnung
+        TODO: Umfangfehlerrechnung aus Versuch 6 klauen. Hier aber mehr auf schwierig Umfänge zu vergleichen eingehen. Volumenfehler
+        TODO: Theoriefehler aus Herleitung???
+        TODO: Wie lange beschleunigt der Luftballon?
+        TODO: FOTOS und Messwerte anheften
+        TODO: Warum Fallhöhe messen? Für andere Berechnung für \(t_{Venus}\)?
+        TODO: Aufgabenstellung nochmal genau lesen.
+        TODO: Messergebnise nochmal neu aufschreiben und anheften.
+        TODO: Prallaxe von Video???
+        TODO: Nicht auf gleiche Höhe am Anfang.
+        TODO: Luftstömungen?
+
+        TODO: Bilder, 1.Ballon auf Flasche, 2.Ballon auf Flasche geschüttelt, 3. Fallversuch
+        Bei unserer Durchführung haben wir uns für die Unterkannte eines Türrahmens entschieden. TODO:
+        TODO: Bilder, 1.Ballon auf Flasche, 2.Ballon auf Flasche geschüttelt, 3. Fallversuch
+        TODO: Video Auswertung mit wichitg kommentar aus Skript
+        TODO: Wiegen sie den Luftballon.
+        TODO: Warum Fallhöhe messen? Für andere Berechnung für \(t_{Venus}\)?
+        TODO: (Wasser in Ballon?)
+        Fallen gelassen von Unterkante des Türrahmens
+
+        TODO: Für Grundlagen
+        TODO: Luftballon Kugel approximieren. Ein kugelförmiger Körper mit Dichte \(\rho_K\) in einer Flüssigkeit mit Dichte \(\rho_{Fl}\) fällt in eben jener Flüssigkeit nach unten
+        TODO: Mehr zur stokesschen Reibung
+    
+        TODO: Co2 aus Wasser lösen, Druck Gleichgewicht etc.
 
     \printbibliography[title={Quellen}]
-
-    TODO: FOTOS und Messwerte
-    TODO: Warum Fallhöhe messen? Für andere Berechnung für \(t_{Venus}\)?
 
 \end{document}
