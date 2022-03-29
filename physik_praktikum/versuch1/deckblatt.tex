@@ -1,0 +1,30 @@
+\makeatletter
+\let\thetitle \@title{}
+\let\theauthor \@author{}
+\let\thedate \@date{}
+\makeatother
+
+\fancyhf{}
+
+    \begin{titlepage}
+        \centering
+        \vspace*{0.5 cm}
+        \includegraphics[ width = 0.6 \textwidth ]{fotos/uni-logo.png} \\ [2.0 cm]
+
+        Protokoll zu: \\
+        \begin{center}    
+            \textsc{ \Large Physikalisches Grundpraktikum I \\ (Mechanik und Thermodynamik)} \\ [2.0 cm]
+        \end{center}
+        
+        \rule{\linewidth}{0.2 mm} \\ [0.4 cm]
+        { \huge \bfseries \thetitle} \\
+        \rule{\linewidth}{0.2 mm} \\ [1.5 cm]
+                
+        \begin{minipage}{ 0.4 \textwidth }
+            \begin{flushright} \large
+                \emph{Protokoll von: } \\
+                \theauthor{}
+            \end{flushright}
+        \end{minipage} \\ [2 cm]
+        
+    \end{titlepage}

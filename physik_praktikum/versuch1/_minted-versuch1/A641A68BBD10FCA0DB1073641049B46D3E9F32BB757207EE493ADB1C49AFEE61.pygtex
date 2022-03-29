@@ -1,0 +1,70 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{plt}
+
+
+\PYG{k}{def} \PYG{n+nf}{read\PYGZus{}in\PYGZus{}vcm}\PYG{p}{(}\PYG{n}{file\PYGZus{}name}\PYG{p}{,} \PYG{n}{show\PYGZus{}plot}\PYG{o}{=}\PYG{k+kc}{False}\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{} Read out vcm files}
+    \PYG{n}{path} \PYG{o}{=} \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}../messdaten/}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{file\PYGZus{}name}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{.vcm\PYGZsq{}}
+
+    \PYG{k}{with} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}r\PYGZsq{}}\PYG{p}{)} \PYG{k}{as} \PYG{n}{file}\PYG{p}{:}
+        \PYG{c+c1}{\PYGZsh{} Skip file header}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{22}\PYG{p}{):}
+            \PYG{n}{file}\PYG{o}{.}\PYG{n}{readline}\PYG{p}{()}
+
+        \PYG{n}{data\PYGZus{}points} \PYG{o}{=} \PYG{p}{[]}
+
+        \PYG{c+c1}{\PYGZsh{} Read in data points from file}
+        \PYG{n}{value} \PYG{o}{=} \PYG{n}{file}\PYG{o}{.}\PYG{n}{readline}\PYG{p}{()}\PYG{o}{.}\PYG{n}{strip}\PYG{p}{()}
+        \PYG{k}{while} \PYG{n}{value} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}NAN\PYGZsq{}} \PYG{o+ow}{or} \PYG{n}{value}\PYG{o}{.}\PYG{n}{count}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}.\PYGZsq{}}\PYG{p}{)} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+            \PYG{c+c1}{\PYGZsh{} Don\PYGZsq{}t allow float which ends the the list}
+            \PYG{k}{if} \PYG{n}{value} \PYG{o}{!=} \PYG{l+s+s1}{\PYGZsq{}NAN\PYGZsq{}}\PYG{p}{:}
+                \PYG{n}{data\PYGZus{}points}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{value}\PYG{p}{))}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{n}{data\PYGZus{}points}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}NAN\PYGZsq{}}\PYG{p}{)}
+
+            \PYG{n}{value} \PYG{o}{=} \PYG{n}{file}\PYG{o}{.}\PYG{n}{readline}\PYG{p}{()}\PYG{o}{.}\PYG{n}{strip}\PYG{p}{()}
+
+        \PYG{c+c1}{\PYGZsh{} generate x\PYGZhy{}Axis values with 0.1s intervals}
+        \PYG{n}{x\PYGZus{}axis} \PYG{o}{=} \PYG{p}{[}\PYG{n}{i}\PYG{o}{/}\PYG{l+m+mi}{10} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{data\PYGZus{}points}\PYG{p}{))]}
+
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{data\PYGZus{}points}\PYG{o}{.}\PYG{n}{count}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}NAN\PYGZsq{}}\PYG{p}{))}
+
+        \PYG{c+c1}{\PYGZsh{} Remove \PYGZsq{}NAN\PYGZsq{} values}
+        \PYG{n}{nan\PYGZus{}times} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{data\PYGZus{}points}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{n}{data\PYGZus{}points}\PYG{o}{.}\PYG{n}{count}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}NAN\PYGZsq{}}\PYG{p}{)):}
+            \PYG{k}{if} \PYG{n}{data\PYGZus{}points}\PYG{p}{[}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n}{nan\PYGZus{}times}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}NAN\PYGZsq{}}\PYG{p}{:}
+                \PYG{n}{data\PYGZus{}points}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n}{nan\PYGZus{}times}\PYG{p}{)}
+                \PYG{n}{x\PYGZus{}axis}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{(}\PYG{n}{i} \PYG{o}{\PYGZhy{}} \PYG{n}{nan\PYGZus{}times}\PYG{p}{)}
+                \PYG{n}{nan\PYGZus{}times} \PYG{o}{+=} \PYG{l+m+mi}{1}
+
+        \PYG{k}{if} \PYG{n}{show\PYGZus{}plot}\PYG{p}{:}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x\PYGZus{}axis}\PYG{p}{,} \PYG{n}{data\PYGZus{}points}\PYG{p}{)}
+            \PYG{n}{plt}\PYG{o}{.}\PYG{n}{show}\PYG{p}{()}
+
+        \PYG{k}{return} \PYG{n}{x\PYGZus{}axis}\PYG{p}{,} \PYG{n}{data\PYGZus{}points}
+
+
+\PYG{k}{def} \PYG{n+nf}{generate\PYGZus{}csv}\PYG{p}{(}\PYG{n}{file\PYGZus{}name}\PYG{p}{,} \PYG{n}{x\PYGZus{}axis}\PYG{p}{,} \PYG{n}{data\PYGZus{}points}\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{} generate csv file}
+    \PYG{n}{path} \PYG{o}{=} \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}../messdaten/}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{file\PYGZus{}name}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{.csv\PYGZsq{}}
+    \PYG{k}{with} \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{path}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}w\PYGZsq{}}\PYG{p}{)} \PYG{k}{as} \PYG{n}{file}\PYG{p}{:}
+        \PYG{n}{file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}time, position }\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}  \PYG{c+c1}{\PYGZsh{} add header for pgfplots}
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{data\PYGZus{}points}\PYG{p}{)):}
+            \PYG{n}{file}\PYG{o}{.}\PYG{n}{write}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{x\PYGZus{}axis}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{,}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{data\PYGZus{}points}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{ }\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{file}\PYG{o}{.}\PYG{n}{flush}\PYG{p}{()}
+
+
+\PYG{n}{harmonisch} \PYG{o}{=} \PYG{n}{read\PYGZus{}in\PYGZus{}vcm}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Versuch2\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{gleich\PYGZus{}phasig} \PYG{o}{=} \PYG{n}{read\PYGZus{}in\PYGZus{}vcm}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Versuch3.1\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{gegen\PYGZus{}phasig} \PYG{o}{=} \PYG{n}{read\PYGZus{}in\PYGZus{}vcm}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Versuch3.2\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{schwebung} \PYG{o}{=} \PYG{n}{read\PYGZus{}in\PYGZus{}vcm}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Versuch3.3\PYGZsq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Write out in csv for loading with pgfplots}
+\PYG{n}{generate\PYGZus{}csv}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}harmonisch\PYGZsq{}}\PYG{p}{,} \PYG{n}{harmonisch}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{],} \PYG{n}{harmonisch}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])}
+
+\PYG{c+c1}{\PYGZsh{} Exemplary usage for data analysis}
+\PYG{n}{data} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(}\PYG{n}{gegen\PYGZus{}phasig}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{])}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{data}\PYG{o}{.}\PYG{n}{max}\PYG{p}{())}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{data}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{())}
+\end{Verbatim}

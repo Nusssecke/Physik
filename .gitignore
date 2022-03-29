@@ -9,3 +9,6 @@
 *.bcf
 *.blg
 *.run.xml
+*.dep
+*.dpth
+*.md5
